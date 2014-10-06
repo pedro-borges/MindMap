@@ -54,7 +54,8 @@
 		4B42244419E2000B0098CCFA /* TVC_ViewProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42244319E2000B0098CCFA /* TVC_ViewProject.m */; };
 		4B42244819E209F70098CCFA /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42244719E209F70098CCFA /* Task.m */; };
 		4B42244B19E209F80098CCFA /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42244A19E209F80098CCFA /* Project.m */; };
-		4B42245119E21F070098CCFA /* VC_ManageProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42245019E21F070098CCFA /* VC_ManageProject.m */; };
+		4B42245419E319640098CCFA /* TBC_ManageProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42245319E319640098CCFA /* TBC_ManageProject.m */; };
+		4B42245719E323670098CCFA /* DocumentMaganer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42245619E323670098CCFA /* DocumentMaganer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,8 +161,10 @@
 		4B42244719E209F70098CCFA /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		4B42244919E209F80098CCFA /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
 		4B42244A19E209F80098CCFA /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
-		4B42244F19E21F070098CCFA /* VC_ManageProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_ManageProject.h; sourceTree = "<group>"; };
-		4B42245019E21F070098CCFA /* VC_ManageProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_ManageProject.m; sourceTree = "<group>"; };
+		4B42245219E319640098CCFA /* TBC_ManageProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBC_ManageProject.h; sourceTree = "<group>"; };
+		4B42245319E319640098CCFA /* TBC_ManageProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBC_ManageProject.m; sourceTree = "<group>"; };
+		4B42245519E323670098CCFA /* DocumentMaganer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentMaganer.h; sourceTree = "<group>"; };
+		4B42245619E323670098CCFA /* DocumentMaganer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentMaganer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +280,8 @@
 				4B42240619DF64060098CCFA /* Completion+Implementation.m */,
 				4B0D9B1519DD95150047EC4B /* Database.h */,
 				4B0D9B1619DD95150047EC4B /* Database.m */,
+				4B42245519E323670098CCFA /* DocumentMaganer.h */,
+				4B42245619E323670098CCFA /* DocumentMaganer.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -286,8 +291,8 @@
 			children = (
 				4B42243F19E1F4BD0098CCFA /* NC_Root.h */,
 				4B42244019E1F4BD0098CCFA /* NC_Root.m */,
-				4B42244F19E21F070098CCFA /* VC_ManageProject.h */,
-				4B42245019E21F070098CCFA /* VC_ManageProject.m */,
+				4B42245219E319640098CCFA /* TBC_ManageProject.h */,
+				4B42245319E319640098CCFA /* TBC_ManageProject.m */,
 				4B4223F219DF42AC0098CCFA /* TVC_List_Array.h */,
 				4B4223F319DF42AC0098CCFA /* TVC_List_Array.m */,
 				4B4223FB19DF512A0098CCFA /* TVC_ListHierarchy.h */,
@@ -490,6 +495,7 @@
 				4B42240719DF64060098CCFA /* Completion+Implementation.m in Sources */,
 				4B42244119E1F4BD0098CCFA /* NC_Root.m in Sources */,
 				4B4223E019DDEC270098CCFA /* TVC_ListTasksFuture.m in Sources */,
+				4B42245419E319640098CCFA /* TBC_ManageProject.m in Sources */,
 				4B0D9B1719DD95150047EC4B /* Database.m in Sources */,
 				4B0D9AF419DD79D80047EC4B /* Place+Implenentation.m in Sources */,
 				4B4223D019DDCB3B0098CCFA /* TVC_View.m in Sources */,
@@ -497,6 +503,7 @@
 				4B42243519E1F09D0098CCFA /* Project+Business.m in Sources */,
 				4B42241F19DF771A0098CCFA /* Place.m in Sources */,
 				4B0D9AAD19DD71CE0047EC4B /* AppDelegate.m in Sources */,
+				4B42245719E323670098CCFA /* DocumentMaganer.m in Sources */,
 				4B4223F419DF42AC0098CCFA /* TVC_List_Array.m in Sources */,
 				4B4223F119DF1FFD0098CCFA /* LinkedTextField.m in Sources */,
 				4B4223E819DE129A0098CCFA /* TVC_ListDependencies.m in Sources */,
@@ -505,7 +512,6 @@
 				4B4223FD19DF512A0098CCFA /* TVC_ListHierarchy.m in Sources */,
 				4B42244419E2000B0098CCFA /* TVC_ViewProject.m in Sources */,
 				4B42244819E209F70098CCFA /* Task.m in Sources */,
-				4B42245119E21F070098CCFA /* VC_ManageProject.m in Sources */,
 				4B0D9AF119DD79AE0047EC4B /* Task+Implementation.m in Sources */,
 				4B0D9AFB19DD813C0047EC4B /* CoreDataTableViewController.m in Sources */,
 				4B0D9AAA19DD71CE0047EC4B /* main.m in Sources */,

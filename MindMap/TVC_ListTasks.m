@@ -39,6 +39,14 @@
     self.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]];
 }
 
+- (void)viewDidLayoutSubviews {
+	[super viewDidLayoutSubviews];
+
+	NSLog(@"Frame = %@", NSStringFromCGRect(self.view.frame));
+	NSLog(@"blg = %@", self.bottomLayoutGuide);
+	NSLog(@"tlg = %@", self.topLayoutGuide);
+}
+
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -76,6 +84,12 @@
 		
 		controller.model = selectedTask;
 	}
+}
+
+- (IBAction)closeAction:(UIBarButtonItem *)sender {
+	[self dismissViewControllerAnimated:YES completion:^(void) {
+		
+	}];
 }
 
 @end

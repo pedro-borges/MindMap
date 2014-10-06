@@ -11,6 +11,7 @@
 @interface Task (Implementation)
 
 + (Task *)createFromContext:(NSManagedObjectContext *)context
+				 forProject:(Project *)project
                   withTitle:(NSString *)title;
 + (NSSet *)allInContext:(NSManagedObjectContext *)context
 		 matchingPredicate:(NSPredicate *)predicate;

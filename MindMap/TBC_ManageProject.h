@@ -1,5 +1,5 @@
 //
-//  VC_ManageProject.h
+//  TBC_ManageProject.h
 //  MindMap
 //
 //  Created by Pedro Borges on 06/10/14.
@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "Project+Business.h"
 
-@interface VC_ManageProject : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface TBC_ManageProject : UITabBarController
 
 @property (nonatomic, strong) Project *project;
-@property (nonatomic, strong) UIPageViewController *pageViewController;
 
 @end

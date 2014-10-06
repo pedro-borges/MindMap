@@ -90,7 +90,7 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="H2O-8n-cnD" kind="show" identifier="Manage Project" id="ZVW-eU-yB0"/>
+                                    <segue destination="ela-1z-XJD" kind="showDetail" identifier="Manage Project" id="OuG-Z2-Udt"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -109,7 +109,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qrh-Iv-MeE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7.5" y="1439"/>
+            <point key="canvasLocation" x="-874.5" y="741"/>
         </scene>
         <!--Root-->
         <scene sceneID="l1f-Ip-wae">
@@ -126,32 +126,29 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXj-o6-aWf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-736.5" y="1439"/>
+            <point key="canvasLocation" x="-1618.5" y="741"/>
         </scene>
         <!--Manage Project-->
-        <scene sceneID="9cX-dP-DIY">
+        <scene sceneID="R7q-dQ-47a">
             <objects>
-                <viewController storyboardIdentifier="VC_ManageProject" id="H2O-8n-cnD" customClass="VC_ManageProject" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Wmm-08-uZ9"/>
-                        <viewControllerLayoutGuide type="bottom" id="nGd-VR-btD"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hEP-m2-hgT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                <tabBarController storyboardIdentifier="TBC_ManageProject" automaticallyAdjustsScrollViewInsets="NO" id="ela-1z-XJD" customClass="TBC_ManageProject" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Caq-TE-rGf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
                     <connections>
-                        <segue destination="rqC-ou-JE3" kind="show" identifier="Show Present" id="IHJ-pz-NdF"/>
-                        <segue destination="VwX-9B-CcA" kind="show" identifier="Show Future" id="pGF-4m-Ipe"/>
-                        <segue destination="an2-zE-9hD" kind="show" identifier="Show Past" id="DK3-Gp-DhE"/>
+                        <segue destination="tDZ-dv-U3E" kind="relationship" relationship="viewControllers" id="euC-SW-xpu"/>
+                        <segue destination="7Gj-Z4-RZc" kind="relationship" relationship="viewControllers" id="iT3-TP-Ig5"/>
+                        <segue destination="EGg-rf-DRZ" kind="relationship" relationship="viewControllers" id="3gK-6c-1nR"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7BR-sy-Gmn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a8g-K5-DrM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="757.5" y="1439"/>
+            <point key="canvasLocation" x="-171" y="741"/>
         </scene>
-        <!--Present-->
+        <!--List Tasks Present-->
         <scene sceneID="WvN-j4-atR">
             <objects>
                 <tableViewController storyboardIdentifier="TVC_ListTasksPresent" id="rqC-ou-JE3" customClass="TVC_ListTasksPresent" sceneMemberID="viewController">
@@ -186,7 +183,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Vxw-vh-e2M" kind="show" identifier="View Task" trigger="accessoryAction" id="bkK-VY-yRl"/>
+                                    <segue destination="Vxw-vh-e2M" kind="show" identifier="View Task" trigger="accessoryAction" id="CB5-iI-Y2Y"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -195,11 +192,15 @@
                             <outlet property="delegate" destination="rqC-ou-JE3" id="FUn-vD-fE1"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Preent" image="IconArrowDownDark" id="7P1-Vh-xe7"/>
-                    <navigationItem key="navigationItem" title="Present" id="Z9j-Bq-lBf">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nwV-Sx-in6">
+                    <navigationItem key="navigationItem" id="U35-F7-Aap">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="Vju-vE-oOe">
                             <connections>
-                                <action selector="addAction:" destination="rqC-ou-JE3" id="mok-Xw-y6C"/>
+                                <action selector="closeAction:" destination="rqC-ou-JE3" id="Dzs-Ti-UmY"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GqH-3D-Bse">
+                            <connections>
+                                <action selector="addAction:" destination="rqC-ou-JE3" id="whU-Ch-Pub"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -927,6 +928,23 @@
             <point key="canvasLocation" x="4110" y="391"/>
         </scene>
         <!--Past-->
+        <scene sceneID="gfR-6I-ons">
+            <objects>
+                <navigationController id="tDZ-dv-U3E" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Past" image="IconRewindDark" id="hF5-rg-GkA"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TH1-di-fpe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="an2-zE-9hD" kind="relationship" relationship="rootViewController" id="1VB-0g-qom"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="trG-Ze-aqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="868.5" y="-373"/>
+        </scene>
+        <!--List Tasks Past-->
         <scene sceneID="Yeq-9H-BVE">
             <objects>
                 <tableViewController storyboardIdentifier="TVC_ListTasksPast" id="an2-zE-9hD" customClass="TVC_ListTasksPast" sceneMemberID="viewController">
@@ -970,14 +988,19 @@
                             <outlet property="delegate" destination="an2-zE-9hD" id="wMA-nk-TUH"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Past" image="IconRewindDark" id="hF5-rg-GkA"/>
-                    <navigationItem key="navigationItem" title="Past" id="6AF-pg-fDe"/>
+                    <navigationItem key="navigationItem" id="MWY-cs-HrW">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="pXZ-8H-V18">
+                            <connections>
+                                <action selector="closeAction:" destination="an2-zE-9hD" id="ocZ-rh-e8j"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zeW-yd-msj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1594.5" y="-373"/>
         </scene>
-        <!--Future-->
+        <!--List Tasks Future-->
         <scene sceneID="Off-Fa-7h9">
             <objects>
                 <tableViewController storyboardIdentifier="TVC_ListTasksFuture" id="VwX-9B-CcA" customClass="TVC_ListTasksFuture" sceneMemberID="viewController">
@@ -1021,12 +1044,51 @@
                             <outlet property="delegate" destination="VwX-9B-CcA" id="2VD-1I-FWk"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Future" image="IconFastForwardDark" id="eyq-Y4-Om8"/>
-                    <navigationItem key="navigationItem" title="Future" id="lOo-a0-w8E"/>
+                    <navigationItem key="navigationItem" id="xpH-HY-A8G">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="gEb-d5-6oW">
+                            <connections>
+                                <action selector="closeAction:" destination="VwX-9B-CcA" id="DkR-hG-4dp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HDi-oP-CQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594.5" y="1833"/>
+            <point key="canvasLocation" x="1594.5" y="1149"/>
+        </scene>
+        <!--Future-->
+        <scene sceneID="1qZ-Dt-JMD">
+            <objects>
+                <navigationController id="EGg-rf-DRZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Future" image="IconFastForwardDark" id="eyq-Y4-Om8"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YPp-Qu-qXJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="VwX-9B-CcA" kind="relationship" relationship="rootViewController" id="AXv-th-X8c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eML-eA-NKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="868.5" y="1149"/>
+        </scene>
+        <!--Preent-->
+        <scene sceneID="tzb-Zy-31G">
+            <objects>
+                <navigationController id="7Gj-Z4-RZc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Preent" image="IconArrowDownDark" id="7P1-Vh-xe7"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SI9-au-QAw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rqC-ou-JE3" kind="relationship" relationship="rootViewController" id="TO6-QN-5Ho"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ly0-9X-Vh8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="868.5" y="378"/>
         </scene>
     </scenes>
     <resources>

@@ -8,7 +8,7 @@
 
 #import "TVC_ListProjects.h"
 
-#import "VC_ManageProject.h"
+#import "TBC_ManageProject.h"
 
 #define CELL_PROJECT @"pt.pcb.mindmap.project"
 
@@ -101,7 +101,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([@"Manage Project" isEqualToString:segue.identifier]) {
-        VC_ManageProject *controller = segue.destinationViewController;
+        TBC_ManageProject *controller = segue.destinationViewController;
 
         Project *selectedProject = self.selectedProject;
 

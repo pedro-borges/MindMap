@@ -12,12 +12,14 @@
 @implementation Task (Implementation)
 
 + (Task *)createFromContext:(NSManagedObjectContext *)context
-                  withTitle:(NSString *)title {
+				 forProject:(Project *)project
+				  withTitle:(NSString *)title {
     Task *result;
     
     result = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:context];
-    
+
     result.title = title;
+	result.project = project;
 
     [Database saveManagedObject:result];
     

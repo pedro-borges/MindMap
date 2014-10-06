@@ -12,8 +12,6 @@
 
 @interface TVC_ListTasks : TVC_List_CoreData
 
-@property NSUInteger pageIndex;
-
 @property (nonatomic, readonly) Task *selectedTask;
 @property (nonatomic, readonly) Project *project;
 

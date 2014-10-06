@@ -11,7 +11,13 @@
 @implementation Database
 
 + (void)saveManagedObject:(NSManagedObject *)managedObject {
-    
+	NSError *error;
+	
+	[managedObject.managedObjectContext save:&error];
+
+	if (error) {
+		NSLog(@"Error saving object - %@", error);
+	}
 }
 
 @end

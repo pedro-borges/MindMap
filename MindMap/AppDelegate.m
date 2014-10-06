@@ -23,7 +23,7 @@
 	pageControl.currentPageIndicatorTintColor = [UIColor redColor];
 	pageControl.backgroundColor = [UIColor clearColor];
 	pageControl.opaque = NO;
-	
+
 	return YES;
 }
 

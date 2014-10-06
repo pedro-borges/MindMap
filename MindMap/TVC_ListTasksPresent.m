@@ -52,7 +52,7 @@
 - (void)addNewDependencyToSelectedTask {
 	Task *task = [self.fetchedResultsController objectAtIndexPath:self.tableView.indexPathForSelectedRow];
 	
-	Task *dependency = [Task createFromContext:self.context withTitle:[NSString stringWithFormat:STRING_DEPENDENCY_OF, task.title]];
+	Task *dependency = [Task createFromContext:self.context forProject:self.project withTitle:[NSString stringWithFormat:STRING_DEPENDENCY_OF, task.title]];
 	
 	[task addDependenciesObject:dependency];
 	
@@ -98,7 +98,7 @@
 #pragma mark - Navigation
 
 - (IBAction)addAction:(UIBarButtonItem *)sender {
-	[Task createFromContext:self.context withTitle:STRING_NEWTASK];
+	[Task createFromContext:self.context forProject:self.project withTitle:STRING_NEWTASK];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

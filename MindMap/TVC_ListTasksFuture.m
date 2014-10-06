@@ -37,7 +37,7 @@
 - (void)addNewDependencyToSelectedTask {
 	Task *task = [self selectedTask];
 	
-	Task *dependency = [Task createFromContext:self.context withTitle:[NSString stringWithFormat:STRING_DEPENDENCY_OF, task.title]];
+	Task *dependency = [Task createFromContext:self.context forProject:self.project withTitle:[NSString stringWithFormat:STRING_DEPENDENCY_OF, task.title]];
 	
 	[task addDependenciesObject:dependency];
 	
