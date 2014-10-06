@@ -45,8 +45,6 @@
 	task.completion = [Completion createFromContext:self.context
 											forTask:task
 										  timestamp:[NSDate date]];
-
-	[self dismissViewControllerAnimated:NO completion:^(void){ }];
 }
 
 - (void)addNewDependencyToSelectedTask {

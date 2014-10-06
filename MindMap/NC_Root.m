@@ -121,6 +121,9 @@
         }];
     } else if (self.document.documentState == UIDocumentStateClosed) {
         [self.document openWithCompletionHandler:^(BOOL success) {
+            TVC_ListProjects *controller = (TVC_ListProjects *)[self topViewController];
+            
+            [controller.tableView reloadData];
         }];
     } else if (self.document.documentState == UIDocumentStateNormal) {
 

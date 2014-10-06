@@ -73,6 +73,7 @@
     unsigned long taskCount = [project.tasks count];
     unsigned long pendingCount = [project.pendingTasks count];
     float progress = (taskCount - pendingCount) / taskCount;
+    
     NSLog(@"progress = %f", progress);
 
     UILabel *textLabel = (UILabel *)[cell.contentView viewWithTag:101];
