@@ -12,5 +12,6 @@
 @interface Database : NSObject
 
 + (void)saveManagedObject:(NSManagedObject *)managedObject;
++ (void)saveManagedObjectByForce:(NSManagedObject *)managedObject;
 
 @end

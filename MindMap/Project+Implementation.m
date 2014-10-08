@@ -20,7 +20,7 @@
 
     result.name = name;
 
-    [Database saveManagedObject:result];
+    [Database saveManagedObjectByForce:result];
 
     return result;
 }
@@ -32,7 +32,7 @@
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
 
     request.sortDescriptors = sortDescriptors;
-    request.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil)", self];
+    request.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion = nil)", self];
 
     NSError *error;
 

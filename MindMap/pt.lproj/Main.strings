@@ -1,0 +1,138 @@
+
+/* Class = "IBUILabel"; text = "#dependants"; ObjectID = "0Tv-F9-LlK"; */
+"0Tv-F9-LlK.text" = "#dependants";
+
+/* Class = "IBUILabel"; text = "#title"; ObjectID = "1T9-74-pfw"; */
+"1T9-74-pfw.text" = "#title";
+
+/* Class = "IBUINavigationItem"; title = "Projects"; ObjectID = "1sy-Y8-Voi"; */
+"1sy-Y8-Voi.title" = "Projetos";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Time Frame"; ObjectID = "2M8-nz-M5U"; */
+"2M8-nz-M5U.headerTitle" = "Janela Temporal";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Title"; ObjectID = "2Wv-mE-Z8A"; */
+"2Wv-mE-Z8A.headerTitle" = "Título";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Manage"; ObjectID = "4Cx-7j-H7t"; */
+"4Cx-7j-H7t.headerTitle" = "Gerir";
+
+/* Class = "IBUILabel"; text = "#title"; ObjectID = "4Fk-IT-JxY"; */
+"4Fk-IT-JxY.text" = "#title";
+
+/* Class = "IBUITextField"; placeholder = "Enter Task Title"; ObjectID = "56K-rM-1vs"; */
+"56K-rM-1vs.placeholder" = "Título da Tarefa";
+
+/* Class = "IBUILabel"; text = "#locations"; ObjectID = "5fG-cK-NOg"; */
+"5fG-cK-NOg.text" = "#locations";
+
+/* Class = "IBUITabBarItem"; title = "Preent"; ObjectID = "7P1-Vh-xe7"; */
+"7P1-Vh-xe7.title" = "Presente";
+
+/* Class = "IBUILabel"; text = "#title"; ObjectID = "8LT-JO-k9o"; */
+"8LT-JO-k9o.text" = "#title";
+
+/* Class = "IBUILabel"; text = "Dependencies"; ObjectID = "Al0-QC-D82"; */
+"Al0-QC-D82.text" = "Dependências";
+
+/* Class = "IBUILabel"; text = "#dependants"; ObjectID = "Bj0-k6-Z1q"; */
+"Bj0-k6-Z1q.text" = "#dependants";
+
+/* Class = "IBUILabel"; text = "#timeFrame"; ObjectID = "Bt4-26-bOT"; */
+"Bt4-26-bOT.text" = "#timeFrame";
+
+/* Class = "IBUILabel"; text = "Add Dependant"; ObjectID = "ELU-PF-i2B"; */
+"ELU-PF-i2B.text" = "Adicionar Dependeêcia";
+
+/* Class = "IBUILabel"; text = "Dependants"; ObjectID = "ESv-jk-rUd"; */
+"ESv-jk-rUd.text" = "Dependentes";
+
+/* Class = "IBUILabel"; text = "Start Date"; ObjectID = "GPc-YG-SId"; */
+"GPc-YG-SId.text" = "Data de Início";
+
+/* Class = "IBUILabel"; text = "Add Dependency"; ObjectID = "GuA-Qz-1Xr"; */
+"GuA-Qz-1Xr.text" = "Adicionar Dependência";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Manage"; ObjectID = "HHh-Ty-HnQ"; */
+"HHh-Ty-HnQ.headerTitle" = "Gerir";
+
+/* Class = "IBUILabel"; text = "Dependants"; ObjectID = "IW5-P7-nlI"; */
+"IW5-P7-nlI.text" = "Dependentes";
+
+/* Class = "IBUILabel"; text = "Dependencies"; ObjectID = "Ib3-nj-Ng8"; */
+"Ib3-nj-Ng8.text" = "Dependências";
+
+/* Class = "IBUILabel"; text = "#name"; ObjectID = "JIp-UL-p1P"; */
+"JIp-UL-p1P.text" = "#name";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Title"; ObjectID = "NQa-K3-lcB"; */
+"NQa-K3-lcB.headerTitle" = "Título";
+
+/* Class = "IBUILabel"; text = "Locations"; ObjectID = "R73-H5-GJ2"; */
+"R73-H5-GJ2.text" = "Lugares";
+
+/* Class = "IBUILabel"; text = "#dependencies"; ObjectID = "Rz5-YH-uYe"; */
+"Rz5-YH-uYe.text" = "#dependencies";
+
+/* Class = "IBUILabel"; text = "End Date"; ObjectID = "TaB-xB-t3J"; */
+"TaB-xB-t3J.text" = "Data Límite";
+
+/* Class = "IBUILabel"; text = "#title"; ObjectID = "Upp-9w-cHw"; */
+"Upp-9w-cHw.text" = "#title";
+
+/* Class = "IBUIBarButtonItem"; title = "Close"; ObjectID = "Vju-vE-oOe"; */
+"Vju-vE-oOe.title" = "Fechar";
+
+/* Class = "IBUILabel"; text = "#timeFrame"; ObjectID = "WGS-Qz-t6I"; */
+"WGS-Qz-t6I.text" = "#timeFrame";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Time Frame"; ObjectID = "bqp-fp-Win"; */
+"bqp-fp-Win.headerTitle" = "Janela Temporal";
+
+/* Class = "IBUITabBarItem"; title = "Future"; ObjectID = "eyq-Y4-Om8"; */
+"eyq-Y4-Om8.title" = "Futuro";
+
+/* Class = "IBUILabel"; text = "#dependants"; ObjectID = "gCe-h3-pce"; */
+"gCe-h3-pce.text" = "#dependants";
+
+/* Class = "IBUIBarButtonItem"; title = "Close"; ObjectID = "gEb-d5-6oW"; */
+"gEb-d5-6oW.title" = "Fechar";
+
+/* Class = "IBUILabel"; text = "#dependants"; ObjectID = "h5F-XR-eZg"; */
+"h5F-XR-eZg.text" = "#dependants";
+
+/* Class = "IBUILabel"; text = "#dependencies"; ObjectID = "hAT-ou-RcF"; */
+"hAT-ou-RcF.text" = "#dependencies";
+
+/* Class = "IBUITabBarItem"; title = "Past"; ObjectID = "hF5-rg-GkA"; */
+"hF5-rg-GkA.title" = "Passado";
+
+/* Class = "IBUILabel"; text = "#progress"; ObjectID = "jeV-bd-2k0"; */
+"jeV-bd-2k0.text" = "#progress";
+
+/* Class = "IBUILabel"; text = "#title"; ObjectID = "ljk-Cx-0HL"; */
+"ljk-Cx-0HL.text" = "#title";
+
+/* Class = "IBUILabel"; text = "#title"; ObjectID = "na9-Pf-syn"; */
+"na9-Pf-syn.text" = "#title";
+
+/* Class = "IBUILabel"; text = "#title"; ObjectID = "oNp-TG-Ks5"; */
+"oNp-TG-Ks5.text" = "#title";
+
+/* Class = "IBUIBarButtonItem"; title = "Close"; ObjectID = "pXZ-8H-V18"; */
+"pXZ-8H-V18.title" = "Fechar";
+
+/* Class = "IBUILabel"; text = "#dependants"; ObjectID = "qzc-Ph-bVR"; */
+"qzc-Ph-bVR.text" = "#dependants";
+
+/* Class = "IBUILabel"; text = "#title"; ObjectID = "sNc-0w-sLY"; */
+"sNc-0w-sLY.text" = "#title";
+
+/* Class = "IBUILabel"; text = "Locations"; ObjectID = "ubb-h2-srK"; */
+"ubb-h2-srK.text" = "Lugares";
+
+/* Class = "IBUINavigationItem"; title = "Time Frame"; ObjectID = "wcA-1o-lzW"; */
+"wcA-1o-lzW.title" = "Janela Temporal";
+
+/* Class = "IBUILabel"; text = "#locations"; ObjectID = "ztP-Nh-nN5"; */
+"ztP-Nh-nN5.text" = "#locations";

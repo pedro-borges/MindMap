@@ -22,7 +22,7 @@
     
     result.task = task;
     
-    [Database saveManagedObject:result];
+    [Database saveManagedObjectByForce:result];
     
     return result;
 }

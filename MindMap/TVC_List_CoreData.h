@@ -20,4 +20,6 @@
 @property (nonatomic, strong) NSString *sectionNameKeyPath;
 @property (nonatomic, strong) NSArray *sortDescriptors;
 
+- (void)bindToView;
+
 @end

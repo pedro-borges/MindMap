@@ -46,16 +46,15 @@
 		4B42241919DF77190098CCFA /* TimeFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42241819DF77190098CCFA /* TimeFrame.m */; };
 		4B42241F19DF771A0098CCFA /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42241E19DF771A0098CCFA /* Place.m */; };
 		4B42242219DF771A0098CCFA /* Completion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42242119DF771A0098CCFA /* Completion.m */; };
-		4B42242519E1E1340098CCFA /* File.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B42242719E1E1340098CCFA /* File.strings */; };
+		4B42242519E1E1340098CCFA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B42242719E1E1340098CCFA /* Localizable.strings */; };
 		4B42243219E1EF780098CCFA /* TVC_ListProjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42243119E1EF780098CCFA /* TVC_ListProjects.m */; };
 		4B42243519E1F09D0098CCFA /* Project+Business.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42243419E1F09D0098CCFA /* Project+Business.m */; };
 		4B42243E19E1F0E10098CCFA /* Project+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42243D19E1F0E10098CCFA /* Project+Implementation.m */; };
-		4B42244119E1F4BD0098CCFA /* NC_Root.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42244019E1F4BD0098CCFA /* NC_Root.m */; };
 		4B42244419E2000B0098CCFA /* TVC_ViewProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42244319E2000B0098CCFA /* TVC_ViewProject.m */; };
 		4B42244819E209F70098CCFA /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42244719E209F70098CCFA /* Task.m */; };
 		4B42244B19E209F80098CCFA /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42244A19E209F80098CCFA /* Project.m */; };
 		4B42245419E319640098CCFA /* TBC_ManageProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42245319E319640098CCFA /* TBC_ManageProject.m */; };
-		4B42245719E323670098CCFA /* DocumentMaganer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42245619E323670098CCFA /* DocumentMaganer.m */; };
+		4B42245A19E40FF10098CCFA /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42245919E40FF10098CCFA /* DatabaseManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,9 +141,9 @@
 		4B42241E19DF771A0098CCFA /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Place.m; path = ../Place.m; sourceTree = "<group>"; };
 		4B42242019DF771A0098CCFA /* Completion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Completion.h; path = ../Completion.h; sourceTree = "<group>"; };
 		4B42242119DF771A0098CCFA /* Completion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Completion.m; path = ../Completion.m; sourceTree = "<group>"; };
-		4B42242619E1E1340098CCFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/File.strings; sourceTree = "<group>"; };
-		4B42242819E1E13C0098CCFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/File.strings; sourceTree = "<group>"; };
-		4B42242A19E1E15C0098CCFA /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/File.strings"; sourceTree = "<group>"; };
+		4B42242619E1E1340098CCFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4B42242819E1E13C0098CCFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4B42242A19E1E15C0098CCFA /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		4B42242F19E1EC7A0098CCFA /* Model-1.0.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-1.0.0.xcdatamodel"; sourceTree = "<group>"; };
 		4B42243019E1EF780098CCFA /* TVC_ListProjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVC_ListProjects.h; sourceTree = "<group>"; };
 		4B42243119E1EF780098CCFA /* TVC_ListProjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVC_ListProjects.m; sourceTree = "<group>"; };
@@ -152,8 +151,6 @@
 		4B42243419E1F09D0098CCFA /* Project+Business.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+Business.m"; sourceTree = "<group>"; };
 		4B42243C19E1F0E10098CCFA /* Project+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+Implementation.h"; sourceTree = "<group>"; };
 		4B42243D19E1F0E10098CCFA /* Project+Implementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+Implementation.m"; sourceTree = "<group>"; };
-		4B42243F19E1F4BD0098CCFA /* NC_Root.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NC_Root.h; sourceTree = "<group>"; };
-		4B42244019E1F4BD0098CCFA /* NC_Root.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NC_Root.m; sourceTree = "<group>"; };
 		4B42244219E2000B0098CCFA /* TVC_ViewProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVC_ViewProject.h; sourceTree = "<group>"; };
 		4B42244319E2000B0098CCFA /* TVC_ViewProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVC_ViewProject.m; sourceTree = "<group>"; };
 		4B42244519E204DB0098CCFA /* Model-1.0.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-1.0.1.xcdatamodel"; sourceTree = "<group>"; };
@@ -163,8 +160,12 @@
 		4B42244A19E209F80098CCFA /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 		4B42245219E319640098CCFA /* TBC_ManageProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBC_ManageProject.h; sourceTree = "<group>"; };
 		4B42245319E319640098CCFA /* TBC_ManageProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBC_ManageProject.m; sourceTree = "<group>"; };
-		4B42245519E323670098CCFA /* DocumentMaganer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentMaganer.h; sourceTree = "<group>"; };
-		4B42245619E323670098CCFA /* DocumentMaganer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentMaganer.m; sourceTree = "<group>"; };
+		4B42245819E40FF10098CCFA /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
+		4B42245919E40FF10098CCFA /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
+		4BE4655E19E4C6A800496F65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		4BE4656019E4C6AA00496F65 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Main.strings"; sourceTree = "<group>"; };
+		4BE4656119E4C83400496F65 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Main.strings; sourceTree = "<group>"; };
+		4BE4656219E4C83400496F65 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +199,8 @@
 				4B0D9AA519DD71CE0047EC4B /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
+			wrapsLines = 1;
 		};
 		4B0D9AA519DD71CE0047EC4B /* Products */ = {
 			isa = PBXGroup;
@@ -216,7 +219,6 @@
 				4B0D9AAB19DD71CE0047EC4B /* AppDelegate.h */,
 				4B0D9AAC19DD71CE0047EC4B /* AppDelegate.m */,
 				4B0D9AB419DD71CE0047EC4B /* Main.storyboard */,
-				4B0D9AB719DD71CE0047EC4B /* Images.xcassets */,
 				4B0D9AFC19DD81480047EC4B /* Extensions */,
 				4B0D9AD319DD75410047EC4B /* Model */,
 				4B0D9B1819DD97DE0047EC4B /* Business */,
@@ -230,9 +232,10 @@
 		4B0D9AA719DD71CE0047EC4B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4B0D9AB719DD71CE0047EC4B /* Images.xcassets */,
 				4B0D9AA819DD71CE0047EC4B /* Info.plist */,
 				4B0D9AA919DD71CE0047EC4B /* main.m */,
-				4B42242719E1E1340098CCFA /* File.strings */,
+				4B42242719E1E1340098CCFA /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -280,8 +283,8 @@
 				4B42240619DF64060098CCFA /* Completion+Implementation.m */,
 				4B0D9B1519DD95150047EC4B /* Database.h */,
 				4B0D9B1619DD95150047EC4B /* Database.m */,
-				4B42245519E323670098CCFA /* DocumentMaganer.h */,
-				4B42245619E323670098CCFA /* DocumentMaganer.m */,
+				4B42245819E40FF10098CCFA /* DatabaseManager.h */,
+				4B42245919E40FF10098CCFA /* DatabaseManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -289,8 +292,6 @@
 		4B0D9AF819DD7A000047EC4B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4B42243F19E1F4BD0098CCFA /* NC_Root.h */,
-				4B42244019E1F4BD0098CCFA /* NC_Root.m */,
 				4B42245219E319640098CCFA /* TBC_ManageProject.h */,
 				4B42245319E319640098CCFA /* TBC_ManageProject.m */,
 				4B4223F219DF42AC0098CCFA /* TVC_List_Array.h */,
@@ -451,6 +452,7 @@
 				en,
 				Base,
 				"pt-PT",
+				pt,
 			);
 			mainGroup = 4B0D9A9B19DD71CE0047EC4B;
 			productRefGroup = 4B0D9AA519DD71CE0047EC4B /* Products */;
@@ -468,7 +470,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B42242519E1E1340098CCFA /* File.strings in Resources */,
+				4B42242519E1E1340098CCFA /* Localizable.strings in Resources */,
 				4B4223E519DE0F120098CCFA /* TaskOverlayActions.xib in Resources */,
 				4B0D9B3819DDBBE90047EC4B /* Main.storyboard in Resources */,
 				4B0D9AB819DD71CE0047EC4B /* Images.xcassets in Resources */,
@@ -493,17 +495,16 @@
 				4B42243219E1EF780098CCFA /* TVC_ListProjects.m in Sources */,
 				4B42243E19E1F0E10098CCFA /* Project+Implementation.m in Sources */,
 				4B42240719DF64060098CCFA /* Completion+Implementation.m in Sources */,
-				4B42244119E1F4BD0098CCFA /* NC_Root.m in Sources */,
 				4B4223E019DDEC270098CCFA /* TVC_ListTasksFuture.m in Sources */,
 				4B42245419E319640098CCFA /* TBC_ManageProject.m in Sources */,
 				4B0D9B1719DD95150047EC4B /* Database.m in Sources */,
+				4B42245A19E40FF10098CCFA /* DatabaseManager.m in Sources */,
 				4B0D9AF419DD79D80047EC4B /* Place+Implenentation.m in Sources */,
 				4B4223D019DDCB3B0098CCFA /* TVC_View.m in Sources */,
 				4B0D9B2719DDA1090047EC4B /* TVC_Edit.m in Sources */,
 				4B42243519E1F09D0098CCFA /* Project+Business.m in Sources */,
 				4B42241F19DF771A0098CCFA /* Place.m in Sources */,
 				4B0D9AAD19DD71CE0047EC4B /* AppDelegate.m in Sources */,
-				4B42245719E323670098CCFA /* DocumentMaganer.m in Sources */,
 				4B4223F419DF42AC0098CCFA /* TVC_List_Array.m in Sources */,
 				4B4223F119DF1FFD0098CCFA /* LinkedTextField.m in Sources */,
 				4B4223E819DE129A0098CCFA /* TVC_ListDependencies.m in Sources */,
@@ -555,18 +556,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				4B0D9AB519DD71CE0047EC4B /* Base */,
+				4BE4655E19E4C6A800496F65 /* en */,
+				4BE4656019E4C6AA00496F65 /* pt-PT */,
+				4BE4656119E4C83400496F65 /* pt */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		4B42242719E1E1340098CCFA /* File.strings */ = {
+		4B42242719E1E1340098CCFA /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				4B42242619E1E1340098CCFA /* Base */,
 				4B42242819E1E13C0098CCFA /* en */,
 				4B42242A19E1E15C0098CCFA /* pt-PT */,
+				4BE4656219E4C83400496F65 /* pt */,
 			);
-			name = File.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

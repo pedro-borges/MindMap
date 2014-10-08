@@ -21,7 +21,7 @@
     result.title = title;
 	result.project = project;
 
-    [Database saveManagedObject:result];
+    [Database saveManagedObjectByForce:result];
     
     return result;
 }

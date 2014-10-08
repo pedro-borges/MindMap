@@ -40,7 +40,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    [self setupFetchedResultsController];
+	[self bindToView];
+}
+
+#pragma mark - Bindings
+
+- (void)bindToView {
+	[self setupFetchedResultsController];
 }
 
 #pragma mark - Private methods

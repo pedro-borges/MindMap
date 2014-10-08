@@ -39,14 +39,6 @@
     self.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]];
 }
 
-- (void)viewDidLayoutSubviews {
-	[super viewDidLayoutSubviews];
-
-	NSLog(@"Frame = %@", NSStringFromCGRect(self.view.frame));
-	NSLog(@"blg = %@", self.bottomLayoutGuide);
-	NSLog(@"tlg = %@", self.topLayoutGuide);
-}
-
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -77,10 +69,14 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	NSLog(@"%@", sender);
+	
 	if ([@"View Task" isEqualToString:segue.identifier]) {
 		TVC_ViewTask *controller = segue.destinationViewController;
 		
-		Task *selectedTask = self.selectedTask;
+		NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+		
+		Task *selectedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
 		
 		controller.model = selectedTask;
 	}

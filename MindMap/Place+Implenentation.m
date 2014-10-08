@@ -23,7 +23,7 @@
     result.location = location;
     result.radius   = radius;
     
-    [Database saveManagedObject:result];
+    [Database saveManagedObjectByForce:result];
     
     return result;
 }

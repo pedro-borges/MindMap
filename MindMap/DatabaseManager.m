@@ -1,44 +1,64 @@
 //
-//  NC_Root.m
+//  VC_Root.m
 //  MindMap
 //
-//  Created by Pedro Borges on 05/10/14.
+//  Created by Pedro Borges on 07/10/14.
 //  Copyright (c) 2014 PCB. All rights reserved.
 //
 
-#import "NC_Root.h"
+#import "DatabaseManager.h"
 
 #import "TVC_ListProjects.h"
 
 #import <CoreData/CoreData.h>
 
-@implementation NC_Root
+#define DATABASE_DEFAULT @"mindmap.database"
+
+#define SEGUE_INITIALIZE @"Initialize"
+
+@interface DatabaseManager()
+
+@property (nonatomic, readonly) TVC_List_CoreData *rootController;
+
+@end
+
+@implementation DatabaseManager
 
 #pragma mark - Properties
 
-@synthesize document = _document;
+static DatabaseManager *_defaultManager;
 
-#pragma mark - UIKit
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    if(!self.document) {
-        NSURL *url = [self iCloudDocumentsURL];
-        
-        if ([[NSFileManager defaultManager] ubiquityIdentityToken] == nil) {
-            NSLog(@"iCloud is OFF");
-        }
-        
-        url = [url URLByAppendingPathComponent:@"mindmap_database"];
-        
-        self.document = [[UIManagedDocument alloc] initWithFileURL:url];
++ (DatabaseManager *)defaultManagerForController:(TVC_List_CoreData *)controller {
+    if(_defaultManager == nil) {
+        _defaultManager = [[DatabaseManager alloc] initWithName:DATABASE_DEFAULT andRootController:controller];
     }
     
-    TVC_ListProjects *controller = (TVC_ListProjects *)[self topViewController];
+    return _defaultManager;
+}
 
-    controller.context = self.document.managedObjectContext;
+@synthesize rootController = _rootController;
+@synthesize document = _document;
+
+- (id)initWithName:(NSString *)name andRootController:(TVC_List_CoreData *)controller {
+    self = [super init];
+
+    if (self) {
+        _rootController = controller;
+        
+        if(!self.document) {
+            NSURL *url = [self iCloudDocumentsURL];
+            
+            if ([[NSFileManager defaultManager] ubiquityIdentityToken] == nil) {
+                NSLog(@"iCloud is OFF");
+            }
+            
+            url = [url URLByAppendingPathComponent:name];
+            
+            self.document = [[UIManagedDocument alloc] initWithFileURL:url];
+        }
+    }
+    
+    return self;
 }
 
 #pragma mark - Notifications
@@ -62,6 +82,10 @@
 }
 
 #pragma mark - Private methods
+
+- (void)setupFetchedResultsController {
+    [self.rootController bindToView];
+}
 
 - (NSURL *)iCloudURL {
     return [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
@@ -118,15 +142,26 @@
     
     if(![[NSFileManager defaultManager] fileExistsAtPath:[self.document.fileURL path]]) {
         [self.document saveToURL:self.document.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+            [self setupFetchedResultsController];
         }];
     } else if (self.document.documentState == UIDocumentStateClosed) {
         [self.document openWithCompletionHandler:^(BOOL success) {
-            TVC_ListProjects *controller = (TVC_ListProjects *)[self topViewController];
-            
-            [controller.tableView reloadData];
+            [self setupFetchedResultsController];
         }];
     } else if (self.document.documentState == UIDocumentStateNormal) {
+        [self setupFetchedResultsController];
+    }
+}
 
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([SEGUE_INITIALIZE isEqualToString:segue.identifier]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        
+        TVC_ListProjects *controller = (TVC_ListProjects *)[navigationController topViewController];
+        
+        controller.context = self.document.managedObjectContext;
     }
 }
 

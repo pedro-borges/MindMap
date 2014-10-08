@@ -21,7 +21,7 @@
     result.startDate = startDate;
     result.endDate = endDate;
 
-    [Database saveManagedObject:result];
+    [Database saveManagedObjectByForce:result];
 
     return result;
 }

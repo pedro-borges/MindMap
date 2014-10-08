@@ -13,8 +13,9 @@
 "Cancel" = "Cancel";
 "OK" = "OK";
 "The new dependency will appear in the <present> tab" = "The new dependency will appear in the <present> tab";
-"1 Pending Task" = "1 Pending Task";
-"%lu Pending Tasks" = "%lu Pending Tasks";
+"Empty" = "Empty";
+"1 Pending" = "1 Pending";
+"%lu Pending" = "%lu Pending";
 "Completed" = "Completed";
 "New Project Name" = "New Project Name";
 "Create" = "Create";

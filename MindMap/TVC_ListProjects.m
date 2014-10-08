@@ -10,10 +10,13 @@
 
 #import "TBC_ManageProject.h"
 
+#import "DatabaseManager.h"
+
 #define CELL_PROJECT @"pt.pcb.mindmap.project"
 
-#define STRING_PENDINGTASK      NSLocalizedString(@"1 Pending Task", nil)
-#define STRING_PENDINGTASKS     NSLocalizedString(@"%lu Pending Tasks", nil)
+#define STRING_EMPTY            NSLocalizedString(@"Empty", nil)
+#define STRING_PENDINGTASK      NSLocalizedString(@"1 Pending", nil)
+#define STRING_PENDINGTASKS     NSLocalizedString(@"%lu Pending", nil)
 #define STRING_COMPLETED        NSLocalizedString(@"Completed", nil)
 #define STRING_NEWPROJECTNAME   NSLocalizedString(@"New Project Name", nil)
 #define STRING_CANCEL           NSLocalizedString(@"Cancel", nil)
@@ -37,6 +40,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    DatabaseManager *database = [DatabaseManager defaultManagerForController:self];
+
+    self.context = database.document.managedObjectContext;
     
     self.entityName = @"Project";
     self.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
@@ -72,27 +79,32 @@
     
     unsigned long taskCount = [project.tasks count];
     unsigned long pendingCount = [project.pendingTasks count];
-    float progress = (taskCount - pendingCount) / taskCount;
-    
-    NSLog(@"progress = %f", progress);
+    float progress = (taskCount - pendingCount);
+    progress /= taskCount;
 
     UILabel *textLabel = (UILabel *)[cell.contentView viewWithTag:101];
     UILabel *detailTextLabel = (UILabel *)[cell.contentView viewWithTag:102];
     UIProgressView *progressView = (UIProgressView *)[cell.contentView viewWithTag:103];
     
     textLabel.text = project.name;
-    progressView.progress = progress;
-
-    if (taskCount > 0) {
-        if (taskCount == 1) {
-            detailTextLabel.text = STRING_PENDINGTASK;
-        } else {
-            detailTextLabel.text = [NSString stringWithFormat:STRING_PENDINGTASKS, (unsigned long)taskCount];
-        }
+    
+    if (taskCount == 0) {
+        detailTextLabel.text = STRING_EMPTY;
+        progressView.progress = 0;
     } else {
-        detailTextLabel.text = STRING_COMPLETED;
-    }
+        progressView.progress = progress;
 
+        if (pendingCount > 0) {
+            if (pendingCount == 1) {
+            detailTextLabel.text = STRING_PENDINGTASK;
+            } else {
+                detailTextLabel.text = [NSString stringWithFormat:STRING_PENDINGTASKS, (unsigned long)pendingCount];
+        }
+        } else {
+            detailTextLabel.text = STRING_COMPLETED;
+        }
+    }
+    
     return cell;
 }
 
