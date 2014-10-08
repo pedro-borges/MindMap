@@ -53,8 +53,6 @@
 	Task *dependency = [Task createFromContext:self.context forProject:self.project withTitle:[NSString stringWithFormat:STRING_DEPENDENCY_OF, task.title]];
 	
 	[task addDependenciesObject:dependency];
-	
-	[self dismissViewControllerAnimated:NO completion:^(void){ }];
 }
 
 #pragma mark - UIAlertViewDelegate
