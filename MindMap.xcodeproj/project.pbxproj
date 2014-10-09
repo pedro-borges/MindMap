@@ -57,6 +57,7 @@
 		4B42245A19E40FF10098CCFA /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42245919E40FF10098CCFA /* DatabaseManager.m */; };
 		4BE4656A19E58F1600496F65 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4656919E58F1600496F65 /* Settings.m */; };
 		4BE4656D19E5C46D00496F65 /* TVC_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4656C19E5C46D00496F65 /* TVC_Settings.m */; };
+		4BE4657019E6CBA500496F65 /* TVC_EditProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4656F19E6CBA500496F65 /* TVC_EditProject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +171,8 @@
 		4BE4656919E58F1600496F65 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		4BE4656B19E5C46D00496F65 /* TVC_Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVC_Settings.h; sourceTree = "<group>"; };
 		4BE4656C19E5C46D00496F65 /* TVC_Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVC_Settings.m; sourceTree = "<group>"; };
+		4BE4656E19E6CBA500496F65 /* TVC_EditProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVC_EditProject.h; sourceTree = "<group>"; };
+		4BE4656F19E6CBA500496F65 /* TVC_EditProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVC_EditProject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +329,8 @@
 				4B4223CC19DDCA870098CCFA /* TVC_ViewTask.m */,
 				4B0D9B2519DDA1090047EC4B /* TVC_Edit.h */,
 				4B0D9B2619DDA1090047EC4B /* TVC_Edit.m */,
+				4BE4656E19E6CBA500496F65 /* TVC_EditProject.h */,
+				4BE4656F19E6CBA500496F65 /* TVC_EditProject.m */,
 				4B0D9B2219DDA0D80047EC4B /* TVC_EditTask.h */,
 				4B0D9B2319DDA0D80047EC4B /* TVC_EditTask.m */,
 				4BE4656B19E5C46D00496F65 /* TVC_Settings.h */,
@@ -529,6 +534,7 @@
 				4BE4656D19E5C46D00496F65 /* TVC_Settings.m in Sources */,
 				4B0D9B1E19DD98380047EC4B /* TimeFrame+Business.m in Sources */,
 				4B0D9AF719DD79E80047EC4B /* TimeFrame+Implementation.m in Sources */,
+				4BE4657019E6CBA500496F65 /* TVC_EditProject.m in Sources */,
 				4B42241919DF77190098CCFA /* TimeFrame.m in Sources */,
 				4B4223EE19DF173A0098CCFA /* TVC_ListDependants.m in Sources */,
 				4B0D9B2419DDA0D80047EC4B /* TVC_EditTask.m in Sources */,

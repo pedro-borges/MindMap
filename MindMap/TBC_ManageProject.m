@@ -17,19 +17,6 @@
 #pragma mark - Properties
 
 #pragma mark - UIKit
-//
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//    
-//    for (UINavigationController *navigationController in self.viewControllers) {
-//        TVC_ListTasks *controller = (TVC_ListTasks *)navigationController.topViewController;
-//
-//		Project *project = Project forName:[Settings defaultSettings].defaultProjectName;
-//		
-//        controller.model = self.project;
-//        controller.navigationItem.title = self.project.name;
-//    }
-//}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

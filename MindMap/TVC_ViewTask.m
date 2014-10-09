@@ -27,7 +27,7 @@
 
 #pragma mark - Properties
 
-- (Task *)model {
+- (Task *)task {
 	return (Task *)self.managedObject;
 }
 
@@ -41,33 +41,24 @@
 
 #pragma mark - Overrides
 
-- (void)setModel:(Task *)model {
+- (void)setTask:(Task *)model {
     if (self.managedObject != model) {
         self.managedObject = model;
     }
 }
 
 - (void)bindToView {
-    NSString *title = self.model.title;
-    NSString *timeFrame = self.model.timeFrame.description;
+    NSString *title = self.task.title;
+    NSString *timeFrame = self.task.timeFrame.description;
     NSString *locations = @""; //TODO Location
-    NSString *dependencies = [NSString stringWithFormat:@"%lu", (unsigned long)[self.model.dependencies count]];
-    NSString *dependants = [NSString stringWithFormat:@"%lu", (unsigned long)[self.model.dependants count]];
+    NSString *dependencies = [NSString stringWithFormat:@"%lu", (unsigned long)[self.task.dependencies count]];
+    NSString *dependants = [NSString stringWithFormat:@"%lu", (unsigned long)[self.task.dependants count]];
 
     self.titleLabel.text        = title;
     self.timeFrameLabel.text    = timeFrame;
     self.locationsLabel.text    = locations;
     self.dependantsLabel.text   = dependants;
     self.dependenciesLabel.text = dependencies;
-}
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([@"Edit Task" isEqualToString:segue.identifier]) {
-		TVC_EditTask *controller = segue.destinationViewController;
-		controller.model = self.model;
-    }
 }
 
 @end

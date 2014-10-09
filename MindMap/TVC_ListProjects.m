@@ -9,6 +9,7 @@
 #import "TVC_ListProjects.h"
 
 #import "TBC_ManageProject.h"
+#import "TVC_ViewProject.h"
 
 #import "Project+Business.h"
 #import "Settings.h"
@@ -16,6 +17,8 @@
 #import "DatabaseManager.h"
 
 #define CELL_PROJECT @"pt.pcb.mindmap.project"
+
+#define SEGUE_VIEWPROJECT @"View Project"
 
 #define STRING_EMPTY            NSLocalizedString(@"Empty", nil)
 #define STRING_PENDINGTASK      NSLocalizedString(@"1 Pending", nil)
@@ -69,7 +72,7 @@
     NSInteger taskCount = [project.tasks count];
     NSInteger pendingCount = [project.pendingTasks count];
     NSInteger doneCount = (taskCount - pendingCount);
-	NSInteger percent = 100 * (doneCount / taskCount);
+	NSInteger percent = 100 * doneCount / taskCount;
 
     UILabel *textLabel = (UILabel *)[cell.contentView viewWithTag:101];
     UILabel *detailTextLabel = (UILabel *)[cell.contentView viewWithTag:102];

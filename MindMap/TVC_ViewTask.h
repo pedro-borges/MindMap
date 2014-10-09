@@ -11,6 +11,6 @@
 
 @interface TVC_ViewTask : TVC_View
 
-@property (nonatomic, strong) Task *model;
+@property (nonatomic) Task *task;
 
 @end

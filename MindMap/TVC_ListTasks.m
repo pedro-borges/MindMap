@@ -31,8 +31,6 @@
 
 - (Project *)project {
 	Project *result = [Settings defaultSettings].selectedProject;
-
-	NSLog(@"Selected Project: %@", result.name);
 	
 	return result;
 }
@@ -77,20 +75,6 @@
 }
 
 #pragma mark - TableViewDelegate
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([@"View Task" isEqualToString:segue.identifier]) {
-		TVC_ViewTask *controller = segue.destinationViewController;
-
-		NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-
-		Task *selectedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
-
-		controller.model = selectedTask;
-	}
-}
 
 - (IBAction)closeAction:(UIBarButtonItem *)sender {
 	[self dismissViewControllerAnimated:YES completion:^(void) {

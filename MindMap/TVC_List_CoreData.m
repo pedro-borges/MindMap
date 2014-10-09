@@ -8,7 +8,11 @@
 
 #import "TVC_List_CoreData.h"
 
+#import "TVC_View.h"
+
 #import "DatabaseManager.h"
+
+#define SEGUE_VIEW @"View"
 
 @implementation TVC_List_CoreData
 
@@ -68,6 +72,18 @@
         
         [self.fetchedResultsController.managedObjectContext deleteObject:managedObject];
     }
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([SEGUE_VIEW isEqualToString:segue.identifier]) {
+		TVC_View *controller = segue.destinationViewController;
+		
+		NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+		
+		controller.managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	}
 }
 
 @end

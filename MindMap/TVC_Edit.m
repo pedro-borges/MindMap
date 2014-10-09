@@ -18,14 +18,22 @@
 
 @synthesize firstResponder = _firstResponder;
 
-- (void)bindToModel {
-	NSError *error;
+#pragma mark - UIKit
 
-	[self.managedObject.managedObjectContext save:&error];
-
-	if (error) {
-		NSLog(@"Error saving context - %@", error);
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
+	if (self.firstResponder) {
+		[self.firstResponder becomeFirstResponder];
+		
+		self.firstResponder = nil;
 	}
+}
+
+- (BOOL)bindToModel:(NSError **)error {
+	@throw [NSException exceptionWithName:@"Abstraction violation"
+								   reason:@"Direct call to [TVC_Edit bindToModel]"
+								 userInfo:nil];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -44,6 +52,28 @@
 	}
 	
 	return NO;
+}
+
+#pragma mark - Navigation
+
+- (IBAction)cancelAction:(UIBarButtonItem *)sender {
+	[self.navigationController popViewControllerAnimated:NO];
+}
+
+- (IBAction)saveAction:(UIBarButtonItem *)sender {
+	NSError *error;
+
+	if ([self bindToModel:&error]) {
+		[self.navigationController popToRootViewControllerAnimated:YES];
+	} else {
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+															message:error.localizedDescription
+														   delegate:nil
+												  cancelButtonTitle:@"OK"
+												  otherButtonTitles:nil];
+		
+		[alertView show];
+	}
 }
 
 @end

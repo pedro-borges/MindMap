@@ -87,4 +87,64 @@
 	return result;
 }
 
+- (NSArray *)pastTasks {
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
+	
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+	NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+
+	request.sortDescriptors = sortDescriptors;
+	request.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion != nil)", self];
+
+	NSError *error;
+	
+	NSArray *result = [self.managedObjectContext executeFetchRequest:request error:&error];
+	
+	if (error) {
+		NSLog(@"Error getting pending tasks - %@", error);
+	}
+	
+	return result;
+}
+
+- (NSArray *)presentTasks {
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
+	
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+	NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+	
+	request.sortDescriptors = sortDescriptors;
+	request.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count == 0)", self];
+	
+	NSError *error;
+	
+	NSArray *result = [self.managedObjectContext executeFetchRequest:request error:&error];
+	
+	if (error) {
+		NSLog(@"Error getting pending tasks - %@", error);
+	}
+	
+	return result;
+}
+
+- (NSArray *)futureTasks {
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
+	
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+	NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+	
+	request.sortDescriptors = sortDescriptors;
+	request.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count > 0)", self];
+	
+	NSError *error;
+	
+	NSArray *result = [self.managedObjectContext executeFetchRequest:request error:&error];
+	
+	if (error) {
+		NSLog(@"Error getting pending tasks - %@", error);
+	}
+	
+	return result;
+}
+
 @end

@@ -11,6 +11,6 @@
 
 @interface TVC_EditTask : TVC_Edit
 
-@property (nonatomic, strong) Task *model;
+@property (nonatomic, strong) Task *task;
 
 @end

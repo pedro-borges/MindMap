@@ -15,15 +15,13 @@
 #import "Place+Business.h"
 #import "TimeFrame+Business.h"
 
-@interface TVC_EditTask()
+@interface TVC_EditTask() <UIAlertViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITextField *titleTextField;
 @property (nonatomic, weak) IBOutlet UILabel *timeFrameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *locationsLabel;
 @property (nonatomic, weak) IBOutlet UILabel *dependenciesLabel;
 @property (nonatomic, weak) IBOutlet UILabel *dependantsLabel;
-
-- (IBAction)saveAction:(UIBarButtonItem *)sender;
 
 @end
 
@@ -41,40 +39,34 @@
     [super viewWillAppear:animated];
 
     [self bindToView];
-
-	if (self.firstResponder) {
-		[self.firstResponder becomeFirstResponder];
-
-		self.firstResponder = nil;
-	}
 }
 
 #pragma mark - Overrides
 
-- (Task *)model {
+- (Task *)task {
     return (Task *)self.managedObject;
 }
 
-- (void)setModel:(Task *)model {
+- (void)setTask:(Task *)model {
     if (self.managedObject != model) {
         self.managedObject = model;
     }
 }
 
-- (void)bindToModel {
+- (BOOL)bindToModel:(NSError **)error {
     NSString *title = self.titleTextField.text;
 
-    self.model.title = title;
+    self.task.title = title;
 
-//	[super bindToModel];
+	return YES;
 }
 
 - (void)bindToView {
-    NSString *title = self.model.title;
-    NSString *timeFrame = self.model.timeFrame.description;
-    NSString *locations = @""; //TODO Location
-    NSString *dependencies = [NSString stringWithFormat:@"%lu", (unsigned long)[self.model.dependencies count]];
-    NSString *dependants = [NSString stringWithFormat:@"%lu", (unsigned long)[self.model.dependants count]];
+    NSString *title			= self.task.title;
+    NSString *timeFrame		= self.task.timeFrame.description;
+    NSString *locations		= @""; //TODO Location
+    NSString *dependencies	= [NSString stringWithFormat:@"%lu", (unsigned long)[self.task.dependencies count]];
+    NSString *dependants	= [NSString stringWithFormat:@"%lu", (unsigned long)[self.task.dependants count]];
 
     self.titleTextField.text    = title;
     self.timeFrameLabel.text    = timeFrame;
@@ -85,25 +77,15 @@
 
 #pragma mark - Navigation
 
-- (IBAction)cancelAction:(UIBarButtonItem *)sender {
-	[self.navigationController popViewControllerAnimated:NO];
-}
-
-- (IBAction)saveAction:(UIBarButtonItem *)sender {
-    [self bindToModel];
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([@"List Dependencies" isEqualToString:segue.identifier]) {
 		TVC_ListDependencies *controller = segue.destinationViewController;
-		controller.model = self.model;
-		controller.navigationItem.title = self.model.title;
+		controller.model = self.task;
+		controller.navigationItem.title = self.task.title;
 	} else 	if ([@"List Dependants" isEqualToString:segue.identifier]) {
 		TVC_ListDependants *controller = segue.destinationViewController;
-		controller.model = self.model;
-		controller.navigationItem.title = self.model.title;
+		controller.model = self.task;
+		controller.navigationItem.title = self.task.title;
 	}
 }
 
