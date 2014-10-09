@@ -12,7 +12,7 @@
 
 #import <CoreData/CoreData.h>
 
-#define DATABASE_DEFAULT @"mindmap.database"
+#define DATABASE_DEFAULT @"mindmap_database"
 
 #define SEGUE_INITIALIZE @"Initialize"
 
@@ -27,6 +27,10 @@
 #pragma mark - Properties
 
 static DatabaseManager *_defaultManager;
+
++ (DatabaseManager *)defaultManager {
+	return _defaultManager;
+}
 
 + (DatabaseManager *)defaultManagerForController:(TVC_List_CoreData *)controller {
     if(_defaultManager == nil) {
@@ -149,7 +153,7 @@ static DatabaseManager *_defaultManager;
             [self setupFetchedResultsController];
         }];
     } else if (self.document.documentState == UIDocumentStateNormal) {
-        [self setupFetchedResultsController];
+		;
     }
 }
 

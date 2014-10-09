@@ -27,20 +27,22 @@
 
 #pragma mark - Properties
 
+Task *_selectedTask;
+
 @synthesize alertView = _alertView;
 
 #pragma mark - UIKit
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated {
+	self.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count == 0)", self.project];
 
-    self.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count == 0)", self.project];
+	[super viewWillAppear:animated];
 }
 
 #pragma mark - Private
 
 - (void)closeSelectedTask {
-	Task *task = [self selectedTask];
+	Task *task = (Task *)[self selectedManagedObject];
 	
 	task.completion = [Completion createFromContext:self.context
 											forTask:task
@@ -48,7 +50,7 @@
 }
 
 - (void)addNewDependencyToSelectedTask {
-	Task *task = [self.fetchedResultsController objectAtIndexPath:self.tableView.indexPathForSelectedRow];
+	Task *task = _selectedTask;
 	
 	Task *dependency = [Task createFromContext:self.context forProject:self.project withTitle:[NSString stringWithFormat:STRING_DEPENDENCY_OF, task.title]];
 	
@@ -70,16 +72,15 @@
 	}
 
 	[self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
-			
-//	[(RootTabBarController *)self.tabBarController refreshPresentTab];
-//	[(RootTabBarController *)self.tabBarController refreshFutureTab];
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	Task *task = [self selectedTask];
+	Task *task = (Task *)[self selectedManagedObject];
 
+	_selectedTask = task;
+	
 	self.alertView = [[UIAlertView alloc] initWithTitle:task.title
 												message:nil
 											   delegate:self
@@ -95,6 +96,8 @@
 
 - (IBAction)addAction:(UIBarButtonItem *)sender {
 	[Task createFromContext:self.context forProject:self.project withTitle:STRING_NEWTASK];
+	
+	[self bindToView];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -12,7 +12,10 @@
 
 + (Project *)createFromContext:(NSManagedObjectContext *)context
                       withName:(NSString *)name;
-
-@property (nonatomic, readonly) NSArray *pendingTasks;
++ (NSArray *)allInContext:(NSManagedObjectContext *)context
+		matchingPredicate:(NSPredicate *)predicate;
++ (NSArray *)forName:(NSString *)name
+		   inContext:(NSManagedObjectContext *)context;
+- (NSArray *)pendingTasks;
 
 @end

@@ -24,24 +24,24 @@
 
 @implementation TVC_ListTasksFuture
 
+Task *_selectedTask;
+
 #pragma mark - UIKit
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
+- (void)viewWillAppear:(BOOL)animated {
     self.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count > 0)", self.project];
+
+	[super viewWillAppear:animated];
 }
 
 #pragma mark - Private
 
 - (void)addNewDependencyToSelectedTask {
-	Task *task = [self selectedTask];
+	Task *task = _selectedTask;
 	
 	Task *dependency = [Task createFromContext:self.context forProject:self.project withTitle:[NSString stringWithFormat:STRING_DEPENDENCY_OF, task.title]];
 	
 	[task addDependenciesObject:dependency];
-	
-	[self dismissViewControllerAnimated:NO completion:^(void){ }];
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -56,15 +56,14 @@
 	}
 	
 	[self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
-	
-	//	[(RootTabBarController *)self.tabBarController refreshPresentTab];
-	//	[(RootTabBarController *)self.tabBarController refreshFutureTab];
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
+
+	_selectedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
 	self.alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDENCY
 												message:STRING_WILLSHOWINPRESENT
 											   delegate:self

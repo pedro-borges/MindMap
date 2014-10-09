@@ -12,10 +12,10 @@
 
 #pragma mark - UIKit
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated {
+	self.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion != nil)", self.project];
 
-    self.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion != nil)", self.project];
+	[super viewWillAppear:animated];
 }
 
 #pragma mark - Navigation

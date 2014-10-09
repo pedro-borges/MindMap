@@ -12,6 +12,4 @@
 
 @interface TVC_ListProjects : TVC_List_CoreData
 
-@property (nonatomic, readonly) Project *selectedProject;
-
 @end

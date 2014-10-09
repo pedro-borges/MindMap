@@ -92,16 +92,18 @@
 - (IBAction)saveAction:(UIBarButtonItem *)sender {
     [self bindToModel];
     
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([@"List Dependencies" isEqualToString:segue.identifier]) {
 		TVC_ListDependencies *controller = segue.destinationViewController;
 		controller.model = self.model;
+		controller.navigationItem.title = self.model.title;
 	} else 	if ([@"List Dependants" isEqualToString:segue.identifier]) {
 		TVC_ListDependants *controller = segue.destinationViewController;
 		controller.model = self.model;
+		controller.navigationItem.title = self.model.title;
 	}
 }
 

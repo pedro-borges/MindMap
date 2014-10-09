@@ -8,6 +8,8 @@
 
 #import "TVC_List_CoreData.h"
 
+#import "DatabaseManager.h"
+
 @implementation TVC_List_CoreData
 
 #pragma mark - Properties
@@ -21,12 +23,7 @@
 
 - (NSManagedObjectContext *)context {
 	if (_context == nil) {
-		if (self.model != nil) {
-			_context = self.model.managedObjectContext;
-			NSLog(@"ManagedObjectContext = nil. Autoheal: using context from model.");
-		} else {
-			NSLog(@"ManagedObjectContext = nil. Autoheal: unable to autoheal.");
-		}
+		_context = [DatabaseManager defaultManagerForController:self].document.managedObjectContext;
 	}
 	return _context;
 }

@@ -26,6 +26,9 @@
 /* Class = "IBUILabel"; text = "#locations"; ObjectID = "5fG-cK-NOg"; */
 "5fG-cK-NOg.text" = "#locations";
 
+/* Class = "IBUINavigationItem"; title = "Task"; ObjectID = "6tJ-od-A5c"; */
+"6tJ-od-A5c.title" = "Task";
+
 /* Class = "IBUITabBarItem"; title = "Preent"; ObjectID = "7P1-Vh-xe7"; */
 "7P1-Vh-xe7.title" = "Preent";
 
@@ -64,6 +67,9 @@
 
 /* Class = "IBUILabel"; text = "#name"; ObjectID = "JIp-UL-p1P"; */
 "JIp-UL-p1P.text" = "#name";
+
+/* Class = "IBUINavigationItem"; title = "Task"; ObjectID = "L1U-yE-GxK"; */
+"L1U-yE-GxK.title" = "Task";
 
 /* Class = "IBUITableViewSection"; headerTitle = "Title"; ObjectID = "NQa-K3-lcB"; */
 "NQa-K3-lcB.headerTitle" = "Title";

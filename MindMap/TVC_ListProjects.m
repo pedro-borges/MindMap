@@ -10,6 +10,9 @@
 
 #import "TBC_ManageProject.h"
 
+#import "Project+Business.h"
+#import "Settings.h"
+
 #import "DatabaseManager.h"
 
 #define CELL_PROJECT @"pt.pcb.mindmap.project"
@@ -32,27 +35,13 @@
 
 #pragma mark - Properties
 
-- (Project *)selectedProject {
-    return (Project *)self.selectedManagedObject;
-}
-
 #pragma mark - UIKit
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    DatabaseManager *database = [DatabaseManager defaultManagerForController:self];
-
-    self.context = database.document.managedObjectContext;
     
     self.entityName = @"Project";
     self.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
-}
-
-#pragma mark - Private
-
-- (void)createProjectWithName:(NSString *)name {
-    [Project createFromContext:self.context withName:name];
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -60,12 +49,12 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSString *name = [self.alertView textFieldAtIndex:0].text;
     
-    switch (buttonIndex) {
-        case 0: // Cancel
-            break;
-        case 1: // Create
-            [self createProjectWithName:name];
-            break;
+	if (buttonIndex == 1) {
+		Project *project = [Project createFromContext:self.context withName:name];
+
+		[Settings defaultSettings].selectedProject = project;
+
+		[self bindToView];
     }
 }
 
@@ -77,50 +66,40 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_PROJECT forIndexPath:indexPath];
     
-    unsigned long taskCount = [project.tasks count];
-    unsigned long pendingCount = [project.pendingTasks count];
-    float progress = (taskCount - pendingCount);
-    progress /= taskCount;
+    NSInteger taskCount = [project.tasks count];
+    NSInteger pendingCount = [project.pendingTasks count];
+    NSInteger doneCount = (taskCount - pendingCount);
+	NSInteger percent = 100 * (doneCount / taskCount);
 
     UILabel *textLabel = (UILabel *)[cell.contentView viewWithTag:101];
     UILabel *detailTextLabel = (UILabel *)[cell.contentView viewWithTag:102];
-    UIProgressView *progressView = (UIProgressView *)[cell.contentView viewWithTag:103];
-    
+	
     textLabel.text = project.name;
     
     if (taskCount == 0) {
         detailTextLabel.text = STRING_EMPTY;
-        progressView.progress = 0;
     } else {
-        progressView.progress = progress;
-
         if (pendingCount > 0) {
-            if (pendingCount == 1) {
-            detailTextLabel.text = STRING_PENDINGTASK;
-            } else {
-                detailTextLabel.text = [NSString stringWithFormat:STRING_PENDINGTASKS, (unsigned long)pendingCount];
-        }
-        } else {
+			detailTextLabel.text = [NSString stringWithFormat:@"%lu%%", percent];
+		} else {
             detailTextLabel.text = STRING_COMPLETED;
         }
     }
-    
+	
     return cell;
 }
 
 #pragma mark - TableViewDelegate
 
-#pragma mark - Navigation
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	Project *project = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([@"Manage Project" isEqualToString:segue.identifier]) {
-        TBC_ManageProject *controller = segue.destinationViewController;
+	[Settings defaultSettings].selectedProject = project;
 
-        Project *selectedProject = self.selectedProject;
-
-        controller.project = selectedProject;
-    }
+	[self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark - Navigation
 
 - (IBAction)newProject:(UIBarButtonItem *)sender {
     self.alertView = [[UIAlertView alloc] initWithTitle:STRING_NEWPROJECTNAME

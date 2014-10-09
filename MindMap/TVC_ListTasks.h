@@ -12,7 +12,6 @@
 
 @interface TVC_ListTasks : TVC_List_CoreData
 
-@property (nonatomic, readonly) Task *selectedTask;
 @property (nonatomic, readonly) Project *project;
 
 @end

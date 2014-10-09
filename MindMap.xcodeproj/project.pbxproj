@@ -55,6 +55,8 @@
 		4B42244B19E209F80098CCFA /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42244A19E209F80098CCFA /* Project.m */; };
 		4B42245419E319640098CCFA /* TBC_ManageProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42245319E319640098CCFA /* TBC_ManageProject.m */; };
 		4B42245A19E40FF10098CCFA /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42245919E40FF10098CCFA /* DatabaseManager.m */; };
+		4BE4656A19E58F1600496F65 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4656919E58F1600496F65 /* Settings.m */; };
+		4BE4656D19E5C46D00496F65 /* TVC_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4656C19E5C46D00496F65 /* TVC_Settings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,7 +145,6 @@
 		4B42242119DF771A0098CCFA /* Completion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Completion.m; path = ../Completion.m; sourceTree = "<group>"; };
 		4B42242619E1E1340098CCFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4B42242819E1E13C0098CCFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4B42242A19E1E15C0098CCFA /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		4B42242F19E1EC7A0098CCFA /* Model-1.0.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-1.0.0.xcdatamodel"; sourceTree = "<group>"; };
 		4B42243019E1EF780098CCFA /* TVC_ListProjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVC_ListProjects.h; sourceTree = "<group>"; };
 		4B42243119E1EF780098CCFA /* TVC_ListProjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVC_ListProjects.m; sourceTree = "<group>"; };
@@ -162,10 +163,13 @@
 		4B42245319E319640098CCFA /* TBC_ManageProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBC_ManageProject.m; sourceTree = "<group>"; };
 		4B42245819E40FF10098CCFA /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
 		4B42245919E40FF10098CCFA /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
-		4BE4655E19E4C6A800496F65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		4BE4656019E4C6AA00496F65 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Main.strings"; sourceTree = "<group>"; };
 		4BE4656119E4C83400496F65 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Main.strings; sourceTree = "<group>"; };
 		4BE4656219E4C83400496F65 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4BE4656419E4D58100496F65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		4BE4656819E58F1600496F65 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		4BE4656919E58F1600496F65 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		4BE4656B19E5C46D00496F65 /* TVC_Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVC_Settings.h; sourceTree = "<group>"; };
+		4BE4656C19E5C46D00496F65 /* TVC_Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVC_Settings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +328,8 @@
 				4B0D9B2619DDA1090047EC4B /* TVC_Edit.m */,
 				4B0D9B2219DDA0D80047EC4B /* TVC_EditTask.h */,
 				4B0D9B2319DDA0D80047EC4B /* TVC_EditTask.m */,
+				4BE4656B19E5C46D00496F65 /* TVC_Settings.h */,
+				4BE4656C19E5C46D00496F65 /* TVC_Settings.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -353,6 +359,8 @@
 		4B0D9B1819DD97DE0047EC4B /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				4BE4656819E58F1600496F65 /* Settings.h */,
+				4BE4656919E58F1600496F65 /* Settings.m */,
 				4B42243319E1F09D0098CCFA /* Project+Business.h */,
 				4B42243419E1F09D0098CCFA /* Project+Business.m */,
 				4B0D9B2D19DDAE390047EC4B /* Task+Business.h */,
@@ -451,7 +459,6 @@
 			knownRegions = (
 				en,
 				Base,
-				"pt-PT",
 				pt,
 			);
 			mainGroup = 4B0D9A9B19DD71CE0047EC4B;
@@ -513,11 +520,13 @@
 				4B4223FD19DF512A0098CCFA /* TVC_ListHierarchy.m in Sources */,
 				4B42244419E2000B0098CCFA /* TVC_ViewProject.m in Sources */,
 				4B42244819E209F70098CCFA /* Task.m in Sources */,
+				4BE4656A19E58F1600496F65 /* Settings.m in Sources */,
 				4B0D9AF119DD79AE0047EC4B /* Task+Implementation.m in Sources */,
 				4B0D9AFB19DD813C0047EC4B /* CoreDataTableViewController.m in Sources */,
 				4B0D9AAA19DD71CE0047EC4B /* main.m in Sources */,
 				4B42241619DF76FA0098CCFA /* Model.xcdatamodeld in Sources */,
 				4B4223DD19DDEC170098CCFA /* TVC_ListTasksPresent.m in Sources */,
+				4BE4656D19E5C46D00496F65 /* TVC_Settings.m in Sources */,
 				4B0D9B1E19DD98380047EC4B /* TimeFrame+Business.m in Sources */,
 				4B0D9AF719DD79E80047EC4B /* TimeFrame+Implementation.m in Sources */,
 				4B42241919DF77190098CCFA /* TimeFrame.m in Sources */,
@@ -556,9 +565,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				4B0D9AB519DD71CE0047EC4B /* Base */,
-				4BE4655E19E4C6A800496F65 /* en */,
-				4BE4656019E4C6AA00496F65 /* pt-PT */,
 				4BE4656119E4C83400496F65 /* pt */,
+				4BE4656419E4D58100496F65 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -568,7 +576,6 @@
 			children = (
 				4B42242619E1E1340098CCFA /* Base */,
 				4B42242819E1E13C0098CCFA /* en */,
-				4B42242A19E1E15C0098CCFA /* pt-PT */,
 				4BE4656219E4C83400496F65 /* pt */,
 			);
 			name = Localizable.strings;

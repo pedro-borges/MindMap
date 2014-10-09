@@ -12,6 +12,4 @@
 
 @interface TBC_ManageProject : UITabBarController
 
-@property (nonatomic, strong) Project *project;
-
 @end

@@ -25,31 +25,11 @@
     return result;
 }
 
-- (NSArray *)pendingTasks {
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
-
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
-    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-
-    request.sortDescriptors = sortDescriptors;
-    request.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion = nil)", self];
-
-    NSError *error;
-
-    NSArray *result = [self.managedObjectContext executeFetchRequest:request error:&error];
-
-    if (error) {
-        NSLog(@"Error getting pending tasks - %@", error);
-    }
-
-    return result;
-}
-
 + (NSArray *)allInContext:(NSManagedObjectContext *)context
         matchingPredicate:(NSPredicate *)predicate {
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Project"];
     
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     request.sortDescriptors = sortDescriptors;
@@ -64,6 +44,47 @@
     }
     
     return result;
+}
+
++ (NSArray *)forName:(NSString *)name
+		   inContext:(NSManagedObjectContext *)context {
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Project"];
+	
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+	NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+	
+	request.sortDescriptors = sortDescriptors;
+	request.predicate = [NSPredicate predicateWithFormat:@"name = %@", name];
+	
+	NSError *error;
+	
+	NSArray *result = [context executeFetchRequest:request error:&error];
+	
+	if (error) {
+		NSLog(@"Error getting Task forName:%@ - %@", name, error);
+	}
+	
+	return result;
+}
+
+- (NSArray *)pendingTasks {
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
+
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+	NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+
+	request.sortDescriptors = sortDescriptors;
+	request.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion = nil)", self];
+
+	NSError *error;
+
+	NSArray *result = [self.managedObjectContext executeFetchRequest:request error:&error];
+
+	if (error) {
+		NSLog(@"Error getting pending tasks - %@", error);
+	}
+	
+	return result;
 }
 
 @end
