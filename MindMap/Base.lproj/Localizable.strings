@@ -5,8 +5,6 @@
 "1 dependant" = "1 dependant";
 "%lu dependants" = "%lu dependants";
 "Goal" = "Goal";
-"New Task" = "New Task";
-"Dependency of %@" = "Dependency of %@";
 "Back" = "Back";
 "Close Task" = "Close Task";
 "Create Dependency" = "Create Dependency";
@@ -17,7 +15,6 @@
 "1 Pending" = "1 Pending";
 "%lu Pending" = "%lu Pending";
 "Completed" = "Completed";
-"New Project Name" = "New Project Name";
 "Create" = "Create";
 "Past" = "Past";
 "Present" = "Present";

@@ -8,7 +8,7 @@
 
 #import "TVC_ViewProject.h"
 
-#define STRING_TASKS NSLocalizedString(@"%li tasks", nil)
+#import "LocalizableStrings.h"
 
 @interface TVC_ViewProject()
 
@@ -51,39 +51,38 @@
 }
 
 - (void)bindToView {
-	NSInteger pastCount		= [[self.project pastTasks] count];
-	NSInteger presentCount	= [[self.project presentTasks] count];
-	NSInteger futureCount	= [[self.project futureTasks] count];
-	NSInteger totalCount	= [self.project.tasks count];
-	
+	NSInteger pastCount			= [[self.project pastTasks] count];
+	NSInteger presentCount		= [[self.project presentTasks] count];
+	NSInteger futureCount		= [[self.project futureTasks] count];
+	NSInteger totalCount		= [self.project.tasks count];
+
 	NSInteger pastPercent		= totalCount > 0 ? 100 * pastCount / totalCount : 0;
 	NSInteger presentPercent	= totalCount > 0 ? 100 * presentCount / totalCount : 0;
 	NSInteger futurePercent		= totalCount > 0 ? 100 * futureCount / totalCount : 0;
 
 	NSInteger progressPercent = 100 * pastCount / totalCount;
-	
+
 	NSString *name = self.project.name;
 	NSString *progress = [NSString stringWithFormat:@"%li%%", progressPercent];
-	
-	NSString *pastTaskStatistic		= [NSString stringWithFormat:STRING_TASKS, pastCount];
-	NSString *presentTaskStatistic	= [NSString stringWithFormat:STRING_TASKS, presentCount];
-	NSString *futureTaskStatistic	= [NSString stringWithFormat:STRING_TASKS, futureCount];
-	NSString *totalTaskStatistic	= [NSString stringWithFormat:STRING_TASKS, totalCount];
-	
+
+	NSString *pastTaskStatistic			= [NSString stringWithFormat:STRING_TASKSCOUNT, pastCount];
+	NSString *presentTaskStatistic		= [NSString stringWithFormat:STRING_TASKSCOUNT, presentCount];
+	NSString *futureTaskStatistic		= [NSString stringWithFormat:STRING_TASKSCOUNT, futureCount];
+	NSString *totalTaskStatistic		= [NSString stringWithFormat:STRING_TASKSCOUNT, totalCount];
+
 	NSString *pastPercentStatistic		= [NSString stringWithFormat:@"%li%%", pastPercent];
 	NSString *presentPercentStatistic	= [NSString stringWithFormat:@"%li%%", presentPercent];
 	NSString *futurePercentStatistic	= [NSString stringWithFormat:@"%li%%", futurePercent];
 	NSString *totalPercentStatistic		= [NSString stringWithFormat:@"%li%%", (NSInteger)100];
-	
+
 	self.nameLabel.text = name;
-	
 	self.progressLabel.text = progress;
 	self.progressView.progress = totalCount > 0 ? (float)1 * pastCount / totalCount : 0;
-	
-	self.pastTaskStatistic.text		= pastTaskStatistic;
-	self.presentTaskStatistic.text	= presentTaskStatistic;
-	self.futureTaskStatistic.text	= futureTaskStatistic;
-	self.totalTaskStatistic.text	= totalTaskStatistic;
+
+	self.pastTaskStatistic.text			= pastTaskStatistic;
+	self.presentTaskStatistic.text		= presentTaskStatistic;
+	self.futureTaskStatistic.text		= futureTaskStatistic;
+	self.totalTaskStatistic.text		= totalTaskStatistic;
 	self.pastPercentStatistic.text		= pastPercentStatistic;
 	self.presentPercentStatistic.text	= presentPercentStatistic;
 	self.futurePercentStatistic.text	= futurePercentStatistic;

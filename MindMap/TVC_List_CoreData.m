@@ -57,7 +57,7 @@
     
     request.sortDescriptors = self.sortDescriptors;
     request.predicate = self.predicate;
-    
+
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:self.context
                                                                           sectionNameKeyPath:self.sectionNameKeyPath

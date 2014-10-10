@@ -71,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B00A4BA19E83C42006426F1 /* LocalizableStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizableStrings.h; sourceTree = "<group>"; };
 		4B0D9AA419DD71CE0047EC4B /* MindMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MindMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B0D9AA819DD71CE0047EC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B0D9AA919DD71CE0047EC4B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; usesTabs = 1; };
@@ -239,6 +240,7 @@
 		4B0D9AA719DD71CE0047EC4B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4B00A4BA19E83C42006426F1 /* LocalizableStrings.h */,
 				4B0D9AB719DD71CE0047EC4B /* Images.xcassets */,
 				4B0D9AA819DD71CE0047EC4B /* Info.plist */,
 				4B0D9AA919DD71CE0047EC4B /* main.m */,

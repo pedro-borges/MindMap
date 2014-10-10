@@ -2,11 +2,9 @@
 "Possible Dependencies" = "Pode Depender de";
 "Direct Dependants" = "Viabiliza diretamente";
 "Possible Dependants" = "Pode viabilizar";
-"%lu dependant" = "%lu dependências";
+"1 dependant" = "1 dependente";
 "%lu dependants" = "%lu dependentes";
 "Goal" = "Tarefa Final";
-"New Task" = "Nova Tarefa";
-"Dependency of %@" = "Dependência de %@";
 "Back" = "Cancelar";
 "Close Task" = "Fechar Tarefa";
 "Create Dependency" = "Nova Dependência";
@@ -17,7 +15,6 @@
 "1 Pending" = "1 Pendente";
 "%lu Pending" = "%lu Pendentes";
 "Completed" = "Terminado";
-"New Project Name" = "Nome do novo projeto";
 "Create" = "Criar";
 "Past" = "Passado";
 "Present" = "Presente";

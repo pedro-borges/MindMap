@@ -8,11 +8,10 @@
 
 #import "TVC_ListDependants.h"
 
+#import "LocalizableStrings.h"
+
 #define CELL_DIRECTDEPENDANT @"pt.pcb.mindmap.dependant"
 #define CELL_POSSIBLEDEPENDANT @"pt.pcb.mindmap.possibleDependant"
-
-#define STRING_DIRECTDEPENDANTS NSLocalizedString(@"Direct Dependants", nil)
-#define STRING_POSSIBLEDEPENDANTS NSLocalizedString(@"Possible Dependants", nil)
 
 @implementation TVC_ListDependants
     

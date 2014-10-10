@@ -8,13 +8,12 @@
 
 #import "TVC_ListTasksFuture.h"
 
+#import "LocalizableStrings.h"
+
 #import "TVC_ViewTask.h"
 
-#define STRING_DEPENDENCY_OF		NSLocalizedString(@"Dependency of %@", nil)
-#define STRING_CANCEL				NSLocalizedString(@"Cancel", nil)
-#define STRING_OK					NSLocalizedString(@"Ok", nil)
-#define STRING_WILLSHOWINPRESENT	NSLocalizedString(@"The new dependency will appear in the <present> tab", nil)
-#define STRING_CREATEDEPENDENCY		NSLocalizedString(@"Create Dependency", nil)
+#define ALERT_CREATEDEPENDENCY 101
+#define ALERT_NOTIFICATION 102
 
 @interface TVC_ListTasksFuture() <UIAlertViewDelegate>
 
@@ -36,10 +35,10 @@ Task *_selectedTask;
 
 #pragma mark - Private
 
-- (void)addNewDependencyToSelectedTask {
+- (void)createDependencyToSelectedTask:(NSString *)title {
 	Task *task = _selectedTask;
 	
-	Task *dependency = [Task createFromContext:self.context forProject:self.project withTitle:[NSString stringWithFormat:STRING_DEPENDENCY_OF, task.title]];
+	Task *dependency = [Task createFromContext:self.context forProject:self.project withTitle:title];
 	
 	[task addDependenciesObject:dependency];
 }
@@ -47,13 +46,32 @@ Task *_selectedTask;
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	switch (buttonIndex) {
-		case 0: // Back
+	switch (alertView.tag) {
+		case ALERT_CREATEDEPENDENCY:
+			switch (buttonIndex) {
+				case 0: // Cancel
+					break;
+				case 1: // Popup Notification
+					[self createDependencyToSelectedTask:[alertView textFieldAtIndex:0].text];
+					
+					self.alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDENCY
+																message:STRING_WILLSHOWINPRESENT
+															   delegate:self
+													  cancelButtonTitle:STRING_OK
+													  otherButtonTitles:nil];
+					
+					self.alertView.alertViewStyle = UIAlertViewStyleDefault;
+					self.alertView.tag = ALERT_NOTIFICATION;
+					
+					[self.alertView show];
+					
+					break;
+			}
 			break;
-		case 1: // Close Selected Task
-			[self addNewDependencyToSelectedTask];
+		case ALERT_NOTIFICATION:
 			break;
 	}
+	
 	
 	[self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 }
@@ -65,12 +83,14 @@ Task *_selectedTask;
 	_selectedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
 	self.alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDENCY
-												message:STRING_WILLSHOWINPRESENT
+												message:[NSString stringWithFormat:STRING_NEWDEPENDENCYFORTASK, _selectedTask.title]
 											   delegate:self
 									  cancelButtonTitle:STRING_CANCEL
-									  otherButtonTitles:STRING_OK, nil];
+									  otherButtonTitles:STRING_CREATE, nil];
 	
-	self.alertView.alertViewStyle = UIAlertViewStyleDefault;
+	self.alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+	[self.alertView textFieldAtIndex:0].
+	self.alertView.tag = ALERT_CREATEDEPENDENCY;
 	
 	[self.alertView show];
 }

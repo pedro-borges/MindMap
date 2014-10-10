@@ -16,19 +16,13 @@
 
 #import "DatabaseManager.h"
 
+#import "LocalizableStrings.h"
+
 #define CELL_PROJECT @"pt.pcb.mindmap.project"
 
 #define SEGUE_VIEWPROJECT @"View Project"
 
-#define STRING_EMPTY            NSLocalizedString(@"Empty", nil)
-#define STRING_PENDINGTASK      NSLocalizedString(@"1 Pending", nil)
-#define STRING_PENDINGTASKS     NSLocalizedString(@"%lu Pending", nil)
-#define STRING_COMPLETED        NSLocalizedString(@"Completed", nil)
-#define STRING_NEWPROJECTNAME   NSLocalizedString(@"New Project Name", nil)
-#define STRING_CANCEL           NSLocalizedString(@"Cancel", nil)
-#define STRING_CREATE           NSLocalizedString(@"Create", nil)
-
-@interface TVC_ListProjects ()<UIAlertViewDelegate, UITextFieldDelegate>
+@interface TVC_ListProjects () <UIAlertViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) UIAlertView *alertView;
 
@@ -104,16 +98,15 @@
 
 #pragma mark - Navigation
 
-- (IBAction)newProject:(UIBarButtonItem *)sender {
-    self.alertView = [[UIAlertView alloc] initWithTitle:STRING_NEWPROJECTNAME
-                                           message:nil
-                                          delegate:self
-                                 cancelButtonTitle:STRING_CANCEL
-                                 otherButtonTitles:STRING_CREATE, nil];
+- (IBAction)createProject:(UIBarButtonItem *)sender {
+    self.alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATEPROJECT
+												message:nil
+											   delegate:self
+									  cancelButtonTitle:STRING_CANCEL
+									  otherButtonTitles:STRING_CREATE, nil];
 
     self.alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [self.alertView textFieldAtIndex:0].delegate = self;
-    
+	
     [self.alertView show];
 }
 

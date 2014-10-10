@@ -8,6 +8,8 @@
 
 #import "TVC_ListTasks.h"
 
+#import "LocalizableStrings.h"
+
 #import "TVC_ViewTask.h"
 
 #import "Project+Business.h"
@@ -16,10 +18,6 @@
 #import <CoreData/CoreData.h>
 
 #define CELL_TASK @"pt.pcb.mindmap.task"
-
-#define STRING_DEPENDANT NSLocalizedString(@"1 dependant", nil)
-#define STRING_DEPENDANTS NSLocalizedString(@"lu dependants", nil)
-#define STRING_GOAL NSLocalizedString(@"Goal", nil)
 
 @implementation TVC_ListTasks
 
@@ -63,9 +61,9 @@
 
     if (dependantsCount > 0) {
 		if (dependantsCount == 1) {
-			cell.detailTextLabel.text = STRING_DEPENDANT;
+			cell.detailTextLabel.text = STRING_DEPENDANTCOUNT;
         } else {
-            cell.detailTextLabel.text = [NSString stringWithFormat:STRING_DEPENDANTS, (unsigned long)dependantsCount];
+            cell.detailTextLabel.text = [NSString stringWithFormat:STRING_DEPENDANTSCOUNT, (unsigned long)dependantsCount];
 		}
 	} else {
 		cell.detailTextLabel.text = STRING_GOAL;

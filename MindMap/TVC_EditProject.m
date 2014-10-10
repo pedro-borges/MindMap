@@ -8,9 +8,9 @@
 
 #import "TVC_EditProject.h"
 
-#define STRING_ERROR_DUPLICATEPROJECTNAME @"There's already a project by that name"
+#import "LocalizableStrings.h"
 
-#define STRING_TASKS NSLocalizedString(@"%li tasks", nil)
+#define STRING_ERROR_DUPLICATEPROJECTNAME @"There's already a project by that name"
 
 @interface TVC_EditProject()
 
@@ -73,10 +73,10 @@
 	NSString *name = self.project.name;
 	NSString *progress = [NSString stringWithFormat:@"%li%%", progressPercent];
 
-	NSString *pastTaskStatistic		= [NSString stringWithFormat:STRING_TASKS, pastCount];
-	NSString *presentTaskStatistic	= [NSString stringWithFormat:STRING_TASKS, presentCount];
-	NSString *futureTaskStatistic	= [NSString stringWithFormat:STRING_TASKS, futureCount];
-	NSString *totalTaskStatistic	= [NSString stringWithFormat:STRING_TASKS, totalCount];
+	NSString *pastTaskStatistic		= [NSString stringWithFormat:STRING_TASKSCOUNT, pastCount];
+	NSString *presentTaskStatistic	= [NSString stringWithFormat:STRING_TASKSCOUNT, presentCount];
+	NSString *futureTaskStatistic	= [NSString stringWithFormat:STRING_TASKSCOUNT, futureCount];
+	NSString *totalTaskStatistic	= [NSString stringWithFormat:STRING_TASKSCOUNT, totalCount];
 	
 	NSString *pastPercentStatistic		= [NSString stringWithFormat:@"%li%%", pastPercent];
 	NSString *presentPercentStatistic	= [NSString stringWithFormat:@"%li%%", presentPercent];

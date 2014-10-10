@@ -19,6 +19,7 @@
 @interface DatabaseManager()
 
 @property (nonatomic, readonly) TVC_List_CoreData *rootController;
+@property (nonatomic, readonly) BOOL ready;
 
 @end
 
@@ -27,6 +28,8 @@
 #pragma mark - Properties
 
 static DatabaseManager *_defaultManager;
+
+@synthesize ready = _ready;
 
 + (DatabaseManager *)defaultManager {
 	return _defaultManager;
@@ -143,17 +146,25 @@ static DatabaseManager *_defaultManager;
 
 - (void)useDocument {
     [self setPersistentStoreOptionsInDocument:self.document];
-    
+	
+	NSLog(@"Refresh Controller: %@", self.rootController);
+	
     if(![[NSFileManager defaultManager] fileExistsAtPath:[self.document.fileURL path]]) {
         [self.document saveToURL:self.document.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
-            [self setupFetchedResultsController];
+			NSLog(@"Create document = %i", success);
+			self.rootController.context = nil;
+            [self.rootController bindToView];
         }];
     } else if (self.document.documentState == UIDocumentStateClosed) {
         [self.document openWithCompletionHandler:^(BOOL success) {
-            [self setupFetchedResultsController];
+			NSLog(@"Open document = %i", success);
+			self.rootController.context = nil;
+            [self.rootController bindToView];
         }];
     } else if (self.document.documentState == UIDocumentStateNormal) {
-		;
+		NSLog(@"document = normal");
+		self.rootController.context = nil;
+		[self.rootController bindToView];
     }
 }
 

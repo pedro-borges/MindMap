@@ -8,9 +8,9 @@
 
 #import "TVC_Settings.h"
 
-#import "Settings.h"
+#import "LocalizableStrings.h"
 
-#define STRING_NOPROJECTSELECTED NSLocalizedString(@"No Project Selected", nil);
+#import "Settings.h"
 
 @interface TVC_Settings()
 

@@ -8,14 +8,14 @@
 
 #import "TVC_ListTasksPresent.h"
 
+#import "LocalizableStrings.h"
+
 #import "Task+Business.h"
 #import "Completion+Business.h"
 
-#define STRING_NEWTASK			NSLocalizedString(@"New Task", nil)
-#define STRING_CLOSETASK		NSLocalizedString(@"Close Task", nil)
-#define STRING_DEPENDENCY_OF	NSLocalizedString(@"Dependency of %@", nil)
-#define STRING_BACK				NSLocalizedString(@"Back", nil)
-#define STRING_CREATEDEPENDENCY NSLocalizedString(@"Create Dependency", nil)
+#define ALERT_TASK 101
+#define ALERT_CREATE_DEPENDENCY 102
+#define ALERT_CREATE_TASK 103
 
 @interface TVC_ListTasksPresent() <UIAlertViewDelegate>
 
@@ -49,28 +49,64 @@ Task *_selectedTask;
 										  timestamp:[NSDate date]];
 }
 
-- (void)addNewDependencyToSelectedTask {
+- (void)createDependencyToSelectedTask:(NSString *)title {
 	Task *task = _selectedTask;
-	
-	Task *dependency = [Task createFromContext:self.context forProject:self.project withTitle:[NSString stringWithFormat:STRING_DEPENDENCY_OF, task.title]];
-	
+
+	Task *dependency = [Task createFromContext:self.context forProject:self.project withTitle:title];
+
 	[task addDependenciesObject:dependency];
 }
 
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	switch (buttonIndex) {
-		case 0: // Back
-			break;
-		case 1: // Close Selected Task
-			[self closeSelectedTask];
-			break;
-		case 2: // Add Dependency to Selected Task
-			[self addNewDependencyToSelectedTask];
-			break;
-	}
+	NSString *title = [alertView textFieldAtIndex:0].text;
 
+	switch (alertView.tag) {
+		case ALERT_CREATE_TASK: {
+			[Task createFromContext:self.context forProject:self.project withTitle:title];
+			
+			[self bindToView]; //TODO try and comment this out
+
+			break;
+		}
+		
+		case ALERT_TASK: {
+			switch (buttonIndex) {
+				case 0: // Cancel
+					break;
+				case 1: // Close Selected Task
+					[self closeSelectedTask];
+					break;
+				case 2: // Popup Create Dependency for Selected Task
+					self.alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDENCY
+																message:nil
+															   delegate:self
+													  cancelButtonTitle:STRING_CANCEL
+													  otherButtonTitles:STRING_CREATE, nil];
+					
+					self.alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+					self.alertView.tag = ALERT_CREATE_DEPENDENCY;
+					
+					[self.alertView show];
+					
+					break;
+			}
+			break;
+		}
+		
+		case ALERT_CREATE_DEPENDENCY: {
+			switch (buttonIndex) {
+				case 0: // Create Dependency Cancel
+					break;
+				case 1: // Creare Dependency OK
+					[self createDependencyToSelectedTask:[alertView textFieldAtIndex:0].text];
+					break;
+			}
+			break;
+		}
+	}
+	
 	[self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 }
 
@@ -84,20 +120,28 @@ Task *_selectedTask;
 	self.alertView = [[UIAlertView alloc] initWithTitle:task.title
 												message:nil
 											   delegate:self
-									  cancelButtonTitle:STRING_BACK
+									  cancelButtonTitle:STRING_CANCEL
 									  otherButtonTitles:STRING_CLOSETASK, STRING_CREATEDEPENDENCY, nil];
 	
 	self.alertView.alertViewStyle = UIAlertViewStyleDefault;
+	self.alertView.tag = ALERT_TASK;
 	
 	[self.alertView show];
 }
 
 #pragma mark - Navigation
 
-- (IBAction)addAction:(UIBarButtonItem *)sender {
-	[Task createFromContext:self.context forProject:self.project withTitle:STRING_NEWTASK];
+- (IBAction)createAction:(UIBarButtonItem *)sender {
+	self.alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATETASK
+												message:nil
+											   delegate:self
+									  cancelButtonTitle:STRING_CANCEL
+									  otherButtonTitles:STRING_CREATE, nil];
 	
-	[self bindToView];
+	self.alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+	self.alertView.tag = ALERT_CREATE_TASK;
+
+	[self.alertView show];
 }
 
 @end
