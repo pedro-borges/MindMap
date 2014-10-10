@@ -106,6 +106,7 @@
 									  otherButtonTitles:STRING_CREATE, nil];
 
     self.alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+	[self.alertView textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
 	
     [self.alertView show];
 }

@@ -11,8 +11,8 @@
 @interface Task (Business)
 
 - (NSSet *)fullDependencies;
-- (NSArray *)possibleDependencies;
+- (NSArray *)possibleDependenciesInSameProject;
 - (NSSet *)fullDependants;
-- (NSArray *)possibleDependants;
+- (NSArray *)possibleDependantsIsSameProject;
 
 @end

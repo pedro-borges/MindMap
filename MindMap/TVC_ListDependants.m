@@ -30,7 +30,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
 		case 0: return [self.list count];
-		case 1: return [[self.model possibleDependants] count];
+		case 1: return [[self.model possibleDependantsIsSameProject] count];
     }
 
     return 0;
@@ -51,7 +51,7 @@
 		case 1: {
 			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_POSSIBLEDEPENDANT];
 
-			Task *task = (Task *)[[self.model possibleDependants] objectAtIndex:indexPath.row];
+			Task *task = (Task *)[[self.model possibleDependantsIsSameProject] objectAtIndex:indexPath.row];
 
 			cell.textLabel.text = task.title;
 
@@ -72,25 +72,31 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-	switch (indexPath.section) {
-		case 0: [self delDependant:[self.list objectAtIndex:indexPath.row]];
+	if (indexPath.section == 0) {
+		Task *dependant = [self.list objectAtIndex:indexPath.row];
+
+		[self.model removeDependantsObject:dependant];
+
+		[self bindToView];
 	}
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	switch (indexPath.section) {
-		case 1: [self addDependant:[[self.model possibleDependants] objectAtIndex:indexPath.row]];
+	if (indexPath.section) {
+		Task *dependant = [[self.model possibleDependantsIsSameProject] objectAtIndex:indexPath.row];
+
+		[self.model addDependantsObject:dependant];
+
+		[self bindToView];
 	}
 }
 
 #pragma mark - Navigation
 
 - (void)delDependant:(Task *)dependant {
-	[self.model removeDependantsObject:dependant];
 	
-	[self bindToView];
 }
 
 - (void)addDependant:(Task *)dependant {

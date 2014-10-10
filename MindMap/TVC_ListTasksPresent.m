@@ -34,8 +34,6 @@ Task *_selectedTask;
 #pragma mark - UIKit
 
 - (void)viewWillAppear:(BOOL)animated {
-	self.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count == 0)", self.project];
-
 	[super viewWillAppear:animated];
 }
 
@@ -57,11 +55,24 @@ Task *_selectedTask;
 	[task addDependenciesObject:dependency];
 }
 
+#pragma mark - Bindings
+
+- (void)bindToView {
+	self.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count == 0)", self.project];
+
+	[super bindToView];
+	
+	NSInteger count = [self tableView:self.tableView numberOfRowsInSection:0];
+	
+	self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%li", count];
+	[UIApplication sharedApplication].applicationIconBadgeNumber = count;
+}
+
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	NSString *title = [alertView textFieldAtIndex:0].text;
-
+	
 	switch (alertView.tag) {
 		case ALERT_CREATE_TASK: {
 			[Task createFromContext:self.context forProject:self.project withTitle:title];
@@ -86,6 +97,7 @@ Task *_selectedTask;
 													  otherButtonTitles:STRING_CREATE, nil];
 					
 					self.alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+					[self.alertView textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
 					self.alertView.tag = ALERT_CREATE_DEPENDENCY;
 					
 					[self.alertView show];
@@ -139,6 +151,7 @@ Task *_selectedTask;
 									  otherButtonTitles:STRING_CREATE, nil];
 	
 	self.alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+	[self.alertView textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
 	self.alertView.tag = ALERT_CREATE_TASK;
 
 	[self.alertView show];

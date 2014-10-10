@@ -28,8 +28,9 @@
     switch (indexPath.section) {
         case 0: return YES;
         case 1: return NO;
+		case 2: return NO;
     }
-    
+
     return NO;
 }
 

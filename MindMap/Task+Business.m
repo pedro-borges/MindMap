@@ -22,8 +22,10 @@
 	return result;
 }
 
-- (NSArray *)possibleDependencies {
-	NSMutableArray *result = [[Task allInContext:self.managedObjectContext matchingPredicate:nil] mutableCopy];
+- (NSArray *)possibleDependenciesInSameProject {
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"project = %@", self.project];
+	
+	NSMutableArray *result = [[Task allInContext:self.managedObjectContext matchingPredicate:predicate] mutableCopy];
 
 	for (Task *dependency in [self fullDependencies]) {
 		[result removeObject:dependency];
@@ -44,8 +46,10 @@
 	return result;
 }
 
-- (NSArray *)possibleDependants {
-	NSMutableArray *result = [[Task allInContext:self.managedObjectContext matchingPredicate:nil] mutableCopy];
+- (NSArray *)possibleDependantsIsSameProject {
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"project = %@", self.project];
+
+	NSMutableArray *result = [[Task allInContext:self.managedObjectContext matchingPredicate:predicate] mutableCopy];
 
 	for (Task *dependant in [self fullDependants]) {
 		[result removeObject:dependant];

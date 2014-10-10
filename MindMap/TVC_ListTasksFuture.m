@@ -89,7 +89,7 @@ Task *_selectedTask;
 									  otherButtonTitles:STRING_CREATE, nil];
 	
 	self.alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-	[self.alertView textFieldAtIndex:0].
+	[self.alertView textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
 	self.alertView.tag = ALERT_CREATEDEPENDENCY;
 	
 	[self.alertView show];
