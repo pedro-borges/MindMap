@@ -15,4 +15,9 @@
 - (NSSet *)fullDependants;
 - (NSArray *)possibleDependantsIsSameProject;
 
+@property (nonatomic, readonly) NSDate *startDate;
+@property (nonatomic, readonly) NSDate *endDate;
+
+- (BOOL)inheritedTimeFrame;
+
 @end

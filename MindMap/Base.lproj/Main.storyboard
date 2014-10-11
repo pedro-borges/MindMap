@@ -780,11 +780,11 @@
         <!--Time Frame-->
         <scene sceneID="4YO-Kf-p85">
             <objects>
-                <tableViewController id="Ud2-zx-hY4" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ctc-9L-uKZ">
+                <tableViewController storyboardIdentifier="TVC_EditTimeFrame" id="Ud2-zx-hY4" customClass="TVC_EditTimeFrame" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Ctc-9L-uKZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection id="S3D-jx-hLr">
                                 <cells>
@@ -795,6 +795,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eHV-1R-abt">
                                                     <rect key="frame" x="256" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="updateSwitches:" destination="Ud2-zx-hY4" eventType="valueChanged" id="do9-TY-Wwx"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPc-YG-SId">
                                                     <rect key="frame" x="15" y="11" width="233" height="21"/>
@@ -810,7 +813,6 @@
                                                 <constraint firstAttribute="centerY" secondItem="GPc-YG-SId" secondAttribute="centerY" id="Tb3-Uz-hdN"/>
                                                 <constraint firstItem="GPc-YG-SId" firstAttribute="leading" secondItem="zat-vc-xPX" secondAttribute="leading" constant="15" id="Za4-aV-cpK"/>
                                             </constraints>
-                                            <variation key="widthClass=compact"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="179" id="SJm-p5-6lL">
@@ -818,7 +820,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SJm-p5-6lL" id="kXK-Ft-ptC">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uto-lE-y9g">
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uto-lE-y9g">
                                                     <rect key="frame" x="0.0" y="8" width="320" height="162"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="433961582.52970099">
                                                         <!--2014-10-02 16:53:02 +0000-->
@@ -829,7 +831,6 @@
                                                 <constraint firstAttribute="centerY" secondItem="uto-lE-y9g" secondAttribute="centerY" id="csE-fX-3H3"/>
                                                 <constraint firstAttribute="centerX" secondItem="uto-lE-y9g" secondAttribute="centerX" id="lCc-t3-jgP"/>
                                             </constraints>
-                                            <variation key="widthClass=compact"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -849,6 +850,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0mV-CH-Unb">
                                                     <rect key="frame" x="252" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="updateSwitches:" destination="Ud2-zx-hY4" eventType="valueChanged" id="46a-rg-xhb"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -858,7 +862,6 @@
                                                 <constraint firstAttribute="centerY" secondItem="TaB-xB-t3J" secondAttribute="centerY" id="Avc-NK-Bn4"/>
                                                 <constraint firstItem="0mV-CH-Unb" firstAttribute="leading" secondItem="TaB-xB-t3J" secondAttribute="trailing" constant="8" id="BXH-HK-TVe"/>
                                             </constraints>
-                                            <variation key="widthClass=compact"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="179" id="oUB-Ly-jNz">
@@ -866,7 +869,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oUB-Ly-jNz" id="dKM-rP-oab">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="U0z-32-iEG">
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="U0z-32-iEG">
                                                     <rect key="frame" x="0.0" y="8" width="320" height="162"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="433961582.52970099">
                                                         <!--2014-10-02 16:53:02 +0000-->
@@ -907,7 +910,19 @@
                             <outlet property="delegate" destination="Ud2-zx-hY4" id="crq-Ft-sfd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Time Frame" id="wcA-1o-lzW"/>
+                    <navigationItem key="navigationItem" title="Time Frame" id="wcA-1o-lzW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="31O-03-Zmi">
+                            <connections>
+                                <action selector="doneAction:" destination="Ud2-zx-hY4" id="G1D-td-GWJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="endDatePicker" destination="U0z-32-iEG" id="ZXG-2F-USm"/>
+                        <outlet property="endDateSwitch" destination="0mV-CH-Unb" id="QHA-Cv-kLS"/>
+                        <outlet property="startDatePicker" destination="uto-lE-y9g" id="gkb-UJ-Khc"/>
+                        <outlet property="startDateSwitch" destination="eHV-1R-abt" id="tLT-AZ-q0p"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rj-H5-PmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

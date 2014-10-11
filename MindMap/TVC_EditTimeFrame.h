@@ -8,6 +8,10 @@
 
 #import "TVC_Edit.h"
 
+#import "TimeFrame+Business.h"
+
 @interface TVC_EditTimeFrame : TVC_Edit
+
+@property (nonatomic, strong) TimeFrame *timeFrame;
 
 @end

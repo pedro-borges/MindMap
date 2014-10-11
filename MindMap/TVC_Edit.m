@@ -28,6 +28,8 @@
 		
 		self.firstResponder = nil;
 	}
+
+	[self bindToView];
 }
 
 - (BOOL)bindToModel:(NSError **)error {

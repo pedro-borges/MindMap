@@ -13,6 +13,8 @@
 #import "Task+Business.h"
 #import "TimeFrame+Business.h"
 
+#import "NSDate+Friendly.h"
+
 @interface TVC_ViewTask()
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
@@ -33,10 +35,15 @@
 
 #pragma mark - UIKit
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidLoad {
+	[super viewDidLoad];
 
-	[self bindToView];
+	// Autoheal
+	if (self.task.timeFrame == nil) {
+		self.task.timeFrame = [TimeFrame createFromContext:self.managedObject.managedObjectContext
+												 startDate:self.task
+												   endDate:nil];
+	}
 }
 
 #pragma mark - Overrides
@@ -49,16 +56,20 @@
 
 - (void)bindToView {
     NSString *title = self.task.title;
-    NSString *timeFrame = self.task.timeFrame.description;
+    NSString *timeFrame = [NSDate describeTimeFrom:self.task.startDate to:self.task.endDate];
     NSString *locations = @""; //TODO Location
     NSString *dependencies = [NSString stringWithFormat:@"%lu", (unsigned long)[self.task.dependencies count]];
     NSString *dependants = [NSString stringWithFormat:@"%lu", (unsigned long)[self.task.dependants count]];
+
+	UIColor *timeFrameColor = [self.task inheritedTimeFrame] ? [UIColor grayColor] : [UIColor blackColor];
 
     self.titleLabel.text        = title;
     self.timeFrameLabel.text    = timeFrame;
     self.locationsLabel.text    = locations;
     self.dependantsLabel.text   = dependants;
     self.dependenciesLabel.text = dependencies;
+	
+	self.timeFrameLabel.textColor = timeFrameColor;
 }
 
 @end

@@ -34,14 +34,6 @@
     return (Project *)self.managedObject;
 }
 
-#pragma mark - UIKit
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self bindToView];
-}
-
 #pragma mark - Overrides
 
 - (void)setModel:(Project *)model {

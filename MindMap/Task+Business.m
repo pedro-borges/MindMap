@@ -8,6 +8,8 @@
 
 #import "Task+Business.h"
 
+#import "TimeFrame+Business.h"
+
 @implementation Task (Business)
 
 - (NSSet *)fullDependencies {
@@ -56,6 +58,36 @@
 	}
 
 	return result;
+}
+
+- (NSDate *)enforcedStartDate {
+	NSDate *result = self.timeFrame.startDate;
+
+	for (Task *dependency in self.dependencies) {
+		if ([dependency.startDate compare:result] == NSOrderedDescending) result = dependency.startDate;
+	}
+
+	NSLog(@"ret sd: %@", result);
+	return result;
+}
+
+- (NSDate *)enforcedEndDate {
+	NSDate *result = self.timeFrame.endDate;
+
+	for (Task *dependant in self.dependants) {
+		if ([dependant.endDate compare:result] == NSOrderedAscending) result = dependant.endDate;
+	}
+	
+	return result;
+}
+
+- (BOOL)inheritedTimeFrame {
+	NSLog(@"Inherited:");
+	if (![self.startDate isEqualToDate:self.timeFrame.startDate]) return YES;
+	if (![self.endDate isEqualToDate:self.timeFrame.endDate]) return YES;
+
+	NSLog(@"NO");
+	return NO;
 }
 
 @end

@@ -56,6 +56,7 @@
 		4B42244B19E209F80098CCFA /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42244A19E209F80098CCFA /* Project.m */; };
 		4B42245419E319640098CCFA /* TBC_ManageProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42245319E319640098CCFA /* TBC_ManageProject.m */; };
 		4B42245A19E40FF10098CCFA /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42245919E40FF10098CCFA /* DatabaseManager.m */; };
+		4BC62A2619E9E6B500E832DA /* NSDate+Friendly.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC62A2519E9E6B500E832DA /* NSDate+Friendly.m */; };
 		4BE4656A19E58F1600496F65 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4656919E58F1600496F65 /* Settings.m */; };
 		4BE4656D19E5C46D00496F65 /* TVC_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4656C19E5C46D00496F65 /* TVC_Settings.m */; };
 		4BE4657019E6CBA500496F65 /* TVC_EditProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4656F19E6CBA500496F65 /* TVC_EditProject.m */; };
@@ -75,6 +76,7 @@
 		4B00A4BA19E83C42006426F1 /* LocalizableStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizableStrings.h; sourceTree = "<group>"; };
 		4B00A4BB19E85FE0006426F1 /* TVC_EditTimeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVC_EditTimeFrame.h; sourceTree = "<group>"; };
 		4B00A4BC19E85FE0006426F1 /* TVC_EditTimeFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVC_EditTimeFrame.m; sourceTree = "<group>"; };
+		4B00A4BE19E884A8006426F1 /* Model-1.0.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-1.0.2.xcdatamodel"; sourceTree = "<group>"; };
 		4B0D9AA419DD71CE0047EC4B /* MindMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MindMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B0D9AA819DD71CE0047EC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B0D9AA919DD71CE0047EC4B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; usesTabs = 1; };
@@ -168,6 +170,8 @@
 		4B42245319E319640098CCFA /* TBC_ManageProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBC_ManageProject.m; sourceTree = "<group>"; };
 		4B42245819E40FF10098CCFA /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
 		4B42245919E40FF10098CCFA /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
+		4BC62A2419E9E6B500E832DA /* NSDate+Friendly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Friendly.h"; sourceTree = "<group>"; };
+		4BC62A2519E9E6B500E832DA /* NSDate+Friendly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Friendly.m"; sourceTree = "<group>"; };
 		4BE4656119E4C83400496F65 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Main.strings; sourceTree = "<group>"; };
 		4BE4656219E4C83400496F65 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4BE4656419E4D58100496F65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -353,6 +357,8 @@
 				4B0D9AFA19DD813C0047EC4B /* CoreDataTableViewController.m */,
 				4B4223EF19DF1FFD0098CCFA /* LinkedTextField.h */,
 				4B4223F019DF1FFD0098CCFA /* LinkedTextField.m */,
+				4BC62A2419E9E6B500E832DA /* NSDate+Friendly.h */,
+				4BC62A2519E9E6B500E832DA /* NSDate+Friendly.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -529,6 +535,7 @@
 				4B4223E819DE129A0098CCFA /* TVC_ListDependencies.m in Sources */,
 				4B0D9AFF19DD81A70047EC4B /* TVC_ListTasks.m in Sources */,
 				4B0D9B3519DDAE910047EC4B /* Place+Business.m in Sources */,
+				4BC62A2619E9E6B500E832DA /* NSDate+Friendly.m in Sources */,
 				4B4223FD19DF512A0098CCFA /* TVC_ListHierarchy.m in Sources */,
 				4B42244419E2000B0098CCFA /* TVC_ViewProject.m in Sources */,
 				4B42244819E209F70098CCFA /* Task.m in Sources */,
@@ -787,6 +794,7 @@
 				4B42242F19E1EC7A0098CCFA /* Model-1.0.0.xcdatamodel */,
 				4B42241519DF76FA0098CCFA /* Model.xcdatamodel */,
 				4B42244519E204DB0098CCFA /* Model-1.0.1.xcdatamodel */,
+				4B00A4BE19E884A8006426F1 /* Model-1.0.2.xcdatamodel */,
 			);
 			currentVersion = 4B42244519E204DB0098CCFA /* Model-1.0.1.xcdatamodel */;
 			path = Model.xcdatamodeld;

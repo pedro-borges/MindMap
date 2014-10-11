@@ -7,6 +7,7 @@
 //
 
 #import "Task+Implementation.h"
+#import "TimeFrame+Implementation.h"
 #import "Database.h"
 
 @implementation Task (Implementation)
@@ -18,8 +19,11 @@
     
     result = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:context];
 
+	TimeFrame *timeFrame = [TimeFrame createFromContext:context startDate:nil endDate:nil];
+	
     result.title = title;
 	result.project = project;
+	result.timeFrame = timeFrame;
 
     [Database saveManagedObjectByForce:result];
     

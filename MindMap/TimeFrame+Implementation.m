@@ -18,8 +18,8 @@
 
     result = [NSEntityDescription insertNewObjectForEntityForName:@"TimeFrame" inManagedObjectContext:context];
 
-    result.startDate = startDate;
-    result.endDate = endDate;
+	result.startDate = startDate ? startDate : [NSDate date];
+	result.endDate = endDate ? endDate : [NSDate distantFuture];
 
     [Database saveManagedObjectByForce:result];
 

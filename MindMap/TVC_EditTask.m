@@ -10,6 +10,7 @@
 
 #import "TVC_ListDependencies.h"
 #import "TVC_ListDependants.h"
+#import "TVC_EditTimeFrame.h"
 
 #import "Task+Business.h"
 #import "Place+Business.h"
@@ -27,30 +28,26 @@
 
 @implementation TVC_EditTask
 
+#pragma mark - Properties
+
+- (Task *)task {
+	return (Task *)self.managedObject;
+}
+
+- (void)setTask:(Task *)task {
+	if (self.managedObject != task) {
+		self.managedObject = task;
+
+		[self bindToView];
+	}
+}
+
 #pragma mark - UIKit
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
 	self.firstResponder = self.titleTextField;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-
-    [self bindToView];
-}
-
-#pragma mark - Overrides
-
-- (Task *)task {
-    return (Task *)self.managedObject;
-}
-
-- (void)setTask:(Task *)model {
-    if (self.managedObject != model) {
-        self.managedObject = model;
-    }
 }
 
 - (BOOL)bindToModel:(NSError **)error {
@@ -86,6 +83,9 @@
 		TVC_ListDependants *controller = segue.destinationViewController;
 		controller.model = self.task;
 		controller.navigationItem.title = self.task.title;
+	} else 	if ([@"Edit TimeFrame" isEqualToString:segue.identifier]) {
+		TVC_EditTimeFrame *controller = segue.destinationViewController;
+		controller.timeFrame = self.task.timeFrame;
 	}
 }
 

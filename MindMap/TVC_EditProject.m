@@ -36,6 +36,14 @@
 	return (Project *)self.managedObject;
 }
 
+- (void)setProject:(Project *)model {
+	if (self.managedObject != model) {
+		self.managedObject = model;
+		
+		[self bindToView];
+	}
+}
+
 #pragma mark - UIKit
 
 - (void)viewDidLoad {
@@ -44,19 +52,7 @@
 	self.firstResponder = self.nameTextField;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	
-	[self bindToView];
-}
-
-#pragma mark - Overrides
-
-- (void)setModel:(Project *)model {
-	if (self.managedObject != model) {
-		self.managedObject = model;
-	}
-}
+#pragma mark - Bindings
 
 - (void)bindToView {
 	NSInteger pastCount		= [[self.project pastTasks] count];
