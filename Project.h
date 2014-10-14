@@ -2,7 +2,7 @@
 //  Project.h
 //  MindMap
 //
-//  Created by Pedro Borges on 06/10/14.
+//  Created by Pedro Borges on 14/10/14.
 //  Copyright (c) 2014 PCB. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 @interface Project : NSManagedObject
 
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) NSSet *tasks;
 @end
 

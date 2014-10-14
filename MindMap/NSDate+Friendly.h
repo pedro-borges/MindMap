@@ -10,7 +10,9 @@
 
 @interface NSDate (Friendly)
 
-+ (NSString *)describeTimeFrom:(NSDate *)startDate
++ (NSString *)describeDateFrom:(NSDate *)startDate
 							to:(NSDate *)endDate;
++ (NSString *)describeTimeFrom:(NSDate *)referenceDate
+							to:(NSDate *)relativeDate;
 
 @end

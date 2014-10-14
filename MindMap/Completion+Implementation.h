@@ -13,7 +13,6 @@
 @interface Completion (Implementation)
 
 + (Completion *)createFromContext:(NSManagedObjectContext *)context
-                          forTask:(Task *)task
-                        timestamp:(NSDate *)date;
+						  forTask:(Task *)task;
 
 @end

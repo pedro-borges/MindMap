@@ -10,6 +10,8 @@
 
 #import "LocalizableStrings.h"
 
+#import "Task+Business.h"
+
 @interface TVC_ViewProject()
 
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
@@ -43,10 +45,10 @@
 }
 
 - (void)bindToView {
-	NSInteger pastCount			= [[self.project pastTasks] count];
-	NSInteger presentCount		= [[self.project presentTasks] count];
-	NSInteger futureCount		= [[self.project futureTasks] count];
-	NSInteger totalCount		= [self.project.tasks count];
+	NSInteger pastCount		= [[Task allInContext:self.project.managedObjectContext matchingPredicate:self.project.pastTasksPredicate] count];
+	NSInteger presentCount	= [[Task allInContext:self.project.managedObjectContext matchingPredicate:self.project.presentTasksPredicate] count];
+	NSInteger futureCount	= [[Task allInContext:self.project.managedObjectContext matchingPredicate:self.project.futureTasksPredicate] count];
+	NSInteger totalCount	= [self.project.tasks count];
 
 	NSInteger pastPercent		= totalCount > 0 ? 100 * pastCount / totalCount : 0;
 	NSInteger presentPercent	= totalCount > 0 ? 100 * presentCount / totalCount : 0;

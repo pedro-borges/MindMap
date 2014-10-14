@@ -19,6 +19,12 @@
 
 #define CELL_TASK @"pt.pcb.mindmap.task"
 
+@interface TVC_ListTasks()
+
+@property (nonatomic, readonly) Task *selectedTask;
+
+@end
+
 @implementation TVC_ListTasks
 
 #pragma mark - Properties
@@ -53,31 +59,38 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_TASK forIndexPath:indexPath];
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_TASK forIndexPath:indexPath];
 
-    cell.textLabel.text = task.title;
-
-    unsigned long dependantsCount = [task.dependants count];
-
-    if (dependantsCount > 0) {
-		if (dependantsCount == 1) {
-			cell.detailTextLabel.text = STRING_DEPENDANTCOUNT;
-        } else {
-            cell.detailTextLabel.text = [NSString stringWithFormat:STRING_DEPENDANTSCOUNT, (unsigned long)dependantsCount];
-		}
-	} else {
-		cell.detailTextLabel.text = STRING_GOAL;
-	}
+    cell.textLabel.text = [self cellTextFor:task];
+	cell.detailTextLabel.text = [self cellDetailTextFor:task];
 
 	return cell;
 }
 
 #pragma mark - TableViewDelegate
 
-- (IBAction)closeAction:(UIBarButtonItem *)sender {
-	[self dismissViewControllerAnimated:YES completion:^(void) {
-		
-	}];
+#pragma mark - Abstract
+
+- (NSString *)cellTextFor:(Task *)task {
+	@throw [NSException exceptionWithName:@"Abstraction Violation" reason:@"Direct call to [TVC_ListTasks cellTextFor:]" userInfo:nil];
+}
+
+- (NSString *)cellDetailTextFor:(Task *)task {
+	@throw [NSException exceptionWithName:@"Abstraction Violation" reason:@"Direct call to [TVC_ListTasks cellDetailTextFor:]" userInfo:nil];
+}
+
+#pragma mark - Abastract Implementation
+
+- (void)deleteManagedObject:(NSManagedObject *)managedObject {
+	Task *task = (Task *)managedObject;
+
+	[task delete];
+}
+
+- (NSString *)confirmDeletionMessage:(NSManagedObject *)managedObject {
+	Task *task = (Task *)managedObject;
+
+	return [NSString stringWithFormat:@"Are you sure you want to delete task '%@'", task.title];
 }
 
 @end

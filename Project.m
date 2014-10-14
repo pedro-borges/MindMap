@@ -2,7 +2,7 @@
 //  Project.m
 //  MindMap
 //
-//  Created by Pedro Borges on 06/10/14.
+//  Created by Pedro Borges on 14/10/14.
 //  Copyright (c) 2014 PCB. All rights reserved.
 //
 
@@ -13,6 +13,7 @@
 @implementation Project
 
 @dynamic name;
+@dynamic timestamp;
 @dynamic tasks;
 
 @end

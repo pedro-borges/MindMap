@@ -13,13 +13,7 @@
 #import "Task+Business.h"
 #import "Completion+Business.h"
 
-#define ALERT_TASK 101
-#define ALERT_CREATE_DEPENDENCY 102
-#define ALERT_CREATE_TASK 103
-
 @interface TVC_ListTasksPresent() <UIAlertViewDelegate>
-
-@property (nonatomic, strong) UIAlertView *alertView;
 
 @end
 
@@ -29,11 +23,16 @@
 
 Task *_selectedTask;
 
-@synthesize alertView = _alertView;
-
 #pragma mark - UIKit
 
 - (void)viewWillAppear:(BOOL)animated {
+	NSSet *defunctSet = [Task allInContext:self.context matchingPredicate:[NSPredicate predicateWithFormat:@"project = nil"]];
+	
+	// Autoheal
+	for (Task *defunct in defunctSet) {
+		[defunct delete];
+	}
+	
 	[super viewWillAppear:animated];
 }
 
@@ -42,9 +41,7 @@ Task *_selectedTask;
 - (void)closeSelectedTask {
 	Task *task = (Task *)[self selectedManagedObject];
 	
-	task.completion = [Completion createFromContext:self.context
-											forTask:task
-										  timestamp:[NSDate date]];
+	[task close];
 }
 
 - (void)createDependencyToSelectedTask:(NSString *)title {
@@ -58,8 +55,7 @@ Task *_selectedTask;
 #pragma mark - Bindings
 
 - (void)bindToView {
-	self.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count == 0)", self.project];
-
+	self.predicate = self.project.presentTasksPredicate;
 	[super bindToView];
 	
 	NSInteger count = [self tableView:self.tableView numberOfRowsInSection:0];
@@ -71,8 +67,12 @@ Task *_selectedTask;
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	[super alertView:alertView clickedButtonAtIndex:buttonIndex];
+
 	NSString *title = [alertView textFieldAtIndex:0].text;
-	
+
+	UIAlertView *alertView2;
+
 	switch (alertView.tag) {
 		case ALERT_CREATE_TASK: {
 			[Task createFromContext:self.context forProject:self.project withTitle:title];
@@ -90,17 +90,17 @@ Task *_selectedTask;
 					[self closeSelectedTask];
 					break;
 				case 2: // Popup Create Dependency for Selected Task
-					self.alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDENCY
+					alertView2 = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDENCY
 																message:nil
 															   delegate:self
 													  cancelButtonTitle:STRING_CANCEL
 													  otherButtonTitles:STRING_CREATE, nil];
 					
-					self.alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-					[self.alertView textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
-					self.alertView.tag = ALERT_CREATE_DEPENDENCY;
+					alertView2.alertViewStyle = UIAlertViewStylePlainTextInput;
+					[alertView2 textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
+					alertView2.tag = ALERT_CREATE_DEPENDENCY;
 					
-					[self.alertView show];
+					[alertView2 show];
 					
 					break;
 			}
@@ -118,8 +118,6 @@ Task *_selectedTask;
 			break;
 		}
 	}
-	
-	[self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 }
 
 #pragma mark - UITableViewDelegate
@@ -129,32 +127,42 @@ Task *_selectedTask;
 
 	_selectedTask = task;
 	
-	self.alertView = [[UIAlertView alloc] initWithTitle:task.title
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:task.title
 												message:nil
 											   delegate:self
 									  cancelButtonTitle:STRING_CANCEL
 									  otherButtonTitles:STRING_CLOSETASK, STRING_CREATEDEPENDENCY, nil];
 	
-	self.alertView.alertViewStyle = UIAlertViewStyleDefault;
-	self.alertView.tag = ALERT_TASK;
-	
-	[self.alertView show];
+	alertView.alertViewStyle = UIAlertViewStyleDefault;
+	alertView.tag = ALERT_TASK;
+
+	[alertView show];
 }
 
 #pragma mark - Navigation
 
 - (IBAction)createAction:(UIBarButtonItem *)sender {
-	self.alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATETASK
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATETASK
 												message:nil
 											   delegate:self
 									  cancelButtonTitle:STRING_CANCEL
 									  otherButtonTitles:STRING_CREATE, nil];
 	
-	self.alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-	[self.alertView textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
-	self.alertView.tag = ALERT_CREATE_TASK;
+	alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+	[alertView textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
+	alertView.tag = ALERT_CREATE_TASK;
 
-	[self.alertView show];
+	[alertView show];
+}
+
+#pragma mark - Abstract Implementations
+
+- (NSString *)cellTextFor:(Task *)task {
+	return task.title;
+}
+
+- (NSString *)cellDetailTextFor:(Task *)task {
+	return task.dependantsDescription;
 }
 
 @end

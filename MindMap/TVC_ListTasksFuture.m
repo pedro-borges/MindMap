@@ -12,12 +12,7 @@
 
 #import "TVC_ViewTask.h"
 
-#define ALERT_CREATEDEPENDENCY 101
-#define ALERT_NOTIFICATION 102
-
 @interface TVC_ListTasksFuture() <UIAlertViewDelegate>
-
-@property (nonatomic, strong) UIAlertView *alertView;
 
 @end
 
@@ -28,7 +23,7 @@ Task *_selectedTask;
 #pragma mark - UIKit
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count > 0)", self.project];
+    self.predicate = self.project.futureTasksPredicate;
 
 	[super viewWillAppear:animated];
 }
@@ -46,6 +41,10 @@ Task *_selectedTask;
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	[super alertView:alertView clickedButtonAtIndex:buttonIndex];
+
+	UIAlertView *alertView2;
+
 	switch (alertView.tag) {
 		case ALERT_CREATEDEPENDENCY:
 			switch (buttonIndex) {
@@ -54,16 +53,16 @@ Task *_selectedTask;
 				case 1: // Popup Notification
 					[self createDependencyToSelectedTask:[alertView textFieldAtIndex:0].text];
 					
-					self.alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDENCY
+					alertView2 = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDENCY
 																message:STRING_WILLSHOWINPRESENT
 															   delegate:self
 													  cancelButtonTitle:STRING_OK
 													  otherButtonTitles:nil];
 					
-					self.alertView.alertViewStyle = UIAlertViewStyleDefault;
-					self.alertView.tag = ALERT_NOTIFICATION;
+					alertView2.alertViewStyle = UIAlertViewStyleDefault;
+					alertView2.tag = ALERT_NOTIFICATION;
 					
-					[self.alertView show];
+					[alertView2 show];
 					
 					break;
 			}
@@ -71,9 +70,6 @@ Task *_selectedTask;
 		case ALERT_NOTIFICATION:
 			break;
 	}
-	
-	
-	[self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 }
 
 #pragma mark - UITableViewDelegate
@@ -82,17 +78,27 @@ Task *_selectedTask;
 
 	_selectedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
-	self.alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDENCY
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDENCY
 												message:[NSString stringWithFormat:STRING_NEWDEPENDENCYFORTASK, _selectedTask.title]
 											   delegate:self
 									  cancelButtonTitle:STRING_CANCEL
 									  otherButtonTitles:STRING_CREATE, nil];
 	
-	self.alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-	[self.alertView textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
-	self.alertView.tag = ALERT_CREATEDEPENDENCY;
+	alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+	[alertView textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
+	alertView.tag = ALERT_CREATEDEPENDENCY;
 	
-	[self.alertView show];
+	[alertView show];
+}
+
+#pragma mark - Implementations
+
+- (NSString *)cellTextFor:(Task *)task {
+	return task.title;
+}
+
+- (NSString *)cellDetailTextFor:(Task *)task {
+	return [NSString stringWithFormat:@"%@, %@", task.dependenciesDescription, task.dependantsDescription];
 }
 
 @end

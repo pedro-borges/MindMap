@@ -10,6 +10,6 @@
 
 @interface LinkedTextField : UITextField
 
-@property (nonatomic, weak) IBOutlet UIResponder *nextWidget;
+@property (nonatomic, weak) IBOutlet UIResponder *nextResponder;
 
 @end

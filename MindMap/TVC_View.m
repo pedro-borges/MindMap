@@ -34,14 +34,4 @@
                                  userInfo:nil];
 }
 
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([SEGUE_EDIT isEqualToString:segue.identifier]) {
-		TVC_Edit *controller = segue.destinationViewController;
-
-		controller.managedObject = self.managedObject;
-	}
-}
-
 @end

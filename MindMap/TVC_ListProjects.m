@@ -24,8 +24,6 @@
 
 @interface TVC_ListProjects () <UIAlertViewDelegate, UITextFieldDelegate>
 
-@property (nonatomic, strong) UIAlertView *alertView;
-
 @end
 
 @implementation TVC_ListProjects
@@ -44,15 +42,19 @@
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSString *name = [self.alertView textFieldAtIndex:0].text;
-    
-	if (buttonIndex == 1) {
-		Project *project = [Project createFromContext:self.context withName:name];
-
-		[Settings defaultSettings].selectedProject = project;
-
-		[self bindToView];
-    }
+	[super alertView:alertView clickedButtonAtIndex:buttonIndex];
+	
+	NSString *name = [alertView textFieldAtIndex:0].text;
+	
+	if (alertView.tag == ALERT_CREATEPROJECT) {
+		if (buttonIndex == 1) {
+			Project *project = [Project createFromContext:self.context withName:name];
+			
+			[Settings defaultSettings].selectedProject = project;
+			
+			[self bindToView];
+		}
+	}
 }
 
 #pragma mark - UITableViewDataSource
@@ -96,19 +98,47 @@
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+											forRowAtIndexPath:(NSIndexPath *)indexPath {
+	Project *project = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
+	if ([project.tasks count] > 0) {
+		[super tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
+	} else {
+		[self.fetchedResultsController.managedObjectContext deleteObject:project];
+
+		[self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+	}
+}
+
 #pragma mark - Navigation
 
 - (IBAction)createProject:(UIBarButtonItem *)sender {
-    self.alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATEPROJECT
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATEPROJECT
 												message:nil
 											   delegate:self
 									  cancelButtonTitle:STRING_CANCEL
 									  otherButtonTitles:STRING_CREATE, nil];
 
-    self.alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-	[self.alertView textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+	[alertView textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
+	alertView.tag = ALERT_CREATEPROJECT;
+
+    [alertView show];
+}
+
+#pragma mark - Abastract Implementation
+
+- (void)deleteManagedObject:(NSManagedObject *)managedObject {
+	Project *project = (Project *)managedObject;
 	
-    [self.alertView show];
+	[project delete];
+}
+
+- (NSString *)confirmDeletionMessage:(NSManagedObject *)managedObject {
+	Project *project = (Project *)managedObject;
+
+	return [NSString stringWithFormat:@"Are you sure you want to delete project %@? %li tasks will be erased", project.name, [project.tasks count]];
 }
 
 @end

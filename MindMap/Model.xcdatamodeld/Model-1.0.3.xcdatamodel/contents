@@ -3,7 +3,7 @@
     <entity name="Completion" representedClassName="Completion" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="photo" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="timestamp" attributeType="Date" syncable="YES"/>
         <relationship name="task" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="completion" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Place" representedClassName="Place" syncable="YES">
@@ -13,19 +13,21 @@
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="place" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Project" representedClassName="Project" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" attributeType="Date" syncable="YES"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="project" inverseEntity="Task" syncable="YES"/>
     </entity>
-    <entity name="Task" representedClassName="Task" parentEntity="Project" syncable="YES">
+    <entity name="Task" representedClassName="Task" syncable="YES">
+        <attribute name="timestamp" attributeType="Date" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <relationship name="completion" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Completion" inverseName="task" inverseEntity="Completion" syncable="YES"/>
         <relationship name="dependants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="dependencies" inverseEntity="Task" syncable="YES"/>
         <relationship name="dependencies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="dependants" inverseEntity="Task" syncable="YES"/>
         <relationship name="place" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Place" inverseName="tasks" inverseEntity="Place" syncable="YES"/>
-        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="tasks" inverseEntity="Project" syncable="YES"/>
-        <relationship name="timeFrame" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TimeFrame" inverseName="task" inverseEntity="TimeFrame" syncable="YES"/>
+        <relationship name="project" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="tasks" inverseEntity="Project" syncable="YES"/>
+        <relationship name="timeFrame" maxCount="1" deletionRule="Cascade" destinationEntity="TimeFrame" inverseName="task" inverseEntity="TimeFrame" syncable="YES"/>
     </entity>
-    <entity name="TimeFrame" representedClassName="TimeFrame" parentEntity="Task" syncable="YES">
+    <entity name="TimeFrame" representedClassName="TimeFrame" syncable="YES">
         <attribute name="endDate" attributeType="Date" syncable="YES"/>
         <attribute name="startDate" attributeType="Date" syncable="YES"/>
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="timeFrame" inverseEntity="Task" syncable="YES"/>
@@ -33,8 +35,8 @@
     <elements>
         <element name="Completion" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Place" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="Project" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="Task" positionX="0" positionY="0" width="128" height="148"/>
-        <element name="TimeFrame" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="Project" positionX="0" positionY="0" width="128" height="88"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="163"/>
+        <element name="TimeFrame" positionX="0" positionY="0" width="128" height="88"/>
     </elements>
 </model>

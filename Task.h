@@ -2,7 +2,7 @@
 //  Task.h
 //  MindMap
 //
-//  Created by Pedro Borges on 06/10/14.
+//  Created by Pedro Borges on 14/10/14.
 //  Copyright (c) 2014 PCB. All rights reserved.
 //
 
@@ -13,6 +13,7 @@
 
 @interface Task : NSManagedObject
 
+@property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) Completion *completion;
 @property (nonatomic, retain) NSSet *dependants;

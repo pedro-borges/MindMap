@@ -8,6 +8,8 @@
 
 #import "TVC_EditTask.h"
 
+#import "NSDate+Friendly.h"
+
 #import "TVC_ListDependencies.h"
 #import "TVC_ListDependants.h"
 #import "TVC_EditTimeFrame.h"
@@ -42,13 +44,7 @@
 	}
 }
 
-#pragma mark - UIKit
-
-- (void)viewDidLoad {
-	[super viewDidLoad];
-	
-	self.firstResponder = self.titleTextField;
-}
+#pragma mark - Bindings
 
 - (BOOL)bindToModel:(NSError **)error {
     NSString *title = self.titleTextField.text;
@@ -60,7 +56,7 @@
 
 - (void)bindToView {
     NSString *title			= self.task.title;
-    NSString *timeFrame		= self.task.timeFrame.description;
+    NSString *timeFrame		= [NSDate describeDateFrom:self.task.enforcedStartDate to:self.task.enforcedEndDate];
     NSString *locations		= @""; //TODO Location
     NSString *dependencies	= [NSString stringWithFormat:@"%lu", (unsigned long)[self.task.dependencies count]];
     NSString *dependants	= [NSString stringWithFormat:@"%lu", (unsigned long)[self.task.dependants count]];
@@ -85,7 +81,7 @@
 		controller.navigationItem.title = self.task.title;
 	} else 	if ([@"Edit TimeFrame" isEqualToString:segue.identifier]) {
 		TVC_EditTimeFrame *controller = segue.destinationViewController;
-		controller.timeFrame = self.task.timeFrame;
+		controller.task = self.task;
 	}
 }
 

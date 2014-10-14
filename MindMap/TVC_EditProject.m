@@ -8,6 +8,8 @@
 
 #import "TVC_EditProject.h"
 
+#import "Task+Business.h"
+
 #import "LocalizableStrings.h"
 
 #define STRING_ERROR_DUPLICATEPROJECTNAME @"There's already a project by that name"
@@ -16,7 +18,13 @@
 
 @property (nonatomic, weak) IBOutlet UITextField *nameTextField;
 @property (nonatomic, weak) IBOutlet UILabel *progressLabel;
-@property (nonatomic, weak) IBOutlet UIProgressView *progressView;
+@property (nonatomic, weak) IBOutlet UIProgressView *completionProgressView;
+@property (nonatomic, weak) IBOutlet UIProgressView *pastProgressView;
+@property (nonatomic, weak) IBOutlet UIProgressView *presentProgressView;
+@property (nonatomic, weak) IBOutlet UIProgressView *futureProgressView;
+@property (nonatomic, weak) IBOutlet UIProgressView *totalPastProgressView;
+@property (nonatomic, weak) IBOutlet UIProgressView *totalPresentProgressView;
+@property (nonatomic, weak) IBOutlet UIProgressView *totalFutureProgressView;
 @property (nonatomic, weak) IBOutlet UILabel *pastTaskStatistic;
 @property (nonatomic, weak) IBOutlet UILabel *presentTaskStatistic;
 @property (nonatomic, weak) IBOutlet UILabel *futureTaskStatistic;
@@ -46,24 +54,18 @@
 
 #pragma mark - UIKit
 
-- (void)viewDidLoad {
-	[super viewDidLoad];
-
-	self.firstResponder = self.nameTextField;
-}
-
 #pragma mark - Bindings
 
 - (void)bindToView {
-	NSInteger pastCount		= [[self.project pastTasks] count];
-	NSInteger presentCount	= [[self.project presentTasks] count];
-	NSInteger futureCount	= [[self.project futureTasks] count];
+	NSInteger pastCount		= [[Task allInContext:self.project.managedObjectContext matchingPredicate:self.project.pastTasksPredicate] count];
+	NSInteger presentCount	= [[Task allInContext:self.project.managedObjectContext matchingPredicate:self.project.presentTasksPredicate] count];
+	NSInteger futureCount	= [[Task allInContext:self.project.managedObjectContext matchingPredicate:self.project.futureTasksPredicate] count];
 	NSInteger totalCount	= [self.project.tasks count];
 
-	NSInteger pastPercent		= totalCount > 0 ? 100 * pastCount / totalCount : 0;
-	NSInteger presentPercent	= totalCount > 0 ? 100 * presentCount / totalCount : 0;
-	NSInteger futurePercent		= totalCount > 0 ? 100 * futureCount / totalCount : 0;
-
+	float pastPercent		= totalCount > 0 ? (float)1 * pastCount / totalCount : 0;
+	float presentPercent	= totalCount > 0 ? (float)1 * presentCount / totalCount : 0;
+	float futurePercent		= totalCount > 0 ? (float)1 * futureCount / totalCount : 0;
+	
 	NSInteger progressPercent = 100 * pastCount / totalCount;
 
 	NSString *name = self.project.name;
@@ -74,16 +76,24 @@
 	NSString *futureTaskStatistic	= [NSString stringWithFormat:STRING_TASKSCOUNT, futureCount];
 	NSString *totalTaskStatistic	= [NSString stringWithFormat:STRING_TASKSCOUNT, totalCount];
 	
-	NSString *pastPercentStatistic		= [NSString stringWithFormat:@"%li%%", pastPercent];
-	NSString *presentPercentStatistic	= [NSString stringWithFormat:@"%li%%", presentPercent];
-	NSString *futurePercentStatistic	= [NSString stringWithFormat:@"%li%%", futurePercent];
+	NSString *pastPercentStatistic		= [NSString stringWithFormat:@"%li%%", (NSInteger)(100 * pastPercent)];
+	NSString *presentPercentStatistic	= [NSString stringWithFormat:@"%li%%", (NSInteger)(100 *presentPercent)];
+	NSString *futurePercentStatistic	= [NSString stringWithFormat:@"%li%%", (NSInteger)(100 * futurePercent)];
 	NSString *totalPercentStatistic		= [NSString stringWithFormat:@"%li%%", (NSInteger)100];
 
 	self.nameTextField.text = name;
 	
 	self.progressLabel.text = progress;
-	self.progressView.progress = totalCount > 0 ? (float)1 * pastCount / totalCount : 0;
+	self.completionProgressView.progress = totalCount > 0 ? (float)1 * pastCount / totalCount : 0;
 	
+	self.pastProgressView.progress = pastPercent;
+	self.presentProgressView.progress = presentPercent;
+	self.futureProgressView.progress = futurePercent;
+
+	self.totalPastProgressView.progress = pastPercent;
+	self.totalPresentProgressView.progress = pastPercent + presentPercent;
+	self.totalFutureProgressView.progress = 1;
+
 	self.pastTaskStatistic.text		= pastTaskStatistic;
 	self.presentTaskStatistic.text	= presentTaskStatistic;
 	self.futureTaskStatistic.text	= futureTaskStatistic;

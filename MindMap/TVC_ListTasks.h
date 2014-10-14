@@ -14,4 +14,7 @@
 
 @property (nonatomic, readonly) Project *project;
 
+- (NSString *)cellTextFor:(Task *)task;
+- (NSString *)cellDetailTextFor:(Task *)task;
+
 @end

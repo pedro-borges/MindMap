@@ -24,6 +24,7 @@
     result.title = title;
 	result.project = project;
 	result.timeFrame = timeFrame;
+	result.timestamp = [NSDate date];
 
     [Database saveManagedObjectByForce:result];
     
@@ -56,6 +57,7 @@
 }
 
 - (NSInteger)dependenciesCount {
+	//TODO change for active dependencies only
 	return [self.dependencies count];
 }
 

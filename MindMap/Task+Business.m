@@ -9,8 +9,21 @@
 #import "Task+Business.h"
 
 #import "TimeFrame+Business.h"
+#import "Completion+Business.h"
+
+#import "LocalizableStrings.h"
 
 @implementation Task (Business)
+
+- (BOOL)inPresent {
+	if (self.completion != nil) return NO;
+	
+	for (Task *dependency in self.dependencies) {
+		if (dependency.completion == nil) return NO;
+	}
+	
+	return YES;
+}
 
 - (NSSet *)fullDependencies {
 	NSMutableSet *result = [[NSMutableSet alloc] init];
@@ -25,7 +38,7 @@
 }
 
 - (NSArray *)possibleDependenciesInSameProject {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"project = %@", self.project];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count == 0)", self.project];
 	
 	NSMutableArray *result = [[Task allInContext:self.managedObjectContext matchingPredicate:predicate] mutableCopy];
 
@@ -49,7 +62,7 @@
 }
 
 - (NSArray *)possibleDependantsIsSameProject {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"project = %@", self.project];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count > 0)", self.project];
 
 	NSMutableArray *result = [[Task allInContext:self.managedObjectContext matchingPredicate:predicate] mutableCopy];
 
@@ -64,10 +77,13 @@
 	NSDate *result = self.timeFrame.startDate;
 
 	for (Task *dependency in self.dependencies) {
-		if ([dependency.startDate compare:result] == NSOrderedDescending) result = dependency.startDate;
+		if ([dependency.enforcedStartDate compare:result] == NSOrderedDescending) result = dependency.enforcedStartDate;
+	}
+	
+	if ([result compare:self.timeFrame.startDate] == NSOrderedDescending) {
+		self.timeFrame.startDate = result;
 	}
 
-	NSLog(@"ret sd: %@", result);
 	return result;
 }
 
@@ -75,19 +91,71 @@
 	NSDate *result = self.timeFrame.endDate;
 
 	for (Task *dependant in self.dependants) {
-		if ([dependant.endDate compare:result] == NSOrderedAscending) result = dependant.endDate;
+		if ([dependant.enforcedEndDate compare:result] == NSOrderedAscending) result = dependant.enforcedEndDate;
+	}
+	
+	if ([result compare:self.timeFrame.endDate] == NSOrderedAscending) {
+		self.timeFrame.endDate = result;
 	}
 	
 	return result;
 }
 
-- (BOOL)inheritedTimeFrame {
-	NSLog(@"Inherited:");
-	if (![self.startDate isEqualToDate:self.timeFrame.startDate]) return YES;
-	if (![self.endDate isEqualToDate:self.timeFrame.endDate]) return YES;
+- (NSString *)dependenciesDescription {
+	NSInteger dependenciesCount = self.dependenciesCount;
 
-	NSLog(@"NO");
-	return NO;
+	if (dependenciesCount > 0) {
+		if (dependenciesCount == 1) {
+			Task *singleDependency = (Task *)[self.dependencies anyObject];
+			return [NSString stringWithFormat:STRING_DEPENDENCYDETAIL, singleDependency.title];
+		} else {
+			return [NSString stringWithFormat:STRING_DEPENDENCIESDETAIL, (unsigned long)dependenciesCount];
+		}
+	}
+
+	if ([self.timeFrame.startDate compare:[NSDate date]] == NSOrderedDescending) {
+		return @"On hold";
+	} else {
+		return @"Active";
+	}
+}
+
+- (NSString *)dependantsDescription {
+	NSInteger dependantsCount = self.dependantsCount;
+
+	if (dependantsCount > 0) {
+		if (dependantsCount == 1) {
+			Task *singleDependant = (Task *)[self.dependants anyObject];
+			return [NSString stringWithFormat:STRING_DEPENDANTDETAIL, singleDependant.title];
+		} else {
+			return [NSString stringWithFormat:STRING_DEPENDANTSDETAIL, (unsigned long)dependantsCount];
+		}
+	}
+
+	return STRING_GOAL;
+}
+
+- (void)close {
+	self.completion = [Completion createFromContext:self.managedObjectContext
+											forTask:self];
+
+//	for (Task *dependant in self.dependants) {
+//		if (dependant.inPresent) {
+//			dependant.dateBecomeActive = [NSDate date];
+//		}
+//	}
+}
+
+- (void)delete {
+//	NSSet *dependants = self.dependants;
+
+	[self.managedObjectContext deleteObject:self];
+
+//	for (Task *dependant in dependants) {
+//		if (dependant.inPresent) {
+//			dependant.dateBecomeActive = [NSDate date];
+//		}
+//	}
 }
 
 @end

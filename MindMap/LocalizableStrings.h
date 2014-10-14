@@ -19,8 +19,10 @@
 
 #define STRING_PENDINGTASKCOUNT		NSLocalizedString(@"1 Pending", nil)
 #define STRING_PENDINGTASKSCOUNT	NSLocalizedString(@"%lu Pending", nil)
-#define STRING_DEPENDANTCOUNT		NSLocalizedString(@"1 dependant", nil)
-#define STRING_DEPENDANTSCOUNT		NSLocalizedString(@"lu dependants", nil)
+#define STRING_DEPENDANTDETAIL		NSLocalizedString(@"allows %@", nil)
+#define STRING_DEPENDANTSDETAIL		NSLocalizedString(@"%lu dependants", nil)
+#define STRING_DEPENDENCYDETAIL		NSLocalizedString(@"depends on %@", nil)
+#define STRING_DEPENDENCIESDETAIL	NSLocalizedString(@"%lu dependencies", nil)
 #define STRING_TASKCOUNT			NSLocalizedString(@"1 task", nil)
 #define STRING_TASKSCOUNT			NSLocalizedString(@"%li tasks", nil)
 

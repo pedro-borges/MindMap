@@ -10,7 +10,7 @@
 
 #import "LinkedTextField.h"
 
-@interface TVC_Edit() <UITextFieldDelegate>
+@interface TVC_Edit()
 
 @end
 
@@ -41,16 +41,14 @@
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	[textField resignFirstResponder];
+
 	if ([textField isKindOfClass:[LinkedTextField class]]) {
-		UIResponder *next = ((LinkedTextField *)textField).nextWidget;
-	
+		UIResponder *next = ((LinkedTextField *)textField).nextResponder;
+
 		if (next) {
 			[next becomeFirstResponder];
-		} else {
-			[textField resignFirstResponder];
 		}
-	} else {
-		[textField resignFirstResponder];
 	}
 	
 	return NO;
@@ -59,7 +57,7 @@
 #pragma mark - Navigation
 
 - (IBAction)cancelAction:(UIBarButtonItem *)sender {
-	[self.navigationController popViewControllerAnimated:NO];
+	[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)saveAction:(UIBarButtonItem *)sender {

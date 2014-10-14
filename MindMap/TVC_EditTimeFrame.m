@@ -8,6 +8,8 @@
 
 #import "TVC_EditTimeFrame.h"
 
+#import "TimeFrame+Business.h"
+
 @interface TVC_EditTimeFrame() <UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISwitch *startDateSwitch;
@@ -22,13 +24,13 @@
 
 #pragma mark - Properties
 
-- (TimeFrame *)timeFrame {
-	return (TimeFrame *)self.managedObject;
+- (Task *)task {
+	return (Task *)self.managedObject;
 }
 
-- (void)setTimeFrame:(TimeFrame *)timeFrame {
-	if (self.managedObject != timeFrame) {
-		self.managedObject = timeFrame;
+- (void)setTask:(Task *)task {
+	if (self.managedObject != task) {
+		self.managedObject = task;
 		
 		[self bindToView];
 	}
@@ -38,6 +40,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+	
+	if (![self.task.enforcedStartDate isEqualToDate:self.task.timeFrame.startDate]) {
+		self.startDateSwitch.on = YES;
+		self.startDateSwitch.enabled = NO;
+	}
+	if (![self.task.enforcedEndDate isEqualToDate:self.task.timeFrame.endDate]) {
+		self.endDateSwitch.on = YES;
+		self.endDateSwitch.enabled = NO;
+	}
 }
 
 #pragma mark - UITableViewDataSource
@@ -67,11 +78,34 @@
 #pragma mark - Bindings
 
 - (void)bindToView {
-	NSDate *startDate	= self.timeFrame.startDate;
-	NSDate *endDate		= self.timeFrame.endDate;
+	NSDate *startDate	= self.task.timeFrame.startDate;
+	NSDate *endDate		= self.task.timeFrame.endDate;
 
-	NSLog(@"startDate = %@", startDate);
-	NSLog(@"endDate = %@", endDate);
+	NSDate *minimumStartDate = self.task.enforcedStartDate;
+	NSDate *maximumStartDate = self.task.enforcedEndDate;
+	NSDate *minimumEndDate = self.task.enforcedStartDate;
+	NSDate *maximumEndDate = self.task.enforcedEndDate;
+//
+//	if ([startDate compare:minimumStartDate] == NSOrderedAscending) {
+//		startDate = minimumStartDate;
+//	}
+//
+//	if ([startDate compare:maximumStartDate] == NSOrderedDescending) {
+//		startDate = maximumStartDate;
+//	}
+//
+//	if ([endDate compare:minimumEndDate] == NSOrderedAscending) {
+//		endDate = minimumEndDate;
+//	}
+//
+//	if ([endDate compare:maximumEndDate] == NSOrderedDescending) {
+//		endDate = maximumEndDate;
+//	}
+
+	self.startDatePicker.minimumDate	= minimumStartDate;
+	self.startDatePicker.maximumDate	= maximumStartDate;
+	self.endDatePicker.minimumDate		= minimumEndDate;
+	self.endDatePicker.maximumDate		= maximumEndDate;
 
 	if ((startDate == nil) || [startDate isEqualToDate:[NSDate distantPast]]) {
 		// Start date - OFF
@@ -96,8 +130,8 @@
 	NSDate *startDate	= self.startDateSwitch.on ? self.startDatePicker.date : [NSDate distantPast];
 	NSDate *endDate		= self.endDateSwitch.on ? self.endDatePicker.date : [NSDate distantFuture];
 
-	self.timeFrame.startDate	= startDate;
-	self.timeFrame.endDate		= endDate;
+	self.task.timeFrame.startDate	= startDate;
+	self.task.timeFrame.endDate		= endDate;
 
 	return YES;
 }
@@ -117,11 +151,11 @@
 - (IBAction)updateSwitches:(UISwitch *)sender {
 	if ([sender isEqual:self.startDateSwitch]) {
 		if (!sender.on) {
-			self.timeFrame.startDate = [NSDate distantPast];
+			self.task.timeFrame.startDate = [NSDate distantPast];
 		}
 	} else if ([sender isEqual:self.endDateSwitch]) {
 		if (!sender.on) {
-			self.timeFrame.endDate = [NSDate distantFuture];
+			self.task.timeFrame.endDate = [NSDate distantFuture];
 		}
 	}
 

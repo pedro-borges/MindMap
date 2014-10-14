@@ -10,6 +10,6 @@
 
 @implementation LinkedTextField
 
-@synthesize nextWidget;
+@synthesize nextResponder;
 
 @end

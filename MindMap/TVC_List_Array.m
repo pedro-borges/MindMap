@@ -29,7 +29,7 @@
 #pragma mark - Abstract
 
 - (void)bindToView {
-    @throw [NSException exceptionWithName:@"Inheritance violation" reason:@"abstract method call" userInfo:nil];
+    @throw [NSException exceptionWithName:@"Abstraction violation" reason:@"Direct call to [TVC_List_Array bindToView]" userInfo:nil];
 }
 
 @end

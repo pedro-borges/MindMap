@@ -8,6 +8,9 @@
 
 #import "TVC_ListTasks.h"
 
+#define ALERT_CREATEDEPENDENCY 101
+#define ALERT_NOTIFICATION 102
+
 @interface TVC_ListTasksFuture : TVC_ListTasks
 
 @end

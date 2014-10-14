@@ -10,4 +10,6 @@
 
 @interface Project (Business)
 
+- (void)delete;
+
 @end

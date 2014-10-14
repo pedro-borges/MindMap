@@ -14,13 +14,13 @@
 
 
 + (Completion *)createFromContext:(NSManagedObjectContext *)context
-                          forTask:(Task *)task
-                        timestamp:(NSDate *)date {
+                          forTask:(Task *)task {
     Completion *result;
     
     result = [NSEntityDescription insertNewObjectForEntityForName:@"Completion" inManagedObjectContext:context];
     
     result.task = task;
+	result.timestamp = [NSDate date];
     
     [Database saveManagedObjectByForce:result];
     

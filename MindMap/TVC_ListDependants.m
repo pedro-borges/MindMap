@@ -95,14 +95,4 @@
 
 #pragma mark - Navigation
 
-- (void)delDependant:(Task *)dependant {
-	
-}
-
-- (void)addDependant:(Task *)dependant {
-	[self.model addDependantsObject:dependant];
-	
-	[self bindToView];
-}
-
 @end

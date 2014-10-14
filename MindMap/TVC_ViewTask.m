@@ -41,7 +41,7 @@
 	// Autoheal
 	if (self.task.timeFrame == nil) {
 		self.task.timeFrame = [TimeFrame createFromContext:self.managedObject.managedObjectContext
-												 startDate:self.task
+												 startDate:nil
 												   endDate:nil];
 	}
 }
@@ -56,20 +56,16 @@
 
 - (void)bindToView {
     NSString *title = self.task.title;
-    NSString *timeFrame = [NSDate describeTimeFrom:self.task.startDate to:self.task.endDate];
+    NSString *timeFrame = [NSDate describeDateFrom:self.task.enforcedStartDate to:self.task.enforcedEndDate];
     NSString *locations = @""; //TODO Location
     NSString *dependencies = [NSString stringWithFormat:@"%lu", (unsigned long)[self.task.dependencies count]];
     NSString *dependants = [NSString stringWithFormat:@"%lu", (unsigned long)[self.task.dependants count]];
-
-	UIColor *timeFrameColor = [self.task inheritedTimeFrame] ? [UIColor grayColor] : [UIColor blackColor];
 
     self.titleLabel.text        = title;
     self.timeFrameLabel.text    = timeFrame;
     self.locationsLabel.text    = locations;
     self.dependantsLabel.text   = dependants;
     self.dependenciesLabel.text = dependencies;
-	
-	self.timeFrameLabel.textColor = timeFrameColor;
 }
 
 @end

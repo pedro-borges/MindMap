@@ -16,9 +16,11 @@
 		matchingPredicate:(NSPredicate *)predicate;
 + (NSArray *)forName:(NSString *)name
 		   inContext:(NSManagedObjectContext *)context;
+
 - (NSArray *)pendingTasks;
-- (NSArray *)pastTasks;
-- (NSArray *)presentTasks;
-- (NSArray *)futureTasks;
+
+- (NSPredicate *)pastTasksPredicate;
+- (NSPredicate *)presentTasksPredicate;
+- (NSPredicate *)futureTasksPredicate;
 
 @end

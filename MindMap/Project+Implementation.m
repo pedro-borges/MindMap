@@ -19,6 +19,7 @@
     result = [NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:context];
 
     result.name = name;
+	result.timestamp = [NSDate date];
 
     [Database saveManagedObjectByForce:result];
 
@@ -87,64 +88,16 @@
 	return result;
 }
 
-- (NSArray *)pastTasks {
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
-	
-	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
-	NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-
-	request.sortDescriptors = sortDescriptors;
-	request.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion != nil)", self];
-
-	NSError *error;
-	
-	NSArray *result = [self.managedObjectContext executeFetchRequest:request error:&error];
-	
-	if (error) {
-		NSLog(@"Error getting pending tasks - %@", error);
-	}
-	
-	return result;
+- (NSPredicate *)pastTasksPredicate {
+	return [NSPredicate predicateWithFormat:@"(project = %@) AND (completion != nil)", self];
 }
 
-- (NSArray *)presentTasks {
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
-	
-	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
-	NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-	
-	request.sortDescriptors = sortDescriptors;
-	request.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count == 0)", self];
-	
-	NSError *error;
-	
-	NSArray *result = [self.managedObjectContext executeFetchRequest:request error:&error];
-	
-	if (error) {
-		NSLog(@"Error getting pending tasks - %@", error);
-	}
-	
-	return result;
+- (NSPredicate *)presentTasksPredicate {
+	return [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND (timeFrame.startDate < %@) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count == 0)", self, [NSDate date]];
 }
 
-- (NSArray *)futureTasks {
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
-	
-	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
-	NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-	
-	request.sortDescriptors = sortDescriptors;
-	request.predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count > 0)", self];
-	
-	NSError *error;
-	
-	NSArray *result = [self.managedObjectContext executeFetchRequest:request error:&error];
-	
-	if (error) {
-		NSLog(@"Error getting pending tasks - %@", error);
-	}
-	
-	return result;
+- (NSPredicate *)futureTasksPredicate {
+	return [NSPredicate predicateWithFormat:@"((project = %@) AND (completion = nil)) AND ((SUBQUERY(dependencies, $t, $t.completion == nil).@count > 0) OR (timeFrame.startDate > %@))", self, [NSDate date]];
 }
 
 @end
