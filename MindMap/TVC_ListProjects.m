@@ -52,7 +52,7 @@
 			
 			[Settings defaultSettings].selectedProject = project;
 			
-			[self bindToView];
+			[self bindToView]; //todo check if bindToView is needed
 		}
 	}
 }

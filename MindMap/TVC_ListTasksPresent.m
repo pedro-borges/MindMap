@@ -66,8 +66,6 @@ Task *_selectedTask;
 		case ALERT_CREATE_TASK: {
 			if (buttonIndex == 1) {
 				[Task createFromContext:self.context forProject:self.project withTitle:title];
-				
-				[self bindToView]; //TODO try and comment this out
 			}
 			break;
 		}

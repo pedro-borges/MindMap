@@ -15,7 +15,7 @@
 
 @implementation TVC_ListDependants
     
-#pragma mark - Implementation
+#pragma mark - Bindings
 
 - (void)bindToView {
     NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"dependantsCount" ascending:YES]];
@@ -83,7 +83,7 @@
 
 		[self.model removeDependantsObject:dependant];
 
-		[self bindToView];
+		[self bindToView]; //todo check if bindToView is needed
 	}
 }
 
@@ -95,7 +95,7 @@
 
 		[self.model addDependantsObject:dependant];
 
-		[self bindToView];
+		[self bindToView]; //todo check if bindToView is needed
 	}
 }
 

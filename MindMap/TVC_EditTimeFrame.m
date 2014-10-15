@@ -31,19 +31,10 @@
 - (void)setTask:(Task *)task {
 	if (self.managedObject != task) {
 		self.managedObject = task;
-		
-		[self bindToView];
 	}
 }
 
 #pragma mark - UIKit
-
-- (void)viewDidLoad {
-	[super viewDidLoad];
-	
-	[self.startDatePicker addTarget:self action:@selector(startDateChanged) forControlEvents:UIControlEventEditingDidEnd];
-	[self.endDatePicker   addTarget:self action:@selector(endDateChanged)   forControlEvents:UIControlEventEditingDidEnd];
-}
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
@@ -60,14 +51,26 @@
 
 #pragma mark - UIDatePickerTarget
 
-- (void)startDateChanged {
-	//todo implement yuck!
-	NSLog(@"Start Date changed");
+- (IBAction)startDateChanged:(UIDatePicker *)sender {
+	NSDate *startDate	= sender.date;
+	NSDate *minimumEndDate = self.task.enforcedStartDate;
+	
+	if ([minimumEndDate compare:startDate] == NSOrderedAscending) {
+		minimumEndDate = startDate;
+	}
+	
+	self.endDatePicker.minimumDate = minimumEndDate;
 }
 
-- (void)endDateChanged {
-	//todo implement yuck!
-	NSLog(@"End Date changed");
+- (IBAction)endDateChanged:(UIDatePicker *)sender {
+	NSDate *endDate		= sender.date;
+	NSDate *maximumStartDate = self.task.enforcedEndDate;
+	
+	if ([maximumStartDate compare:endDate] == NSOrderedDescending) {
+		maximumStartDate = endDate;
+	}
+	
+	self.startDatePicker.maximumDate = maximumStartDate;
 }
 
 #pragma mark - UITableViewDataSource
@@ -105,8 +108,12 @@
 	NSDate *minimumEndDate = self.task.enforcedStartDate;
 	NSDate *maximumEndDate = self.task.enforcedEndDate;
 
-	if ([minimumEndDate compare:maximumStartDate] == NSOrderedAscending) {
-		maximumStartDate = minimumEndDate;
+	if ([maximumStartDate compare:endDate] == NSOrderedDescending) {
+		maximumStartDate = endDate;
+	}
+
+	if ([minimumEndDate compare:startDate] == NSOrderedAscending) {
+		minimumEndDate = startDate;
 	}
 
 	self.startDatePicker.minimumDate	= minimumStartDate;

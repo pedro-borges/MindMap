@@ -525,6 +525,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="433961582.52970099">
                                                         <!--2014-10-02 16:53:02 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="startDateChanged:" destination="Ud2-zx-hY4" eventType="valueChanged" id="uAr-0l-OaX"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -574,6 +577,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="433961582.52970099">
                                                         <!--2014-10-02 16:53:02 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="endDateChanged:" destination="Ud2-zx-hY4" eventType="valueChanged" id="wd2-TK-szm"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
