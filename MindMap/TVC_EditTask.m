@@ -39,8 +39,6 @@
 - (void)setTask:(Task *)task {
 	if (self.managedObject != task) {
 		self.managedObject = task;
-
-		[self bindToView];
 	}
 }
 

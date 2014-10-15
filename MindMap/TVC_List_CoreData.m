@@ -11,7 +11,7 @@
 #import "TVC_View.h"
 #import "TVC_Edit.h"
 
-#import "LocalizableStrings.h"
+#import "LocalizedStrings.h"
 
 #import "DatabaseManager.h"
 

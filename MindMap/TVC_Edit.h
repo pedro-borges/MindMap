@@ -15,11 +15,8 @@
 
 @interface TVC_Edit : TVC_View <UITextFieldDelegate>
 
-@property (nonatomic, strong) UIResponder *firstResponder;
-
 - (BOOL)bindToModel:(NSError **)error;
 
-- (IBAction)cancelAction:(UIBarButtonItem *)sender;
 - (IBAction)saveAction:(UIBarButtonItem *)sender;
 
 @end

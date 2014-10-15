@@ -8,7 +8,7 @@
 
 #import "TVC_ListDependencies.h"
 
-#import "LocalizableStrings.h"
+#import "LocalizedStrings.h"
 
 #define CELL_DIRECTDEPENDENCY @"pt.pcb.mindmap.dependency"
 #define CELL_POSSIBLEDEPENDENCY @"pt.pcb.mindmap.possibleDependency"
@@ -18,7 +18,7 @@
 #pragma mark - Implementation
 
 - (void)bindToView {
-	NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"dependenciesCount" ascending:YES]];
+	NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"dependantsCount" ascending:YES]];
 	
 	self.list = [self.model.dependencies sortedArrayUsingDescriptors:sortDescriptors];
 
@@ -45,6 +45,10 @@
 			
 			cell.textLabel.text = task.title;
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+			if (task.completion) {
+				cell.textLabel.enabled = NO;
+			}
 			
 			return cell;
 		}
@@ -53,7 +57,9 @@
 			
 			Task *task = (Task *)[[self.model possibleDependenciesInSameProject] objectAtIndex:indexPath.row];
 			
-			cell.textLabel.text = task.title;
+			UILabel *titleLabel = (UILabel *)[cell.contentView viewWithTag:TAG_TITLE];
+
+			titleLabel.text = task.title;
 			
 			return cell;
 		}

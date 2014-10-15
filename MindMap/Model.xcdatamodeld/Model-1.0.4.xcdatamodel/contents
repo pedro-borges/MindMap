@@ -36,7 +36,7 @@
         <element name="Completion" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Place" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Project" positionX="0" positionY="0" width="128" height="88"/>
-        <element name="Task" positionX="0" positionY="0" width="128" height="163"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="165"/>
         <element name="TimeFrame" positionX="0" positionY="0" width="128" height="88"/>
     </elements>
 </model>

@@ -8,7 +8,7 @@
 
 #import "TVC_ViewProject.h"
 
-#import "LocalizableStrings.h"
+#import "LocalizedStrings.h"
 
 #import "Task+Business.h"
 

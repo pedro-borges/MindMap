@@ -21,7 +21,6 @@ NSDateFormatter *_dateFormatter;
 	return _dateFormatter;
 }
 
-
 + (NSString *)describeDateFrom:(NSDate *)startDate
 							to:(NSDate *)endDate {
 	

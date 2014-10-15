@@ -46,7 +46,28 @@
 	NSArray *result = [context executeFetchRequest:request error:&error];
 
 	if (error) {
-		NSLog(@"Error getting all Tasks - %@", error);
+		NSLog(@"Error fetching allInContext:matchingPredicate: - %@", error);
+	}
+
+	return result;
+}
+
++ (NSInteger)countInContext:(NSManagedObjectContext *)context
+		  matchingPredicate:(NSPredicate *)predicate {
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
+	
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+	NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+	
+	request.sortDescriptors = sortDescriptors;
+	request.predicate = predicate;
+	
+	NSError *error;
+	
+	NSInteger result = [context countForFetchRequest:request error:&error];
+	
+	if (error) {
+		NSLog(@"Error fetching countInContext:matchingPredicate - %@", error);
 	}
 
 	return result;
@@ -56,9 +77,18 @@
 	return [self.dependants count];
 }
 
-- (NSInteger)dependenciesCount {
-	//TODO change for active dependencies only
-	return [self.dependencies count];
+- (NSPredicate *)activeDependenciesPredicate {
+	NSDate *now = [NSDate date];
+
+	return [NSPredicate predicateWithFormat:@"(ANY dependants = %@) AND (completion = nil) AND (timeFrame.startDate < %@)", self, now];
+}
+
+- (NSInteger)activeDependenciesCount {
+	return [Task countInContext:self.managedObjectContext matchingPredicate:[self activeDependenciesPredicate]];
+}
+
+- (NSArray *)activeDependencies {
+	return [Task allInContext:self.managedObjectContext matchingPredicate:[self activeDependenciesPredicate]];
 }
 
 @end

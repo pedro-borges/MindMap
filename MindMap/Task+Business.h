@@ -13,7 +13,7 @@
 - (NSSet *)fullDependencies;
 - (NSArray *)possibleDependenciesInSameProject;
 - (NSSet *)fullDependants;
-- (NSArray *)possibleDependantsIsSameProject;
+- (NSArray *)possibleDependantsInSameProject;
 
 @property (nonatomic, readonly) NSDate *enforcedStartDate;
 @property (nonatomic, readonly) NSDate *enforcedEndDate;

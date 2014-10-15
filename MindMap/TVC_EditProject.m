@@ -10,7 +10,7 @@
 
 #import "Task+Business.h"
 
-#import "LocalizableStrings.h"
+#import "LocalizedStrings.h"
 
 #define STRING_ERROR_DUPLICATEPROJECTNAME @"There's already a project by that name"
 
@@ -44,11 +44,9 @@
 	return (Project *)self.managedObject;
 }
 
-- (void)setProject:(Project *)model {
-	if (self.managedObject != model) {
-		self.managedObject = model;
-		
-		[self bindToView];
+- (void)setProject:(Project *)project {
+	if (self.managedObject != project) {
+		self.managedObject = project;
 	}
 }
 
@@ -122,8 +120,7 @@
 		// Valid name
 		self.project.name = name;
 	}
-	
-	
+
 	return YES;
 }
 

@@ -8,7 +8,7 @@
 
 #import "TVC_ListTasksPresent.h"
 
-#import "LocalizableStrings.h"
+#import "LocalizedStrings.h"
 
 #import "Task+Business.h"
 #import "Completion+Business.h"
@@ -24,17 +24,6 @@
 Task *_selectedTask;
 
 #pragma mark - UIKit
-
-- (void)viewWillAppear:(BOOL)animated {
-	NSSet *defunctSet = [Task allInContext:self.context matchingPredicate:[NSPredicate predicateWithFormat:@"project = nil"]];
-	
-	// Autoheal
-	for (Task *defunct in defunctSet) {
-		[defunct delete];
-	}
-	
-	[super viewWillAppear:animated];
-}
 
 #pragma mark - Private
 
@@ -75,10 +64,11 @@ Task *_selectedTask;
 
 	switch (alertView.tag) {
 		case ALERT_CREATE_TASK: {
-			[Task createFromContext:self.context forProject:self.project withTitle:title];
-			
-			[self bindToView]; //TODO try and comment this out
-
+			if (buttonIndex == 1) {
+				[Task createFromContext:self.context forProject:self.project withTitle:title];
+				
+				[self bindToView]; //TODO try and comment this out
+			}
 			break;
 		}
 		

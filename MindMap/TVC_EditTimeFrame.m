@@ -10,7 +10,7 @@
 
 #import "TimeFrame+Business.h"
 
-@interface TVC_EditTimeFrame() <UIPickerViewDelegate>
+@interface TVC_EditTimeFrame()
 
 @property (weak, nonatomic) IBOutlet UISwitch *startDateSwitch;
 @property (weak, nonatomic) IBOutlet UIDatePicker *startDatePicker;
@@ -38,6 +38,13 @@
 
 #pragma mark - UIKit
 
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	
+	[self.startDatePicker addTarget:self action:@selector(startDateChanged) forControlEvents:UIControlEventEditingDidEnd];
+	[self.endDatePicker   addTarget:self action:@selector(endDateChanged)   forControlEvents:UIControlEventEditingDidEnd];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
@@ -49,6 +56,18 @@
 		self.endDateSwitch.on = YES;
 		self.endDateSwitch.enabled = NO;
 	}
+}
+
+#pragma mark - UIDatePickerTarget
+
+- (void)startDateChanged {
+	//todo implement yuck!
+	NSLog(@"Start Date changed");
+}
+
+- (void)endDateChanged {
+	//todo implement yuck!
+	NSLog(@"End Date changed");
 }
 
 #pragma mark - UITableViewDataSource
@@ -85,22 +104,10 @@
 	NSDate *maximumStartDate = self.task.enforcedEndDate;
 	NSDate *minimumEndDate = self.task.enforcedStartDate;
 	NSDate *maximumEndDate = self.task.enforcedEndDate;
-//
-//	if ([startDate compare:minimumStartDate] == NSOrderedAscending) {
-//		startDate = minimumStartDate;
-//	}
-//
-//	if ([startDate compare:maximumStartDate] == NSOrderedDescending) {
-//		startDate = maximumStartDate;
-//	}
-//
-//	if ([endDate compare:minimumEndDate] == NSOrderedAscending) {
-//		endDate = minimumEndDate;
-//	}
-//
-//	if ([endDate compare:maximumEndDate] == NSOrderedDescending) {
-//		endDate = maximumEndDate;
-//	}
+
+	if ([minimumEndDate compare:maximumStartDate] == NSOrderedAscending) {
+		maximumStartDate = minimumEndDate;
+	}
 
 	self.startDatePicker.minimumDate	= minimumStartDate;
 	self.startDatePicker.maximumDate	= maximumStartDate;
@@ -136,7 +143,7 @@
 	return YES;
 }
 
-#pragma mark - UIPickerViewDelegate
+#pragma mark - Actions
 
 - (IBAction)doneAction:(id)sender {
 	NSError *error;
@@ -145,8 +152,6 @@
 
 	[self.navigationController popViewControllerAnimated:YES];
 }
-
-#pragma mark - Actions
 
 - (IBAction)updateSwitches:(UISwitch *)sender {
 	if ([sender isEqual:self.startDateSwitch]) {

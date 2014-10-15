@@ -8,7 +8,7 @@
 
 #import "TVC_ListDependants.h"
 
-#import "LocalizableStrings.h"
+#import "LocalizedStrings.h"
 
 #define CELL_DIRECTDEPENDANT @"pt.pcb.mindmap.dependant"
 #define CELL_POSSIBLEDEPENDANT @"pt.pcb.mindmap.possibleDependant"
@@ -30,7 +30,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
 		case 0: return [self.list count];
-		case 1: return [[self.model possibleDependantsIsSameProject] count];
+		case 1: return [[self.model possibleDependantsInSameProject] count];
     }
 
     return 0;
@@ -45,15 +45,21 @@
 
 			cell.textLabel.text = task.title;
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
+			
+			if (task.completion) {
+				cell.textLabel.enabled = NO;
+			}
 
 			return cell;
 		}
 		case 1: {
 			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_POSSIBLEDEPENDANT];
 
-			Task *task = (Task *)[[self.model possibleDependantsIsSameProject] objectAtIndex:indexPath.row];
+			Task *task = (Task *)[[self.model possibleDependantsInSameProject] objectAtIndex:indexPath.row];
 
-			cell.textLabel.text = task.title;
+			UILabel *titleLabel = (UILabel *)[cell.contentView viewWithTag:TAG_TITLE];
+			
+			titleLabel.text = task.title;
 
 			return cell;
 		}
@@ -85,7 +91,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.section) {
-		Task *dependant = [[self.model possibleDependantsIsSameProject] objectAtIndex:indexPath.row];
+		Task *dependant = [[self.model possibleDependantsInSameProject] objectAtIndex:indexPath.row];
 
 		[self.model addDependantsObject:dependant];
 

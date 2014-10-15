@@ -1,16 +1,14 @@
 //
-//  LocalizableStrings.h
+//  LocalizedStrings.h
 //  MindMap
 //
 //  Created by Pedro Borges on 10/10/14.
 //  Copyright (c) 2014 PCB. All rights reserved.
 //
 
-#ifndef MindMap_LocalizableStrings_h
-#define MindMap_LocalizableStrings_h
+#ifndef MindMap_LocalizedStrings_h
+#define MindMap_LocalizedStrings_h
 
-
-#endif
 
 #define STRING_DIRECTDEPENDENCIES	NSLocalizedString(@"Direct Dependencies", nil)
 #define STRING_POSSIBLEDEPENDENCIES	NSLocalizedString(@"Possible Dependencies", nil)
@@ -46,7 +44,10 @@
 #define STRING_BACK					NSLocalizedString(@"Back", nil)
 #define STRING_CANCEL				NSLocalizedString(@"Cancel", nil)
 #define STRING_OK					NSLocalizedString(@"Ok", nil)
+#define STRING_REMOVE				NSLocalizedString(@"Remove", nil)
 
 #define STRING_NEWDEPENDENCYFORTASK	NSLocalizedString(@"New dependency for %@", nil)
 #define STRING_NOPROJECTSELECTED	NSLocalizedString(@"No Project Selected", nil)
 #define STRING_WILLSHOWINPRESENT	NSLocalizedString(@"The new dependency will appear in the present tab", nil)
+
+#endif

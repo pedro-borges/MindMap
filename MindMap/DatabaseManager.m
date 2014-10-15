@@ -146,9 +146,7 @@ static DatabaseManager *_defaultManager;
 
 - (void)useDocument {
     [self setPersistentStoreOptionsInDocument:self.document];
-	
-	NSLog(@"Refresh Controller: %@", self.rootController);
-	
+
     if(![[NSFileManager defaultManager] fileExistsAtPath:[self.document.fileURL path]]) {
         [self.document saveToURL:self.document.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
 			NSLog(@"Create document = %i", success);

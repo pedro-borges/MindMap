@@ -16,7 +16,7 @@
 
 #import "DatabaseManager.h"
 
-#import "LocalizableStrings.h"
+#import "LocalizedStrings.h"
 
 #define CELL_PROJECT @"pt.pcb.mindmap.project"
 
@@ -60,7 +60,6 @@
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     Project *project = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_PROJECT forIndexPath:indexPath];
@@ -84,7 +83,7 @@
             detailTextLabel.text = STRING_COMPLETED;
         }
     }
-	
+
     return cell;
 }
 
@@ -131,7 +130,7 @@
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject {
 	Project *project = (Project *)managedObject;
-	
+
 	[project delete];
 }
 

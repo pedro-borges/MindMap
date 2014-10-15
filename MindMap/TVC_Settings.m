@@ -8,7 +8,7 @@
 
 #import "TVC_Settings.h"
 
-#import "LocalizableStrings.h"
+#import "LocalizedStrings.h"
 
 #import "Settings.h"
 

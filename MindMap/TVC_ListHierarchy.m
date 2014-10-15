@@ -8,6 +8,10 @@
 
 #import "TVC_ListHierarchy.h"
 
+#import "Task+Business.h"
+
+#import "LocalizedStrings.h"
+
 @interface TVC_ListHierarchy ()
 
 @end
@@ -25,13 +29,23 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.section) {
-        case 0: return YES;
+	Task *task;
+
+	switch (indexPath.section) {
+        case 0:
+			task = (Task *)[self.list objectAtIndex:indexPath.row];
+			return task.completion == nil;
         case 1: return NO;
 		case 2: return NO;
     }
 
     return NO;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return STRING_REMOVE;
 }
 
 @end

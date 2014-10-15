@@ -38,15 +38,11 @@
 		4B4223E519DE0F120098CCFA /* TaskOverlayActions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B4223E419DE0F120098CCFA /* TaskOverlayActions.xib */; };
 		4B4223E819DE129A0098CCFA /* TVC_ListDependencies.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4223E719DE129A0098CCFA /* TVC_ListDependencies.m */; };
 		4B4223EE19DF173A0098CCFA /* TVC_ListDependants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4223ED19DF173A0098CCFA /* TVC_ListDependants.m */; };
-		4B4223F119DF1FFD0098CCFA /* LinkedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4223F019DF1FFD0098CCFA /* LinkedTextField.m */; };
 		4B4223F419DF42AC0098CCFA /* TVC_List_Array.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4223F319DF42AC0098CCFA /* TVC_List_Array.m */; };
 		4B4223FD19DF512A0098CCFA /* TVC_ListHierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4223FC19DF512A0098CCFA /* TVC_ListHierarchy.m */; };
 		4B42240719DF64060098CCFA /* Completion+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42240619DF64060098CCFA /* Completion+Implementation.m */; };
 		4B42241019DF65A20098CCFA /* Completion+Business.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42240F19DF65A20098CCFA /* Completion+Business.m */; };
 		4B42241619DF76FA0098CCFA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B42241419DF76FA0098CCFA /* Model.xcdatamodeld */; };
-		4B42241919DF77190098CCFA /* TimeFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42241819DF77190098CCFA /* TimeFrame.m */; };
-		4B42241F19DF771A0098CCFA /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42241E19DF771A0098CCFA /* Place.m */; };
-		4B42242219DF771A0098CCFA /* Completion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42242119DF771A0098CCFA /* Completion.m */; };
 		4B42242519E1E1340098CCFA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B42242719E1E1340098CCFA /* Localizable.strings */; };
 		4B42243219E1EF780098CCFA /* TVC_ListProjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42243119E1EF780098CCFA /* TVC_ListProjects.m */; };
 		4B42243519E1F09D0098CCFA /* Project+Business.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42243419E1F09D0098CCFA /* Project+Business.m */; };
@@ -55,8 +51,11 @@
 		4B42245419E319640098CCFA /* TBC_ManageProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42245319E319640098CCFA /* TBC_ManageProject.m */; };
 		4B42245A19E40FF10098CCFA /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B42245919E40FF10098CCFA /* DatabaseManager.m */; };
 		4BC62A2619E9E6B500E832DA /* NSDate+Friendly.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC62A2519E9E6B500E832DA /* NSDate+Friendly.m */; };
-		4BC62A2D19ECA0A600E832DA /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC62A2C19ECA0A600E832DA /* Task.m */; };
-		4BC62A3019ECA0A600E832DA /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC62A2F19ECA0A600E832DA /* Project.m */; };
+		4BC62A3719EEF04100E832DA /* TimeFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC62A3619EEF04100E832DA /* TimeFrame.m */; };
+		4BC62A3A19EEF04200E832DA /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC62A3919EEF04200E832DA /* Place.m */; };
+		4BC62A3D19EEF04200E832DA /* Completion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC62A3C19EEF04200E832DA /* Completion.m */; };
+		4BC62A4019EEF04200E832DA /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC62A3F19EEF04200E832DA /* Project.m */; };
+		4BC62A4319EEF04200E832DA /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC62A4219EEF04200E832DA /* Task.m */; };
 		4BE4656A19E58F1600496F65 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4656919E58F1600496F65 /* Settings.m */; };
 		4BE4656D19E5C46D00496F65 /* TVC_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4656C19E5C46D00496F65 /* TVC_Settings.m */; };
 		4BE4657019E6CBA500496F65 /* TVC_EditProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4656F19E6CBA500496F65 /* TVC_EditProject.m */; };
@@ -73,7 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4B00A4BA19E83C42006426F1 /* LocalizableStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizableStrings.h; sourceTree = "<group>"; };
+		4B00A4BA19E83C42006426F1 /* LocalizedStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizedStrings.h; sourceTree = "<group>"; };
 		4B00A4BB19E85FE0006426F1 /* TVC_EditTimeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVC_EditTimeFrame.h; sourceTree = "<group>"; };
 		4B00A4BC19E85FE0006426F1 /* TVC_EditTimeFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVC_EditTimeFrame.m; sourceTree = "<group>"; };
 		4B00A4BE19E884A8006426F1 /* Model-1.0.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-1.0.2.xcdatamodel"; sourceTree = "<group>"; };
@@ -133,8 +132,6 @@
 		4B4223E719DE129A0098CCFA /* TVC_ListDependencies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVC_ListDependencies.m; sourceTree = "<group>"; usesTabs = 1; };
 		4B4223EC19DF173A0098CCFA /* TVC_ListDependants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVC_ListDependants.h; sourceTree = "<group>"; };
 		4B4223ED19DF173A0098CCFA /* TVC_ListDependants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVC_ListDependants.m; sourceTree = "<group>"; usesTabs = 1; };
-		4B4223EF19DF1FFD0098CCFA /* LinkedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedTextField.h; sourceTree = "<group>"; };
-		4B4223F019DF1FFD0098CCFA /* LinkedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedTextField.m; sourceTree = "<group>"; };
 		4B4223F219DF42AC0098CCFA /* TVC_List_Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVC_List_Array.h; sourceTree = "<group>"; };
 		4B4223F319DF42AC0098CCFA /* TVC_List_Array.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVC_List_Array.m; sourceTree = "<group>"; };
 		4B4223FB19DF512A0098CCFA /* TVC_ListHierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVC_ListHierarchy.h; sourceTree = "<group>"; };
@@ -144,12 +141,6 @@
 		4B42240E19DF65A20098CCFA /* Completion+Business.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Completion+Business.h"; sourceTree = "<group>"; };
 		4B42240F19DF65A20098CCFA /* Completion+Business.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Completion+Business.m"; sourceTree = "<group>"; };
 		4B42241519DF76FA0098CCFA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		4B42241719DF77190098CCFA /* TimeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeFrame.h; path = ../TimeFrame.h; sourceTree = "<group>"; };
-		4B42241819DF77190098CCFA /* TimeFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeFrame.m; path = ../TimeFrame.m; sourceTree = "<group>"; };
-		4B42241D19DF771A0098CCFA /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Place.h; path = ../Place.h; sourceTree = "<group>"; };
-		4B42241E19DF771A0098CCFA /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Place.m; path = ../Place.m; sourceTree = "<group>"; };
-		4B42242019DF771A0098CCFA /* Completion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Completion.h; path = ../Completion.h; sourceTree = "<group>"; };
-		4B42242119DF771A0098CCFA /* Completion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Completion.m; path = ../Completion.m; sourceTree = "<group>"; };
 		4B42242619E1E1340098CCFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4B42242819E1E13C0098CCFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4B42242F19E1EC7A0098CCFA /* Model-1.0.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-1.0.0.xcdatamodel"; sourceTree = "<group>"; };
@@ -169,13 +160,18 @@
 		4BC62A2419E9E6B500E832DA /* NSDate+Friendly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Friendly.h"; sourceTree = "<group>"; };
 		4BC62A2519E9E6B500E832DA /* NSDate+Friendly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Friendly.m"; sourceTree = "<group>"; };
 		4BC62A2A19EC9FD500E832DA /* Model-1.0.3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-1.0.3.xcdatamodel"; sourceTree = "<group>"; };
-		4BC62A2B19ECA0A600E832DA /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Task.h; path = ../Task.h; sourceTree = "<group>"; };
-		4BC62A2C19ECA0A600E832DA /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Task.m; path = ../Task.m; sourceTree = "<group>"; };
-		4BC62A2E19ECA0A600E832DA /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Project.h; path = ../Project.h; sourceTree = "<group>"; };
-		4BC62A2F19ECA0A600E832DA /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Project.m; path = ../Project.m; sourceTree = "<group>"; };
-		4BE4656119E4C83400496F65 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Main.strings; sourceTree = "<group>"; };
+		4BC62A3419EEF00400E832DA /* Model-1.0.4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-1.0.4.xcdatamodel"; sourceTree = "<group>"; };
+		4BC62A3519EEF04100E832DA /* TimeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeFrame.h; sourceTree = "<group>"; };
+		4BC62A3619EEF04100E832DA /* TimeFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeFrame.m; sourceTree = "<group>"; };
+		4BC62A3819EEF04200E832DA /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		4BC62A3919EEF04200E832DA /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		4BC62A3B19EEF04200E832DA /* Completion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Completion.h; sourceTree = "<group>"; };
+		4BC62A3C19EEF04200E832DA /* Completion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Completion.m; sourceTree = "<group>"; };
+		4BC62A3E19EEF04200E832DA /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		4BC62A3F19EEF04200E832DA /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		4BC62A4119EEF04200E832DA /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		4BC62A4219EEF04200E832DA /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		4BE4656219E4C83400496F65 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4BE4656419E4D58100496F65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		4BE4656819E58F1600496F65 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		4BE4656919E58F1600496F65 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		4BE4656B19E5C46D00496F65 /* TVC_Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVC_Settings.h; sourceTree = "<group>"; };
@@ -248,7 +244,7 @@
 		4B0D9AA719DD71CE0047EC4B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4B00A4BA19E83C42006426F1 /* LocalizableStrings.h */,
+				4B00A4BA19E83C42006426F1 /* LocalizedStrings.h */,
 				4B0D9AB719DD71CE0047EC4B /* Images.xcassets */,
 				4B0D9AA819DD71CE0047EC4B /* Info.plist */,
 				4B0D9AA919DD71CE0047EC4B /* main.m */,
@@ -278,24 +274,24 @@
 			isa = PBXGroup;
 			children = (
 				4B42241419DF76FA0098CCFA /* Model.xcdatamodeld */,
-				4BC62A2E19ECA0A600E832DA /* Project.h */,
-				4BC62A2F19ECA0A600E832DA /* Project.m */,
+				4BC62A3E19EEF04200E832DA /* Project.h */,
+				4BC62A3F19EEF04200E832DA /* Project.m */,
 				4B42243C19E1F0E10098CCFA /* Project+Implementation.h */,
 				4B42243D19E1F0E10098CCFA /* Project+Implementation.m */,
-				4BC62A2B19ECA0A600E832DA /* Task.h */,
-				4BC62A2C19ECA0A600E832DA /* Task.m */,
+				4BC62A4119EEF04200E832DA /* Task.h */,
+				4BC62A4219EEF04200E832DA /* Task.m */,
 				4B0D9AEF19DD79AE0047EC4B /* Task+Implementation.h */,
 				4B0D9AF019DD79AE0047EC4B /* Task+Implementation.m */,
-				4B42241719DF77190098CCFA /* TimeFrame.h */,
-				4B42241819DF77190098CCFA /* TimeFrame.m */,
+				4BC62A3B19EEF04200E832DA /* Completion.h */,
+				4BC62A3C19EEF04200E832DA /* Completion.m */,
+				4BC62A3519EEF04100E832DA /* TimeFrame.h */,
+				4BC62A3619EEF04100E832DA /* TimeFrame.m */,
 				4B0D9AF519DD79E80047EC4B /* TimeFrame+Implementation.h */,
 				4B0D9AF619DD79E80047EC4B /* TimeFrame+Implementation.m */,
-				4B42241D19DF771A0098CCFA /* Place.h */,
-				4B42241E19DF771A0098CCFA /* Place.m */,
+				4BC62A3819EEF04200E832DA /* Place.h */,
+				4BC62A3919EEF04200E832DA /* Place.m */,
 				4B0D9AF219DD79D80047EC4B /* Place+Implenentation.h */,
 				4B0D9AF319DD79D80047EC4B /* Place+Implenentation.m */,
-				4B42242019DF771A0098CCFA /* Completion.h */,
-				4B42242119DF771A0098CCFA /* Completion.m */,
 				4B42240519DF64060098CCFA /* Completion+Implementation.h */,
 				4B42240619DF64060098CCFA /* Completion+Implementation.m */,
 				4B0D9B1519DD95150047EC4B /* Database.h */,
@@ -356,8 +352,6 @@
 			children = (
 				4B0D9AF919DD813C0047EC4B /* CoreDataTableViewController.h */,
 				4B0D9AFA19DD813C0047EC4B /* CoreDataTableViewController.m */,
-				4B4223EF19DF1FFD0098CCFA /* LinkedTextField.h */,
-				4B4223F019DF1FFD0098CCFA /* LinkedTextField.m */,
 				4BC62A2419E9E6B500E832DA /* NSDate+Friendly.h */,
 				4BC62A2519E9E6B500E832DA /* NSDate+Friendly.m */,
 			);
@@ -526,14 +520,12 @@
 				4B0D9B1719DD95150047EC4B /* Database.m in Sources */,
 				4B42245A19E40FF10098CCFA /* DatabaseManager.m in Sources */,
 				4B0D9AF419DD79D80047EC4B /* Place+Implenentation.m in Sources */,
+				4BC62A3D19EEF04200E832DA /* Completion.m in Sources */,
 				4B4223D019DDCB3B0098CCFA /* TVC_View.m in Sources */,
 				4B0D9B2719DDA1090047EC4B /* TVC_Edit.m in Sources */,
 				4B42243519E1F09D0098CCFA /* Project+Business.m in Sources */,
-				4B42241F19DF771A0098CCFA /* Place.m in Sources */,
 				4B0D9AAD19DD71CE0047EC4B /* AppDelegate.m in Sources */,
 				4B4223F419DF42AC0098CCFA /* TVC_List_Array.m in Sources */,
-				4BC62A3019ECA0A600E832DA /* Project.m in Sources */,
-				4B4223F119DF1FFD0098CCFA /* LinkedTextField.m in Sources */,
 				4B4223E819DE129A0098CCFA /* TVC_ListDependencies.m in Sources */,
 				4B0D9AFF19DD81A70047EC4B /* TVC_ListTasks.m in Sources */,
 				4B0D9B3519DDAE910047EC4B /* Place+Business.m in Sources */,
@@ -541,6 +533,7 @@
 				4B4223FD19DF512A0098CCFA /* TVC_ListHierarchy.m in Sources */,
 				4B42244419E2000B0098CCFA /* TVC_ViewProject.m in Sources */,
 				4BE4656A19E58F1600496F65 /* Settings.m in Sources */,
+				4BC62A4019EEF04200E832DA /* Project.m in Sources */,
 				4B0D9AF119DD79AE0047EC4B /* Task+Implementation.m in Sources */,
 				4B0D9AFB19DD813C0047EC4B /* CoreDataTableViewController.m in Sources */,
 				4B0D9AAA19DD71CE0047EC4B /* main.m in Sources */,
@@ -550,16 +543,16 @@
 				4B00A4BD19E85FE0006426F1 /* TVC_EditTimeFrame.m in Sources */,
 				4B0D9B1E19DD98380047EC4B /* TimeFrame+Business.m in Sources */,
 				4B0D9AF719DD79E80047EC4B /* TimeFrame+Implementation.m in Sources */,
-				4BC62A2D19ECA0A600E832DA /* Task.m in Sources */,
 				4BE4657019E6CBA500496F65 /* TVC_EditProject.m in Sources */,
-				4B42241919DF77190098CCFA /* TimeFrame.m in Sources */,
+				4BC62A3719EEF04100E832DA /* TimeFrame.m in Sources */,
 				4B4223EE19DF173A0098CCFA /* TVC_ListDependants.m in Sources */,
+				4BC62A4319EEF04200E832DA /* Task.m in Sources */,
 				4B0D9B2419DDA0D80047EC4B /* TVC_EditTask.m in Sources */,
 				4B42241019DF65A20098CCFA /* Completion+Business.m in Sources */,
-				4B42242219DF771A0098CCFA /* Completion.m in Sources */,
 				4B0D9B2F19DDAE390047EC4B /* Task+Business.m in Sources */,
 				4B4223D719DDD7FB0098CCFA /* Segue_Push_NoAnimation.m in Sources */,
 				4B0D9B2119DD9A590047EC4B /* TVC_List_CoreData.m in Sources */,
+				4BC62A3A19EEF04200E832DA /* Place.m in Sources */,
 				4B4223CD19DDCA870098CCFA /* TVC_ViewTask.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,8 +580,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				4B0D9AB519DD71CE0047EC4B /* Base */,
-				4BE4656119E4C83400496F65 /* pt */,
-				4BE4656419E4D58100496F65 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -797,8 +788,9 @@
 				4B42244519E204DB0098CCFA /* Model-1.0.1.xcdatamodel */,
 				4B00A4BE19E884A8006426F1 /* Model-1.0.2.xcdatamodel */,
 				4BC62A2A19EC9FD500E832DA /* Model-1.0.3.xcdatamodel */,
+				4BC62A3419EEF00400E832DA /* Model-1.0.4.xcdatamodel */,
 			);
-			currentVersion = 4B00A4BE19E884A8006426F1 /* Model-1.0.2.xcdatamodel */;
+			currentVersion = 4BC62A2A19EC9FD500E832DA /* Model-1.0.3.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

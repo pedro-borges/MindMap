@@ -11,7 +11,7 @@
 #import "TimeFrame+Business.h"
 #import "Completion+Business.h"
 
-#import "LocalizableStrings.h"
+#import "LocalizedStrings.h"
 
 @implementation Task (Business)
 
@@ -61,8 +61,8 @@
 	return result;
 }
 
-- (NSArray *)possibleDependantsIsSameProject {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count > 0)", self.project];
+- (NSArray *)possibleDependantsInSameProject {
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND ((SUBQUERY(dependencies, $t, $t.completion == nil).@count > 0) OR (timeFrame.startDate > %@))", self.project, [NSDate date]];
 
 	NSMutableArray *result = [[Task allInContext:self.managedObjectContext matchingPredicate:predicate] mutableCopy];
 
@@ -102,19 +102,19 @@
 }
 
 - (NSString *)dependenciesDescription {
-	NSInteger dependenciesCount = self.dependenciesCount;
+	NSInteger activeDependenciesCount = self.activeDependenciesCount;
 
-	if (dependenciesCount > 0) {
-		if (dependenciesCount == 1) {
-			Task *singleDependency = (Task *)[self.dependencies anyObject];
+	if (activeDependenciesCount > 0) {
+		if (activeDependenciesCount == 1) {
+			Task *singleDependency = (Task *)[self.activeDependencies firstObject];
 			return [NSString stringWithFormat:STRING_DEPENDENCYDETAIL, singleDependency.title];
 		} else {
-			return [NSString stringWithFormat:STRING_DEPENDENCIESDETAIL, (unsigned long)dependenciesCount];
+			return [NSString stringWithFormat:STRING_DEPENDENCIESDETAIL, (unsigned long)activeDependenciesCount];
 		}
 	}
 
 	if ([self.timeFrame.startDate compare:[NSDate date]] == NSOrderedDescending) {
-		return @"On hold";
+		return @"Waiting";
 	} else {
 		return @"Active";
 	}

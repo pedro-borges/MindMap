@@ -13,10 +13,13 @@
 + (Task *)createFromContext:(NSManagedObjectContext *)context
 				 forProject:(Project *)project
                   withTitle:(NSString *)title;
-+ (NSSet *)allInContext:(NSManagedObjectContext *)context
++ (NSArray *)allInContext:(NSManagedObjectContext *)context
 		 matchingPredicate:(NSPredicate *)predicate;
++ (NSInteger)countInContext:(NSManagedObjectContext *)context
+		  matchingPredicate:(NSPredicate *)predicate;
 
 - (NSInteger)dependantsCount;
-- (NSInteger)dependenciesCount;
+- (NSArray *)activeDependencies;
+- (NSInteger)activeDependenciesCount;
 
 @end

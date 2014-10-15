@@ -8,29 +8,13 @@
 
 #import "TVC_Edit.h"
 
-#import "LinkedTextField.h"
-
 @interface TVC_Edit()
 
 @end
 
 @implementation TVC_Edit
 
-@synthesize firstResponder = _firstResponder;
-
 #pragma mark - UIKit
-
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	
-	if (self.firstResponder) {
-		[self.firstResponder becomeFirstResponder];
-		
-		self.firstResponder = nil;
-	}
-
-	[self bindToView];
-}
 
 - (BOOL)bindToModel:(NSError **)error {
 	@throw [NSException exceptionWithName:@"Abstraction violation"
@@ -42,23 +26,11 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	[textField resignFirstResponder];
-
-	if ([textField isKindOfClass:[LinkedTextField class]]) {
-		UIResponder *next = ((LinkedTextField *)textField).nextResponder;
-
-		if (next) {
-			[next becomeFirstResponder];
-		}
-	}
 	
 	return NO;
 }
 
 #pragma mark - Navigation
-
-- (IBAction)cancelAction:(UIBarButtonItem *)sender {
-	[self.navigationController popToRootViewControllerAnimated:YES];
-}
 
 - (IBAction)saveAction:(UIBarButtonItem *)sender {
 	NSError *error;

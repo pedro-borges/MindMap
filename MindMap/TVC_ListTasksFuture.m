@@ -8,7 +8,7 @@
 
 #import "TVC_ListTasksFuture.h"
 
-#import "LocalizableStrings.h"
+#import "LocalizedStrings.h"
 
 #import "TVC_ViewTask.h"
 

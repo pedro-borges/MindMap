@@ -8,7 +8,7 @@
 
 #import "TimeFrame+Business.h"
 
-#import "LocalizableStrings.h"
+#import "LocalizedStrings.h"
 
 @implementation TimeFrame (Business)
 
