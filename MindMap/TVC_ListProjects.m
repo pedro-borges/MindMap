@@ -94,7 +94,7 @@
 
 	[Settings defaultSettings].selectedProject = project;
 
-	[self.navigationController popViewControllerAnimated:YES];
+	[self closeAction:self];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
@@ -112,7 +112,13 @@
 
 #pragma mark - Navigation
 
-- (IBAction)createProject:(UIBarButtonItem *)sender {
+- (IBAction)closeAction:(id)sender {
+	[self dismissViewControllerAnimated:YES completion:^void {
+		// NOP Completion
+	}];
+}
+
+- (IBAction)createProjectAction:(UIBarButtonItem *)sender {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATEPROJECT
 												message:nil
 											   delegate:self

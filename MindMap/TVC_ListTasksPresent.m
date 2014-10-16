@@ -29,7 +29,7 @@ Task *_selectedTask;
 
 - (void)closeSelectedTask {
 	Task *task = (Task *)[self selectedManagedObject];
-	
+
 	[task close];
 }
 
@@ -45,10 +45,11 @@ Task *_selectedTask;
 
 - (void)bindToView {
 	self.predicate = self.project.presentTasksPredicate;
+
 	[super bindToView];
-	
+
 	NSInteger count = [self tableView:self.tableView numberOfRowsInSection:0];
-	
+
 	self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%li", count];
 	[UIApplication sharedApplication].applicationIconBadgeNumber = count;
 }
@@ -69,7 +70,7 @@ Task *_selectedTask;
 			}
 			break;
 		}
-		
+
 		case ALERT_TASK: {
 			switch (buttonIndex) {
 				case 0: // Cancel
@@ -83,18 +84,18 @@ Task *_selectedTask;
 															   delegate:self
 													  cancelButtonTitle:STRING_CANCEL
 													  otherButtonTitles:STRING_CREATE, nil];
-					
+
 					alertView2.alertViewStyle = UIAlertViewStylePlainTextInput;
 					[alertView2 textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
 					alertView2.tag = ALERT_CREATE_DEPENDENCY;
-					
+
 					[alertView2 show];
-					
+
 					break;
 			}
 			break;
 		}
-		
+
 		case ALERT_CREATE_DEPENDENCY: {
 			switch (buttonIndex) {
 				case 0: // Create Dependency Cancel

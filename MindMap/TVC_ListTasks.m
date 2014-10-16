@@ -43,41 +43,6 @@
 #pragma mark - UIKit
 
 - (void)viewDidLoad {
-	// Autoheal tasks with no project
-	for (Task *defunct in [Task allInContext:self.context
-						   matchingPredicate:[NSPredicate predicateWithFormat:@"project = nil"]]) {
-		NSLog(@"##### Autoheal: deleted defunct task '%@'", defunct.title);
-		[defunct delete];
-	}
-	
-	// Autoheal tasks with no timestamp, no timeFrame and no title
-	for (Task *task in [Task allInContext:self.context matchingPredicate:nil]) {
-		if (task.timestamp == nil) {
-			NSLog(@"##### Autoheal: add missing timestamp to task '%@'", task.title);
-			task.timestamp = [NSDate date];
-		}
-		if (task.title == nil) {
-			NSLog(@"##### Autoheal: add missing title to task '%@'", task.title);
-			task.title = @"Autoheal";
-		}
-		if (task.timeFrame == nil) {
-			NSLog(@"##### Autoheal: add missing timeFrame to task '%@'", task.title);
-			task.timeFrame = [TimeFrame createFromContext:task.managedObjectContext startDate:nil endDate:nil];
-		}
-	}
-	
-	// Autoheal projects with no timestamp and no name
-	for (Project *project in [Project allInContext:self.context matchingPredicate:nil]) {
-		if (project.timestamp == nil) {
-			NSLog(@"##### Autoheal: add missing timestamp to project '%@'", project.name);
-			project.timestamp = [NSDate date];
-		}
-		if (project.name == nil) {
-			NSLog(@"##### Autoheal: add missing name to project '%@'", project.name);
-			project.name = @"Autoheal";
-		}
-	}
-	
 	[super viewDidLoad];
 
 	self.entityName = @"Task";
