@@ -10,7 +10,7 @@
 
 #import "Task+Business.h"
 
-#import "LocalizedStrings.h"
+#import "LocalizableStrings.h"
 
 @interface TVC_ListHierarchy ()
 

@@ -8,7 +8,7 @@
 
 #import "TVC_ViewProject.h"
 
-#import "LocalizedStrings.h"
+#import "LocalizableStrings.h"
 
 #import "Task+Business.h"
 
@@ -57,17 +57,17 @@
 	NSInteger progressPercent = 100 * pastCount / totalCount;
 
 	NSString *name = self.project.name;
-	NSString *progress = [NSString stringWithFormat:@"%li%%", progressPercent];
+	NSString *progress = [NSString stringWithFormat:@"%li%%", (long)progressPercent];
 
 	NSString *pastTaskStatistic			= [NSString stringWithFormat:STRING_TASKSCOUNT, pastCount];
 	NSString *presentTaskStatistic		= [NSString stringWithFormat:STRING_TASKSCOUNT, presentCount];
 	NSString *futureTaskStatistic		= [NSString stringWithFormat:STRING_TASKSCOUNT, futureCount];
 	NSString *totalTaskStatistic		= [NSString stringWithFormat:STRING_TASKSCOUNT, totalCount];
 
-	NSString *pastPercentStatistic		= [NSString stringWithFormat:@"%li%%", pastPercent];
-	NSString *presentPercentStatistic	= [NSString stringWithFormat:@"%li%%", presentPercent];
-	NSString *futurePercentStatistic	= [NSString stringWithFormat:@"%li%%", futurePercent];
-	NSString *totalPercentStatistic		= [NSString stringWithFormat:@"%li%%", (NSInteger)100];
+	NSString *pastPercentStatistic		= [NSString stringWithFormat:@"%li%%", (long)pastPercent];
+	NSString *presentPercentStatistic	= [NSString stringWithFormat:@"%li%%", (long)presentPercent];
+	NSString *futurePercentStatistic	= [NSString stringWithFormat:@"%li%%", (long)futurePercent];
+	NSString *totalPercentStatistic		= [NSString stringWithFormat:@"%li%%", (long)100];
 
 	self.nameLabel.text = name;
 	self.progressLabel.text = progress;

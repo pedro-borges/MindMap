@@ -8,10 +8,8 @@
 
 #import "TVC_ListTasks.h"
 
-#define ALERT_CONFIRM 10
-#define ALERT_TASK 101
-#define ALERT_CREATE_DEPENDENCY 102
-#define ALERT_CREATE_TASK 103
+#define ALERT_CREATEDEPENDENCY 1000
+#define ALERT_CREATETASK 1001
 
 @interface TVC_ListTasksPresent : TVC_ListTasks
 

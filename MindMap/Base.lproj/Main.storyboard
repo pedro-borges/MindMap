@@ -78,9 +78,6 @@
         <scene sceneID="R7q-dQ-47a">
             <objects>
                 <tabBarController storyboardIdentifier="TBC_ManageProject" automaticallyAdjustsScrollViewInsets="NO" id="ela-1z-XJD" customClass="TBC_ManageProject" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="id2-bj-RFy">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="iZ1-Ay-4rg"/>
-                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Caq-TE-rGf">
@@ -1310,7 +1307,7 @@
         <image name="IconRewindDark" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uFu-6R-g9D"/>
+        <segue reference="gfk-hq-gw1"/>
         <segue reference="HxO-Gh-2el"/>
     </inferredMetricsTieBreakers>
 </document>

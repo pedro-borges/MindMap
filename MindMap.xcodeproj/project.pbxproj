@@ -73,7 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4B00A4BA19E83C42006426F1 /* LocalizedStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizedStrings.h; sourceTree = "<group>"; };
+		4B00A4BA19E83C42006426F1 /* LocalizableStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizableStrings.h; sourceTree = "<group>"; };
 		4B00A4BB19E85FE0006426F1 /* TVC_EditTimeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVC_EditTimeFrame.h; sourceTree = "<group>"; };
 		4B00A4BC19E85FE0006426F1 /* TVC_EditTimeFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVC_EditTimeFrame.m; sourceTree = "<group>"; };
 		4B00A4BE19E884A8006426F1 /* Model-1.0.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-1.0.2.xcdatamodel"; sourceTree = "<group>"; };
@@ -173,6 +173,8 @@
 		4BC62A4119EEF04200E832DA /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		4BC62A4219EEF04200E832DA /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		4BC62A4619EF65D400E832DA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		4BC62A4919F0748A00E832DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		4BC62A4B19F0749000E832DA /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Main.strings; sourceTree = "<group>"; };
 		4BE4656219E4C83400496F65 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4BE4656819E58F1600496F65 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		4BE4656919E58F1600496F65 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
@@ -246,7 +248,7 @@
 		4B0D9AA719DD71CE0047EC4B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4B00A4BA19E83C42006426F1 /* LocalizedStrings.h */,
+				4B00A4BA19E83C42006426F1 /* LocalizableStrings.h */,
 				4B0D9AB719DD71CE0047EC4B /* Images.xcassets */,
 				4BC62A4619EF65D400E832DA /* Settings.bundle */,
 				4B0D9AA819DD71CE0047EC4B /* Info.plist */,
@@ -584,6 +586,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				4B0D9AB519DD71CE0047EC4B /* Base */,
+				4BC62A4919F0748A00E832DA /* en */,
+				4BC62A4B19F0749000E832DA /* pt */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

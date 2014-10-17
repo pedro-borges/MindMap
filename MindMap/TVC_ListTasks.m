@@ -8,7 +8,7 @@
 
 #import "TVC_ListTasks.h"
 
-#import "LocalizedStrings.h"
+#import "LocalizableStrings.h"
 
 #import "TVC_ViewTask.h"
 
@@ -27,6 +27,8 @@
 @end
 
 @implementation TVC_ListTasks
+
+Task *_selectedTask;
 
 #pragma mark - Properties
 
@@ -53,6 +55,16 @@
 	[super viewWillAppear:animated];
 
 	self.navigationItem.title = [Settings defaultSettings].selectedProjectName;
+}
+
+#pragma mark - Private
+
+- (void)createDependantToSelectedTask:(NSString *)title {
+	Task *task = _selectedTask;
+	
+	Task *dependency = [Task createFromContext:self.context forProject:self.project withTitle:title];
+	
+	[task addDependenciesObject:dependency];
 }
 
 #pragma mark - UITableViewDataSource
@@ -91,7 +103,7 @@
 - (NSString *)confirmDeletionMessage:(NSManagedObject *)managedObject {
 	Task *task = (Task *)managedObject;
 
-	return [NSString stringWithFormat:@"Are you sure you want to delete task '%@'", task.title];
+	return [NSString stringWithFormat:STRING_CONFIRMDELETETASK, task.title];
 }
 
 @end

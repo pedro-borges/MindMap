@@ -8,6 +8,8 @@
 
 #import "NSDate+Friendly.h"
 
+#import "LocalizableStrings.h"
+
 @implementation NSDate (Friendly)
 
 NSDateFormatter *_dateFormatter;
@@ -26,15 +28,15 @@ NSDateFormatter *_dateFormatter;
 	
 	if ([startDate isEqualToDate:[NSDate distantPast]]) {
 		if ([endDate isEqualToDate:[NSDate distantFuture]]) {
-			return @"Whenever";
+			return STRING_WHENEVER;
 		} else {
-			return [NSString stringWithFormat:@"Until %@", endDate.description];
+			return [NSString stringWithFormat:STRING_UNTIL, endDate.description];
 		}
 	} else {
 		if ([endDate isEqualToDate:[NSDate distantFuture]]) {
-			return [NSString stringWithFormat:@"From %@ onwards", startDate.description];
+			return [NSString stringWithFormat:STRING_FROMONWARDS, startDate.description];
 		} else {
-			return [NSString stringWithFormat:@"From %@ to %@", startDate.description, endDate.description];
+			return [NSString stringWithFormat:STRING_FROMTO, startDate.description, endDate.description];
 		}
 	}
 }
@@ -52,76 +54,76 @@ NSDateFormatter *_dateFormatter;
 	NSInteger minutes	= ABS(components.minute);
 
 	NSComparisonResult order = [referenceDate compare:relativeDate];
-
-	if (order == NSOrderedSame) {
-		return @"Now";
-	}
-
+	
 	if (years > 1) {
 		switch (order) {
-			case NSOrderedAscending: return [NSString stringWithFormat:@"in %li years", years];
-			case NSOrderedDescending: return [NSString stringWithFormat:@"%li years ago", years];
-			case NSOrderedSame:;
+			case NSOrderedAscending: return [NSString stringWithFormat:STRING_INYEARS, years];
+			case NSOrderedDescending: return [NSString stringWithFormat:STRING_YEARSAGO, years];
+			case NSOrderedSame: return nil; // Invalid condition
 		}
 	}
 	if (years == 1) {
 		switch (order) {
-			case NSOrderedAscending: return [NSString stringWithFormat:@"next year"];
-			case NSOrderedDescending: return [NSString stringWithFormat:@"last year"];
-			case NSOrderedSame:;
+			case NSOrderedAscending: return [NSString stringWithFormat:STRING_NEXTYEAR];
+			case NSOrderedDescending: return [NSString stringWithFormat:STRING_LASTYEAR];
+			case NSOrderedSame: return nil; // Invalid condition
 		}
 	}
 	if (months > 1) {
 		switch (order) {
-			case NSOrderedAscending: return [NSString stringWithFormat:@"in %li months", months];
-			case NSOrderedDescending: return [NSString stringWithFormat:@"%li months ago", months];
-			case NSOrderedSame:;
+			case NSOrderedAscending: return [NSString stringWithFormat:STRING_INMONTHS, months];
+			case NSOrderedDescending: return [NSString stringWithFormat:STRING_MONTHSAGO, months];
+			case NSOrderedSame: return nil; // Invalid condition
 		}
 	}
 	if (months == 1) {
 		switch (order) {
-			case NSOrderedAscending: return [NSString stringWithFormat:@"next month"];
-			case NSOrderedDescending: return [NSString stringWithFormat:@"last month"];
-			case NSOrderedSame:;
+			case NSOrderedAscending: return [NSString stringWithFormat:STRING_NEXTMONTH];
+			case NSOrderedDescending: return [NSString stringWithFormat:STRING_LASTMONTH];
+			case NSOrderedSame: return nil; // Invalid condition
 		}
 	}
 	if (days > 1) {
 		switch (order) {
-			case NSOrderedAscending: return [NSString stringWithFormat:@"in %li days", days];
-			case NSOrderedDescending: return [NSString stringWithFormat:@"%li days ago", days];
-			case NSOrderedSame:;
+			case NSOrderedAscending: return [NSString stringWithFormat:STRING_INDAYS, days];
+			case NSOrderedDescending: return [NSString stringWithFormat:STRING_DAYSAGO, days];
+			case NSOrderedSame: return nil; // Invalid condition
 		}
 	}
 	if (days == 1) {
 		switch (order) {
-			case NSOrderedAscending: return [NSString stringWithFormat:@"tomorrow"];
-			case NSOrderedDescending: return [NSString stringWithFormat:@"yesterday"];
-			case NSOrderedSame:;
+			case NSOrderedAscending: return [NSString stringWithFormat:STRING_TOMORROW];
+			case NSOrderedDescending: return [NSString stringWithFormat:STRING_YESTERDAY];
+			case NSOrderedSame: return nil; // Invalid condition
 		}
 	}
 	if (hours > 1) {
 		switch (order) {
-			case NSOrderedAscending: return [NSString stringWithFormat:@"in %li hours", hours];
-			case NSOrderedDescending: return [NSString stringWithFormat:@"%li hours ago", hours];
-			case NSOrderedSame:;
+			case NSOrderedAscending: return [NSString stringWithFormat:STRING_INHOURS, hours];
+			case NSOrderedDescending: return [NSString stringWithFormat:STRING_HOURSAGO, hours];
+			case NSOrderedSame: return nil; // Invalid condition
 		}
 	}
 	if (hours == 1) {
 		switch (order) {
-			case NSOrderedAscending: return [NSString stringWithFormat:@"next hour"];
-			case NSOrderedDescending: return [NSString stringWithFormat:@"past hour"];
-			case NSOrderedSame:;
+			case NSOrderedAscending: return [NSString stringWithFormat:STRING_NEXTHOUR];
+			case NSOrderedDescending: return [NSString stringWithFormat:STRING_PASTHOUR];
+			case NSOrderedSame: return nil; // Invalid condition
 		}
 	}
 	if (minutes > 1) {
 		switch (order) {
-			case NSOrderedAscending: return [NSString stringWithFormat:@"in %li minutes", minutes];
-			case NSOrderedDescending: return [NSString stringWithFormat:@"%li minutes ago", minutes];
-			case NSOrderedSame:;
+			case NSOrderedAscending: return [NSString stringWithFormat:STRING_INMINUTES, minutes];
+			case NSOrderedDescending: return [NSString stringWithFormat:STRING_MINUTESSAGO, minutes];
+			case NSOrderedSame: return nil; // Invalid condition
 		}
 	}
 
-	return @"Just Now";
+	switch (order) {
+		case NSOrderedAscending: return STRING_RIGHTAWAY;
+		case NSOrderedDescending: return STRING_JUSTNOW;
+		case NSOrderedSame: return STRING_NOW;
+	}
 }
 
 - (NSString *)description {

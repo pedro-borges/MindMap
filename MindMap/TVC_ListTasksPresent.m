@@ -8,7 +8,7 @@
 
 #import "TVC_ListTasksPresent.h"
 
-#import "LocalizedStrings.h"
+#import "LocalizableStrings.h"
 
 #import "Task+Business.h"
 #import "Completion+Business.h"
@@ -50,7 +50,7 @@ Task *_selectedTask;
 
 	NSInteger count = [self tableView:self.tableView numberOfRowsInSection:0];
 
-	self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%li", count];
+	self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%li", (long)count];
 	[UIApplication sharedApplication].applicationIconBadgeNumber = count;
 }
 
@@ -59,14 +59,12 @@ Task *_selectedTask;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	[super alertView:alertView clickedButtonAtIndex:buttonIndex];
 
-	NSString *title = [alertView textFieldAtIndex:0].text;
-
 	UIAlertView *alertView2;
 
 	switch (alertView.tag) {
-		case ALERT_CREATE_TASK: {
+		case ALERT_CREATETASK: {
 			if (buttonIndex == 1) {
-				[Task createFromContext:self.context forProject:self.project withTitle:title];
+				[Task createFromContext:self.context forProject:self.project withTitle:[alertView textFieldAtIndex:0].text];
 			}
 			break;
 		}
@@ -74,31 +72,47 @@ Task *_selectedTask;
 		case ALERT_TASK: {
 			switch (buttonIndex) {
 				case 0: // Cancel
+					[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 					break;
 				case 1: // Close Selected Task
 					[self closeSelectedTask];
 					break;
 				case 2: // Popup Create Dependency for Selected Task
 					alertView2 = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDENCY
-																message:nil
-															   delegate:self
-													  cancelButtonTitle:STRING_CANCEL
-													  otherButtonTitles:STRING_CREATE, nil];
-
+															message:nil
+														   delegate:self
+												  cancelButtonTitle:STRING_CANCEL
+												  otherButtonTitles:STRING_CREATE, nil];
+					
 					alertView2.alertViewStyle = UIAlertViewStylePlainTextInput;
 					[alertView2 textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
-					alertView2.tag = ALERT_CREATE_DEPENDENCY;
-
+					alertView2.tag = ALERT_CREATEDEPENDENCY;
+					
 					[alertView2 show];
-
+					
+					break;
+				case 3: // Popup Create Dependant for Selected Task
+					alertView2 = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDANT
+															message:nil
+														   delegate:self
+												  cancelButtonTitle:STRING_CANCEL
+												  otherButtonTitles:STRING_CREATE, nil];
+					
+					alertView2.alertViewStyle = UIAlertViewStylePlainTextInput;
+					[alertView2 textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
+					alertView2.tag = ALERT_CREATEDEPENDANT;
+					
+					[alertView2 show];
+					
 					break;
 			}
 			break;
 		}
 
-		case ALERT_CREATE_DEPENDENCY: {
+		case ALERT_CREATEDEPENDENCY: {
 			switch (buttonIndex) {
 				case 0: // Create Dependency Cancel
+					[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 					break;
 				case 1: // Creare Dependency OK
 					[self createDependencyToSelectedTask:[alertView textFieldAtIndex:0].text];
@@ -106,6 +120,33 @@ Task *_selectedTask;
 			}
 			break;
 		}
+		case ALERT_CREATEDEPENDANT: {
+			switch (buttonIndex) {
+				case 0: // Create Dependant Cancel
+					[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+					break;
+				case 1: // Creare Dependant OK
+					[self createDependantToSelectedTask:[alertView textFieldAtIndex:0].text];
+
+					alertView2 = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDANT
+															message:STRING_WILLSHOWINFUTURE
+														   delegate:self
+												  cancelButtonTitle:STRING_OK
+												  otherButtonTitles:nil];
+					
+					alertView2.alertViewStyle = UIAlertViewStyleDefault;
+					alertView2.tag = ALERT_NOTIFICATION;
+					
+					[alertView2 show];
+					
+					break;
+			}
+
+			break;
+		}
+		case ALERT_NOTIFICATION:
+			[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+			break;
 	}
 }
 
@@ -120,7 +161,7 @@ Task *_selectedTask;
 												message:nil
 											   delegate:self
 									  cancelButtonTitle:STRING_CANCEL
-									  otherButtonTitles:STRING_CLOSETASK, STRING_CREATEDEPENDENCY, nil];
+									  otherButtonTitles:STRING_CLOSETASK, STRING_CREATEDEPENDENCY, STRING_CREATEDEPENDANT, nil];
 	
 	alertView.alertViewStyle = UIAlertViewStyleDefault;
 	alertView.tag = ALERT_TASK;
@@ -139,7 +180,7 @@ Task *_selectedTask;
 	
 	alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
 	[alertView textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
-	alertView.tag = ALERT_CREATE_TASK;
+	alertView.tag = ALERT_CREATETASK;
 
 	[alertView show];
 }

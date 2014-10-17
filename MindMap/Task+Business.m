@@ -11,7 +11,7 @@
 #import "TimeFrame+Business.h"
 #import "Completion+Business.h"
 
-#import "LocalizedStrings.h"
+#import "LocalizableStrings.h"
 
 @implementation Task (Business)
 
@@ -79,7 +79,7 @@
 	for (Task *dependency in self.dependencies) {
 		if ([dependency.enforcedStartDate compare:result] == NSOrderedDescending) result = dependency.enforcedStartDate;
 	}
-	
+
 	if ([result compare:self.timeFrame.startDate] == NSOrderedDescending) {
 		self.timeFrame.startDate = result;
 	}
@@ -93,11 +93,11 @@
 	for (Task *dependant in self.dependants) {
 		if ([dependant.enforcedEndDate compare:result] == NSOrderedAscending) result = dependant.enforcedEndDate;
 	}
-	
+
 	if ([result compare:self.timeFrame.endDate] == NSOrderedAscending) {
 		self.timeFrame.endDate = result;
 	}
-	
+
 	return result;
 }
 
@@ -114,9 +114,9 @@
 	}
 
 	if ([self.timeFrame.startDate compare:[NSDate date]] == NSOrderedDescending) {
-		return @"Waiting";
+		return STRING_WAITING;
 	} else {
-		return @"Active";
+		return STRING_ACTIVE;
 	}
 }
 
@@ -138,24 +138,10 @@
 - (void)close {
 	self.completion = [Completion createFromContext:self.managedObjectContext
 											forTask:self];
-
-//	for (Task *dependant in self.dependants) {
-//		if (dependant.inPresent) {
-//			dependant.dateBecomeActive = [NSDate date];
-//		}
-//	}
 }
 
 - (void)delete {
-//	NSSet *dependants = self.dependants;
-
 	[self.managedObjectContext deleteObject:self];
-
-//	for (Task *dependant in dependants) {
-//		if (dependant.inPresent) {
-//			dependant.dateBecomeActive = [NSDate date];
-//		}
-//	}
 }
 
 @end

@@ -147,7 +147,7 @@
 	self.task.timeFrame.startDate	= startDate;
 	self.task.timeFrame.endDate		= endDate;
 
-	return YES;
+	return [super bindToModel:error]; //todo remove this and revert on cancel (it's show for now, could/should be modal
 }
 
 #pragma mark - Actions

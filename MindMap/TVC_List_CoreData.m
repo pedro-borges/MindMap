@@ -11,7 +11,7 @@
 #import "TVC_View.h"
 #import "TVC_Edit.h"
 
-#import "LocalizedStrings.h"
+#import "LocalizableStrings.h"
 
 #import "DatabaseManager.h"
 
@@ -80,7 +80,7 @@ const char _key_managedObject = 'm';
 		NSManagedObject *managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
 		NSString *message = [self confirmDeletionMessage:managedObject];
 
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please confirm" message:message delegate:self cancelButtonTitle:STRING_CANCEL otherButtonTitles:STRING_OK, nil];
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:STRING_PLEASECONFIRM message:message delegate:self cancelButtonTitle:STRING_CANCEL otherButtonTitles:STRING_OK, nil];
 	
 		alertView.alertViewStyle = UIAlertViewStyleDefault;
 		alertView.tag = ALERT_CONFIRM;

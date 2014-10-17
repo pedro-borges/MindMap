@@ -8,6 +8,8 @@
 
 #import "TVC_Edit.h"
 
+#import "LocalizableStrings.h"
+
 @interface TVC_Edit()
 
 @end
@@ -17,9 +19,7 @@
 #pragma mark - UIKit
 
 - (BOOL)bindToModel:(NSError **)error {
-	@throw [NSException exceptionWithName:@"Abstraction violation"
-								   reason:@"Direct call to [TVC_Edit bindToModel]"
-								 userInfo:nil];
+	return [self.managedObject.managedObjectContext save:error];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -38,10 +38,10 @@
 	if ([self bindToModel:&error]) {
 		[self.navigationController popToRootViewControllerAnimated:YES];
 	} else {
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:STRING_ERROR
 															message:error.localizedDescription
 														   delegate:nil
-												  cancelButtonTitle:@"OK"
+												  cancelButtonTitle:STRING_OK
 												  otherButtonTitles:nil];
 		
 		[alertView show];

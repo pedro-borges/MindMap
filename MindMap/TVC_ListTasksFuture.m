@@ -8,7 +8,7 @@
 
 #import "TVC_ListTasksFuture.h"
 
-#import "LocalizedStrings.h"
+#import "LocalizableStrings.h"
 
 #import "TVC_ViewTask.h"
 
@@ -46,9 +46,47 @@ Task *_selectedTask;
 	UIAlertView *alertView2;
 
 	switch (alertView.tag) {
+		case ALERT_TASK: {
+			switch (buttonIndex) {
+				case 0: // Cancel
+					[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+					break;
+				case 1: // Popup Create Dependency for Selected Task
+					alertView2 = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDENCY
+															message:nil
+														   delegate:self
+												  cancelButtonTitle:STRING_CANCEL
+												  otherButtonTitles:STRING_CREATE, nil];
+					
+					alertView2.alertViewStyle = UIAlertViewStylePlainTextInput;
+					[alertView2 textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
+					alertView2.tag = ALERT_CREATEDEPENDENCY;
+					
+					[alertView2 show];
+					
+					break;
+				case 2: // Popup Create Dependant for Selected Task
+					alertView2 = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDANT
+															message:nil
+														   delegate:self
+												  cancelButtonTitle:STRING_CANCEL
+												  otherButtonTitles:STRING_CREATE, nil];
+					
+					alertView2.alertViewStyle = UIAlertViewStylePlainTextInput;
+					[alertView2 textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
+					alertView2.tag = ALERT_CREATEDEPENDANT;
+					
+					[alertView2 show];
+					
+					break;
+			}
+			break;
+		}
+
 		case ALERT_CREATEDEPENDENCY:
 			switch (buttonIndex) {
 				case 0: // Cancel
+					[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 					break;
 				case 1: // Popup Notification
 					[self createDependencyToSelectedTask:[alertView textFieldAtIndex:0].text];
@@ -67,7 +105,17 @@ Task *_selectedTask;
 					break;
 			}
 			break;
+		case ALERT_CREATEDEPENDANT:
+			switch (buttonIndex) {
+				case 0: // Cancel create dependency
+					[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+					break;
+				case 1:
+					[self createDependantToSelectedTask:[alertView textFieldAtIndex:0].text];
+					break;
+			}
 		case ALERT_NOTIFICATION:
+			[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 			break;
 	}
 }
@@ -75,18 +123,18 @@ Task *_selectedTask;
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	Task *task = (Task *)[self selectedManagedObject];
 
-	_selectedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
-
-	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATEDEPENDENCY
-												message:[NSString stringWithFormat:STRING_NEWDEPENDENCYFORTASK, _selectedTask.title]
-											   delegate:self
-									  cancelButtonTitle:STRING_CANCEL
-									  otherButtonTitles:STRING_CREATE, nil];
+	_selectedTask = task;
 	
-	alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-	[alertView textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
-	alertView.tag = ALERT_CREATEDEPENDENCY;
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:task.title
+														message:nil
+													   delegate:self
+											  cancelButtonTitle:STRING_CANCEL
+											  otherButtonTitles:STRING_CREATEDEPENDENCY, STRING_CREATEDEPENDANT, nil];
+	
+	alertView.alertViewStyle = UIAlertViewStyleDefault;
+	alertView.tag = ALERT_TASK;
 	
 	[alertView show];
 }
@@ -98,7 +146,7 @@ Task *_selectedTask;
 }
 
 - (NSString *)cellDetailTextFor:(Task *)task {
-	return [NSString stringWithFormat:@"%@, %@", task.dependenciesDescription, task.dependantsDescription];
+	return [NSString stringWithFormat:STRING_DEPENDENCIESANDDEPENDANTS, task.dependantsDescription, task.dependenciesDescription];
 }
 
 @end

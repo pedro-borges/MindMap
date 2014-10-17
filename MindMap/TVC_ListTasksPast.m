@@ -13,6 +13,8 @@
 
 #import "NSDate+Friendly.h"
 
+#import "LocalizableStrings.h"
+
 @implementation TVC_ListTasksPast
 
 #pragma mark - UIKit
@@ -32,7 +34,7 @@
 - (NSString *)cellDetailTextFor:(Task *)task {
 	NSString *activeTime = [NSDate describeTimeFrom:[NSDate date] to:task.completion.timestamp];
 
-	return [NSString stringWithFormat:@"Finnished %@", activeTime];
+	return [NSString stringWithFormat:STRING_FINNISHEDTIMESTAMP, activeTime];
 }
 
 @end

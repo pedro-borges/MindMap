@@ -16,7 +16,7 @@
 
 #import "DatabaseManager.h"
 
-#import "LocalizedStrings.h"
+#import "LocalizableStrings.h"
 
 #define CELL_PROJECT @"pt.pcb.mindmap.project"
 
@@ -78,7 +78,7 @@
         detailTextLabel.text = STRING_EMPTY;
     } else {
         if (pendingCount > 0) {
-			detailTextLabel.text = [NSString stringWithFormat:@"%lu%%", percent];
+			detailTextLabel.text = [NSString stringWithFormat:@"%lu%%", (long)percent];
 		} else {
             detailTextLabel.text = STRING_COMPLETED;
         }
@@ -143,7 +143,7 @@
 - (NSString *)confirmDeletionMessage:(NSManagedObject *)managedObject {
 	Project *project = (Project *)managedObject;
 
-	return [NSString stringWithFormat:@"Are you sure you want to delete project %@? %li tasks will be erased", project.name, [project.tasks count]];
+	return [NSString stringWithFormat:STRING_CONFIRMDELETEPROJECT, project.name, [project.tasks count]];
 }
 
 @end

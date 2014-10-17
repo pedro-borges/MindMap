@@ -8,7 +8,7 @@
 
 #import "TVC_ListDependencies.h"
 
-#import "LocalizedStrings.h"
+#import "LocalizableStrings.h"
 
 #define CELL_DIRECTDEPENDENCY @"pt.pcb.mindmap.dependency"
 #define CELL_POSSIBLEDEPENDENCY @"pt.pcb.mindmap.possibleDependency"

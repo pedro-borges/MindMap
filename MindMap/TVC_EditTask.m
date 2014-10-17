@@ -18,6 +18,10 @@
 #import "Place+Business.h"
 #import "TimeFrame+Business.h"
 
+#define SEGUE_LISTDEPENDENCIES @"List Dependencies"
+#define SEGUE_LISTDEPENDANTS @"List Dependants"
+#define SEGUE_EDITTIMEFRAME @"Edit TimeFrame"
+
 @interface TVC_EditTask() <UIAlertViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITextField *titleTextField;
@@ -49,7 +53,7 @@
 
     self.task.title = title;
 
-	return YES;
+	return [super bindToModel:error];
 }
 
 - (void)bindToView {
@@ -69,15 +73,15 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([@"List Dependencies" isEqualToString:segue.identifier]) {
+	if ([SEGUE_LISTDEPENDENCIES isEqualToString:segue.identifier]) {
 		TVC_ListDependencies *controller = segue.destinationViewController;
 		controller.model = self.task;
 		controller.navigationItem.title = self.task.title;
-	} else 	if ([@"List Dependants" isEqualToString:segue.identifier]) {
+	} else 	if ([SEGUE_LISTDEPENDANTS isEqualToString:segue.identifier]) {
 		TVC_ListDependants *controller = segue.destinationViewController;
 		controller.model = self.task;
 		controller.navigationItem.title = self.task.title;
-	} else 	if ([@"Edit TimeFrame" isEqualToString:segue.identifier]) {
+	} else 	if ([SEGUE_EDITTIMEFRAME isEqualToString:segue.identifier]) {
 		TVC_EditTimeFrame *controller = segue.destinationViewController;
 		controller.task = self.task;
 	}

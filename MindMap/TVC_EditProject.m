@@ -10,7 +10,7 @@
 
 #import "Task+Business.h"
 
-#import "LocalizedStrings.h"
+#import "LocalizableStrings.h"
 
 #define STRING_ERROR_DUPLICATEPROJECTNAME @"There's already a project by that name"
 
@@ -67,17 +67,17 @@
 	NSInteger progressPercent = 100 * pastCount / totalCount;
 
 	NSString *name = self.project.name;
-	NSString *progress = [NSString stringWithFormat:@"%li%%", progressPercent];
+	NSString *progress = [NSString stringWithFormat:@"%li%%", (long)progressPercent];
 
 	NSString *pastTaskStatistic		= [NSString stringWithFormat:STRING_TASKSCOUNT, pastCount];
 	NSString *presentTaskStatistic	= [NSString stringWithFormat:STRING_TASKSCOUNT, presentCount];
 	NSString *futureTaskStatistic	= [NSString stringWithFormat:STRING_TASKSCOUNT, futureCount];
 	NSString *totalTaskStatistic	= [NSString stringWithFormat:STRING_TASKSCOUNT, totalCount];
 	
-	NSString *pastPercentStatistic		= [NSString stringWithFormat:@"%li%%", (NSInteger)(100 * pastPercent)];
-	NSString *presentPercentStatistic	= [NSString stringWithFormat:@"%li%%", (NSInteger)(100 *presentPercent)];
-	NSString *futurePercentStatistic	= [NSString stringWithFormat:@"%li%%", (NSInteger)(100 * futurePercent)];
-	NSString *totalPercentStatistic		= [NSString stringWithFormat:@"%li%%", (NSInteger)100];
+	NSString *pastPercentStatistic		= [NSString stringWithFormat:@"%li%%", (long)(100 * pastPercent)];
+	NSString *presentPercentStatistic	= [NSString stringWithFormat:@"%li%%", (long)(100 * presentPercent)];
+	NSString *futurePercentStatistic	= [NSString stringWithFormat:@"%li%%", (long)(100 * futurePercent)];
+	NSString *totalPercentStatistic		= [NSString stringWithFormat:@"%li%%", (long)(100)];
 
 	self.nameTextField.text = name;
 	
@@ -121,7 +121,7 @@
 		self.project.name = name;
 	}
 
-	return YES;
+	return [super bindToModel:error];
 }
 
 @end
