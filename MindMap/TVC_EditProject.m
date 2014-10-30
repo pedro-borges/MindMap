@@ -103,7 +103,7 @@
 }
 
 - (BOOL)bindToModel:(NSError **)error {
-	NSString *name = self.nameTextField.text;
+	NSString *name = [self.nameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	
 	if (![name isEqualToString:self.project.name]) {
 		Project *validation = [[Project forName:name inContext:self.project.managedObjectContext] firstObject];

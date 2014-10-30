@@ -38,7 +38,8 @@
 }
 
 - (NSArray *)possibleDependenciesInSameProject {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count == 0)", self.project];
+//	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count == 0)", self.project];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil)", self.project];
 	
 	NSMutableArray *result = [[Task allInContext:self.managedObjectContext matchingPredicate:predicate] mutableCopy];
 
@@ -62,7 +63,7 @@
 }
 
 - (NSArray *)possibleDependantsInSameProject {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND ((SUBQUERY(dependencies, $t, $t.completion == nil).@count > 0) OR (timeFrame.startDate > %@))", self.project, [NSDate date]];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil)", self.project, [NSDate date]];
 
 	NSMutableArray *result = [[Task allInContext:self.managedObjectContext matchingPredicate:predicate] mutableCopy];
 
@@ -107,7 +108,7 @@
 	if (activeDependenciesCount > 0) {
 		if (activeDependenciesCount == 1) {
 			Task *singleDependency = (Task *)[self.activeDependencies firstObject];
-			return [NSString stringWithFormat:STRING_DEPENDENCYDETAIL, singleDependency.title];
+			return [NSString stringWithFormat:STRING_DEPENDENCYDETAIL, [singleDependency.title lowercaseString]];
 		} else {
 			return [NSString stringWithFormat:STRING_DEPENDENCIESDETAIL, (unsigned long)activeDependenciesCount];
 		}
@@ -126,7 +127,7 @@
 	if (dependantsCount > 0) {
 		if (dependantsCount == 1) {
 			Task *singleDependant = (Task *)[self.dependants anyObject];
-			return [NSString stringWithFormat:STRING_DEPENDANTDETAIL, singleDependant.title];
+			return [NSString stringWithFormat:STRING_DEPENDANTDETAIL, [singleDependant.title lowercaseString]];
 		} else {
 			return [NSString stringWithFormat:STRING_DEPENDANTSDETAIL, (unsigned long)dependantsCount];
 		}

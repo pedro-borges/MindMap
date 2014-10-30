@@ -61,10 +61,10 @@ Task *_selectedTask;
 
 - (void)createDependantToSelectedTask:(NSString *)title {
 	Task *task = _selectedTask;
-	
-	Task *dependency = [Task createFromContext:self.context forProject:self.project withTitle:title];
-	
-	[task addDependenciesObject:dependency];
+
+	Task *dependant = [Task createFromContext:self.context forProject:self.project withTitle:title];
+
+	[task addDependantsObject:dependant];
 }
 
 #pragma mark - UITableViewDataSource

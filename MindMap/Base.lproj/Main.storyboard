@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ela-1z-XJD">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Select Project-->
+        <!--Choose MindMap-->
         <scene sceneID="rhE-hO-dIw">
             <objects>
                 <tableViewController storyboardIdentifier="TVC_ListProjects" id="Xvs-TK-9Ef" customClass="TVC_ListProjects" sceneMemberID="viewController">
@@ -14,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="pt.pcb.mindmap.project" id="ssd-61-hnQ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="pt.pcb.mindmap.project" rowHeight="44" id="ssd-61-hnQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ssd-61-hnQ" id="5FW-Gb-P9E">
@@ -57,7 +56,7 @@
                             <outlet property="delegate" destination="Xvs-TK-9Ef" id="dAY-FD-5CZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Select Project" id="1sy-Y8-Voi">
+                    <navigationItem key="navigationItem" title="Choose MindMap" id="1sy-Y8-Voi">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="VeM-m7-vcL">
                             <connections>
                                 <action selector="closeAction:" destination="Xvs-TK-9Ef" id="vII-Rf-ojG"/>
@@ -319,7 +318,7 @@
                         <sections>
                             <tableViewSection headerTitle="Title" id="hWM-1b-Lfi">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="8O5-L2-Lta">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="8O5-L2-Lta">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8O5-L2-Lta" id="fCy-nY-9CB">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -634,7 +633,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rj-H5-PmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3361" y="772"/>
+            <point key="canvasLocation" x="3484" y="772"/>
         </scene>
         <!--List Dependants-->
         <scene sceneID="nRj-C1-Cq1">
@@ -955,7 +954,7 @@
             </objects>
             <point key="canvasLocation" x="940" y="378"/>
         </scene>
-        <!--Project-->
+        <!--MindMap-->
         <scene sceneID="6aQ-WR-hMZ">
             <objects>
                 <tableViewController storyboardIdentifier="TVC_EditProject" id="oEs-yJ-T8V" customClass="TVC_EditProject" sceneMemberID="viewController">
@@ -966,7 +965,7 @@
                         <sections>
                             <tableViewSection headerTitle="Name" id="cg4-0C-uSG">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Ttm-fv-IJm">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="Ttm-fv-IJm">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ttm-fv-IJm" id="lKS-Ou-Uiy">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -991,7 +990,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Progress" id="Q7N-8i-br9">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="1Rv-VA-1zF">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="1Rv-VA-1zF">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Rv-VA-1zF" id="3nq-cW-RJf">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1027,7 +1026,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Task Statistics" id="bFe-ov-ckv">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="9Pz-U6-Axm">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="9Pz-U6-Axm">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Pz-U6-Axm" id="Jjq-y8-maO">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1082,7 +1081,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="xvf-8T-LuJ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="xvf-8T-LuJ">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xvf-8T-LuJ" id="xdr-Th-nHk">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1137,7 +1136,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="6bV-nr-pbU">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="6bV-nr-pbU">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6bV-nr-pbU" id="kgy-DL-rdd">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1192,7 +1191,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="BDh-Rw-CWD">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="BDh-Rw-CWD">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BDh-Rw-CWD" id="7Mx-Vi-e16">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1269,7 +1268,7 @@
                             <outlet property="delegate" destination="oEs-yJ-T8V" id="2TU-L6-tqu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Project" id="xpO-2V-vdN">
+                    <navigationItem key="navigationItem" title="MindMap" id="xpO-2V-vdN">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="hnt-x8-aiN">
                             <connections>
                                 <action selector="saveAction:" destination="oEs-yJ-T8V" id="80N-dk-Tww"/>

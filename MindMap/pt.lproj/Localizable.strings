@@ -2,8 +2,8 @@
 "Possible Dependencies" = "Possíveis Dependências";
 "Direct Dependants" = "Dependentes Diretos";
 "Possible Dependants" = "Possíveis Dependentes";
-"allows %@" = "viabiliza-te %@";
-"%lu dependants" = "viabiliza %lu tarefas";
+"allows %@" = "Permite-te %@";
+"%lu dependants" = "Viabiliza %lu tarefas";
 "depends on %@" = "depende de %@";
 "%lu dependencies" = "depende de %lu tarefas";
 "%@ and %@" = "%@ e %@";

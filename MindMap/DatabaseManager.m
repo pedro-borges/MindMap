@@ -78,9 +78,13 @@ static DatabaseManager *_defaultManager;
     if (self.document.documentState == UIDocumentStateNormal) {
         NSLog(@"Document.state = NORMAL");
     } else if (self.document.documentState & UIDocumentStateInConflict) {
-        NSLog(@"Document.state = CONFLICT *************");
-    } else if (self.document.documentState & UIDocumentStateSavingError) {
-        NSLog(@"Document.state = SAVING ERROR *************");
+        NSLog(@"Document.state = IN CONFLICT *************");
+	} else if (self.document.documentState & UIDocumentStateSavingError) {
+		NSLog(@"Document.state = SAVING ERROR *************");
+	} else if (self.document.documentState & UIDocumentStateClosed) {
+		NSLog(@"Document.state = CLOSED *************");
+	} else if (self.document.documentState & UIDocumentStateEditingDisabled) {
+		NSLog(@"Document.state = EDITING DISABLED *************");
     }
 }
 

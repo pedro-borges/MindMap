@@ -9,7 +9,7 @@
 "1cF-li-Gux.placeholder" = "Enter Task Title";
 
 /* Class = "IBUINavigationItem"; title = "Select Project"; ObjectID = "1sy-Y8-Voi"; */
-"1sy-Y8-Voi.title" = "Select Project";
+"1sy-Y8-Voi.title" = "Choose MindMap";
 
 /* Class = "IBUITableViewSection"; headerTitle = "Time Frame"; ObjectID = "2M8-nz-M5U"; */
 "2M8-nz-M5U.headerTitle" = "Time Frame";
@@ -174,7 +174,7 @@
 "wcA-1o-lzW.title" = "Time Frame";
 
 /* Class = "IBUINavigationItem"; title = "Project"; ObjectID = "xpO-2V-vdN"; */
-"xpO-2V-vdN.title" = "Project";
+"xpO-2V-vdN.title" = "MindMap";
 
 /* Class = "IBUILabel"; text = "#locations"; ObjectID = "ztP-Nh-nN5"; */
 "ztP-Nh-nN5.text" = "#locations";

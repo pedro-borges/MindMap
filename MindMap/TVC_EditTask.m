@@ -49,7 +49,7 @@
 #pragma mark - Bindings
 
 - (BOOL)bindToModel:(NSError **)error {
-    NSString *title = self.titleTextField.text;
+    NSString *title = [self.titleTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
     self.task.title = title;
 

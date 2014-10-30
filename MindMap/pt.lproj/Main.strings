@@ -9,7 +9,7 @@
 "1cF-li-Gux.placeholder" = "Introduza o título da tarefa";
 
 /* Class = "IBUINavigationItem"; title = "Select Project"; ObjectID = "1sy-Y8-Voi"; */
-"1sy-Y8-Voi.title" = "Escolha um projeto";
+"1sy-Y8-Voi.title" = "Escolha um MindMap";
 
 /* Class = "IBUITableViewSection"; headerTitle = "Time Frame"; ObjectID = "2M8-nz-M5U"; */
 "2M8-nz-M5U.headerTitle" = "Janela Temporal";
@@ -174,7 +174,7 @@
 "wcA-1o-lzW.title" = "Janela Temporal";
 
 /* Class = "IBUINavigationItem"; title = "Project"; ObjectID = "xpO-2V-vdN"; */
-"xpO-2V-vdN.title" = "Projeto";
+"xpO-2V-vdN.title" = "MindMap";
 
 /* Class = "IBUILabel"; text = "#locations"; ObjectID = "ztP-Nh-nN5"; */
 "ztP-Nh-nN5.text" = "#locations";
