@@ -60,6 +60,7 @@ Task *_selectedTask;
 					
 					alertView2.alertViewStyle = UIAlertViewStylePlainTextInput;
 					[alertView2 textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
+					[alertView2 textFieldAtIndex:0].autocorrectionType = UITextAutocorrectionTypeYes;
 					alertView2.tag = ALERT_CREATEDEPENDENCY;
 					
 					[alertView2 show];
@@ -74,6 +75,7 @@ Task *_selectedTask;
 					
 					alertView2.alertViewStyle = UIAlertViewStylePlainTextInput;
 					[alertView2 textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
+					[alertView2 textFieldAtIndex:0].autocorrectionType = UITextAutocorrectionTypeYes;
 					alertView2.tag = ALERT_CREATEDEPENDANT;
 					
 					[alertView2 show];

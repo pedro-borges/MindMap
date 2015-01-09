@@ -13,6 +13,8 @@
 
 #import "LocalizableStrings.h"
 
+#import "Database.h"
+
 @implementation Task (Business)
 
 - (BOOL)inPresent {
@@ -139,6 +141,8 @@
 - (void)close {
 	self.completion = [Completion createFromContext:self.managedObjectContext
 											forTask:self];
+	
+	[Database saveManagedObjectByForce:self];
 }
 
 - (void)delete {
