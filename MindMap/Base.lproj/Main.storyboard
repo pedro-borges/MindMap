@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ela-1z-XJD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ela-1z-XJD">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--Choose MindMap-->
@@ -779,7 +780,7 @@
         <scene sceneID="gfR-6I-ons">
             <objects>
                 <navigationController title="Past" id="tDZ-dv-U3E" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Past" image="IconRewindDark" id="hF5-rg-GkA"/>
+                    <tabBarItem key="tabBarItem" title="Past" image="IconPastLight" id="hF5-rg-GkA"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TH1-di-fpe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -924,7 +925,7 @@
         <scene sceneID="1qZ-Dt-JMD">
             <objects>
                 <navigationController id="EGg-rf-DRZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Future" image="IconFastForwardDark" id="eyq-Y4-Om8"/>
+                    <tabBarItem key="tabBarItem" title="Future" image="IconFutureLight" id="eyq-Y4-Om8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YPp-Qu-qXJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -941,7 +942,7 @@
         <scene sceneID="tzb-Zy-31G">
             <objects>
                 <navigationController id="7Gj-Z4-RZc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Present" image="IconArrowDownDark" id="7P1-Vh-xe7"/>
+                    <tabBarItem key="tabBarItem" title="Present" image="IconRotateLight" id="7P1-Vh-xe7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SI9-au-QAw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1301,9 +1302,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="IconArrowDownDark" width="32" height="32"/>
-        <image name="IconFastForwardDark" width="32" height="32"/>
-        <image name="IconRewindDark" width="32" height="32"/>
+        <image name="IconFutureLight" width="32" height="32"/>
+        <image name="IconPastLight" width="32" height="32"/>
+        <image name="IconRotateLight" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gfk-hq-gw1"/>
