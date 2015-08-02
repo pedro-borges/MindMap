@@ -114,7 +114,7 @@
 }
 
 - (IBAction)createProjectAction:(UIBarButtonItem *)sender {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATEPROJECT
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:STRING_CREATEMINDMAP
 												message:nil
 											   delegate:self
 									  cancelButtonTitle:STRING_CANCEL

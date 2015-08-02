@@ -44,7 +44,7 @@ Task *_selectedTask;
 
 	[task close];
 	
-	[self performFetch];
+	[self bindToView];
 }
 
 - (void)createDependencyToSelectedTask:(NSString *)title {
@@ -53,6 +53,8 @@ Task *_selectedTask;
 	Task *dependency = [Task createFromContext:self.context forProject:self.project withTitle:title];
 
 	[task addDependenciesObject:dependency];
+	
+	[self bindToView];
 }
 
 #pragma mark - UIAlertViewDelegate

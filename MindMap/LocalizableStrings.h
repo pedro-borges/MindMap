@@ -52,7 +52,7 @@
 #define STRING_CREATE						NSLocalizedString(@"Create", nil)
 #define STRING_CLOSETASK					NSLocalizedString(@"Close Task", nil)
 
-#define STRING_CREATEPROJECT				NSLocalizedString(@"Create Project", nil)
+#define STRING_CREATEMINDMAP				NSLocalizedString(@"Create MindMap", nil)
 #define STRING_CREATETASK					NSLocalizedString(@"Create Task", nil)
 #define STRING_CREATEDEPENDENCY				NSLocalizedString(@"Create Dependency", nil)
 #define STRING_CREATEDEPENDANT				NSLocalizedString(@"Create Dependant", nil)

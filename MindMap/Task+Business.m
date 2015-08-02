@@ -20,24 +20,34 @@
 }
 
 - (int)level {
+	int result;
+NSLog(@"Leveling %@", self.title);
 	if (self.completion == nil) {
 		// Present or Future
-		int result = -1;
+		result = -1;
 		
 		for (Task *dependency in self.dependencies) {
-			if (dependency.completion != nil) result = MAX(dependency.level, result);
+			if (dependency.completion == nil) {
+				int level = [dependency level];
+				result = MAX(level, result);
+			}
 		}
 		
-		return result + 1;
+		result++;
 	} else {
-		int result = 1;
+		result = 0;
 		
 		for (Task *dependant in self.dependants) {
-			if (dependant.completion == nil) result = MIN(dependant.level, result);
+			if (dependant.completion != nil) {
+				int level = [dependant level];
+				result = MIN(level, result);
+			}
 		}
-		
-		return result;
+
+		result--;
 	}
+NSLog(@"}");
+	return result;
 }
 
 - (NSSet *)fullDependencies {
@@ -53,7 +63,6 @@
 }
 
 - (NSArray *)possibleDependenciesInSameProject {
-//	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil) AND (SUBQUERY(dependencies, $t, $t.completion == nil).@count == 0)", self.project];
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(project = %@) AND (completion == nil)", self.project];
 	
 	NSMutableArray *result = [[Task allInContext:self.managedObjectContext matchingPredicate:predicate] mutableCopy];
@@ -155,6 +164,7 @@
 	self.completion = [Completion createFromContext:self.managedObjectContext
 											forTask:self];
 	
+	[Database saveManagedObjectByForce:self.completion];
 	[Database saveManagedObjectByForce:self];
 }
 

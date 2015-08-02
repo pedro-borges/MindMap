@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ela-1z-XJD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2Jh-Qr-KqV">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Choose MindMap-->
+        <!--MindMap-->
         <scene sceneID="rhE-hO-dIw">
             <objects>
                 <tableViewController storyboardIdentifier="TVC_ListProjects" id="Xvs-TK-9Ef" customClass="TVC_ListProjects" sceneMemberID="viewController">
@@ -48,7 +48,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="oEs-yJ-T8V" kind="show" identifier="Edit" trigger="accessoryAction" id="xQh-Ha-nmw"/>
+                                    <segue destination="oEs-yJ-T8V" kind="show" identifier="Edit" trigger="accessoryAction" id="ogp-59-HVd"/>
+                                    <segue destination="rqC-ou-JE3" kind="show" id="mf8-Py-kPe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -57,12 +58,7 @@
                             <outlet property="delegate" destination="Xvs-TK-9Ef" id="dAY-FD-5CZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Choose MindMap" id="1sy-Y8-Voi">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="VeM-m7-vcL">
-                            <connections>
-                                <action selector="closeAction:" destination="Xvs-TK-9Ef" id="vII-Rf-ojG"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="MindMap" id="1sy-Y8-Voi">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="937-ZC-vyp">
                             <connections>
                                 <action selector="createProjectAction:" destination="Xvs-TK-9Ef" id="8Zh-X5-67d"/>
@@ -72,28 +68,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qrh-Iv-MeE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2233" y="1921"/>
-        </scene>
-        <!--Manage Project-->
-        <scene sceneID="R7q-dQ-47a">
-            <objects>
-                <tabBarController storyboardIdentifier="TBC_ManageProject" automaticallyAdjustsScrollViewInsets="NO" id="ela-1z-XJD" customClass="TBC_ManageProject" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="Caq-TE-rGf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="tDZ-dv-U3E" kind="relationship" relationship="viewControllers" id="euC-SW-xpu"/>
-                        <segue destination="7Gj-Z4-RZc" kind="relationship" relationship="viewControllers" id="iT3-TP-Ig5"/>
-                        <segue destination="EGg-rf-DRZ" kind="relationship" relationship="viewControllers" id="3gK-6c-1nR"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a8g-K5-DrM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="285" y="772"/>
+            <point key="canvasLocation" x="939" y="378"/>
         </scene>
         <!--List Tasks Present-->
         <scene sceneID="WvN-j4-atR">
@@ -140,11 +115,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="U35-F7-Aap">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="Vju-vE-oOe">
-                            <connections>
-                                <segue destination="2Jh-Qr-KqV" kind="presentation" identifier="Select Project" id="gfk-hq-gw1"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GqH-3D-Bse">
                             <connections>
                                 <action selector="createAction:" destination="rqC-ou-JE3" id="owx-Wf-x0T"/>
@@ -306,7 +276,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gy0-Fx-uLW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2233" y="-373"/>
+            <point key="canvasLocation" x="2232" y="-393"/>
         </scene>
         <!--Task-->
         <scene sceneID="Tvb-QZ-a25">
@@ -460,13 +430,7 @@
                             <outlet property="delegate" destination="GV2-2I-YBA" id="a06-hh-phJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Task" id="6tJ-od-A5c">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="87s-8f-urM">
-                            <connections>
-                                <action selector="saveAction:" destination="GV2-2I-YBA" id="dRY-6A-B6F"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Task" id="6tJ-od-A5c"/>
                     <connections>
                         <outlet property="dependantsLabel" destination="h5F-XR-eZg" id="72Z-o8-28k"/>
                         <outlet property="dependenciesLabel" destination="Rz5-YH-uYe" id="ddq-qd-rvk"/>
@@ -776,23 +740,6 @@
             </objects>
             <point key="canvasLocation" x="2901" y="1149"/>
         </scene>
-        <!--Past-->
-        <scene sceneID="gfR-6I-ons">
-            <objects>
-                <navigationController title="Past" id="tDZ-dv-U3E" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Past" image="IconPastLight" id="hF5-rg-GkA"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TH1-di-fpe">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="an2-zE-9hD" kind="relationship" relationship="rootViewController" id="1VB-0g-qom"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="trG-Ze-aqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="940" y="-373"/>
-        </scene>
         <!--List Tasks Past-->
         <scene sceneID="Yeq-9H-BVE">
             <objects>
@@ -837,17 +784,11 @@
                             <outlet property="delegate" destination="an2-zE-9hD" id="wMA-nk-TUH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="MWY-cs-HrW">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="pXZ-8H-V18">
-                            <connections>
-                                <segue destination="2Jh-Qr-KqV" kind="presentation" identifier="Select Project" id="uDh-97-CjK"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="MWY-cs-HrW"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zeW-yd-msj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594.5" y="-373"/>
+            <point key="canvasLocation" x="1594.5" y="-393"/>
         </scene>
         <!--List Tasks Future-->
         <scene sceneID="Off-Fa-7h9">
@@ -893,13 +834,7 @@
                             <outlet property="delegate" destination="VwX-9B-CcA" id="2VD-1I-FWk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="xpH-HY-A8G">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="gEb-d5-6oW">
-                            <connections>
-                                <segue destination="2Jh-Qr-KqV" kind="presentation" identifier="Select Project" id="uFu-6R-g9D"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="xpH-HY-A8G"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HDi-oP-CQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -910,6 +845,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HLJ-Zm-FxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="2Jh-Qr-KqV" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p0J-fT-UNi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -919,41 +855,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1594.5" y="1921"/>
-        </scene>
-        <!--Future-->
-        <scene sceneID="1qZ-Dt-JMD">
-            <objects>
-                <navigationController id="EGg-rf-DRZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Future" image="IconFutureLight" id="eyq-Y4-Om8"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YPp-Qu-qXJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="VwX-9B-CcA" kind="relationship" relationship="rootViewController" id="AXv-th-X8c"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eML-eA-NKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="940" y="1149"/>
-        </scene>
-        <!--Present-->
-        <scene sceneID="tzb-Zy-31G">
-            <objects>
-                <navigationController id="7Gj-Z4-RZc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Present" image="IconRotateLight" id="7P1-Vh-xe7"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SI9-au-QAw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="rqC-ou-JE3" kind="relationship" relationship="rootViewController" id="TO6-QN-5Ho"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ly0-9X-Vh8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="939" y="378"/>
+            <point key="canvasLocation" x="235.5" y="378"/>
         </scene>
         <!--MindMap-->
         <scene sceneID="6aQ-WR-hMZ">
@@ -1027,7 +929,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Task Statistics" id="bFe-ov-ckv">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="9Pz-U6-Axm">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="9Pz-U6-Axm">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Pz-U6-Axm" id="Jjq-y8-maO">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1076,13 +978,20 @@
                                                 <constraint firstAttribute="bottom" secondItem="866-ap-kdB" secondAttribute="bottom" constant="7" id="R4U-K5-bbh"/>
                                                 <constraint firstAttribute="trailing" secondItem="866-ap-kdB" secondAttribute="trailing" constant="15" id="S0p-xY-Se1"/>
                                                 <constraint firstItem="QZ2-eO-HMR" firstAttribute="leading" secondItem="Jjq-y8-maO" secondAttribute="leading" constant="15" id="fGk-wJ-Rgf"/>
-                                                <constraint firstItem="EME-fe-Dic" firstAttribute="leading" secondItem="QZ2-eO-HMR" secondAttribute="trailing" constant="8" id="mh7-lG-GIc"/>
+                                                <constraint firstItem="EME-fe-Dic" firstAttribute="leading" secondItem="QZ2-eO-HMR" secondAttribute="trailing" constant="8" id="mh7-lG-GIc">
+                                                    <variation key="widthClass=compact" constant="-11"/>
+                                                </constraint>
                                                 <constraint firstAttribute="centerY" secondItem="QZ2-eO-HMR" secondAttribute="centerY" id="vIC-XI-yFw"/>
-                                                <constraint firstAttribute="trailing" secondItem="0zs-43-Oo2" secondAttribute="trailing" constant="15" id="zOY-KK-Eel"/>
+                                                <constraint firstAttribute="trailing" secondItem="0zs-43-Oo2" secondAttribute="trailing" constant="15" id="zOY-KK-Eel">
+                                                    <variation key="widthClass=compact" constant="1"/>
+                                                </constraint>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="an2-zE-9hD" kind="show" id="UZJ-SI-ZFd"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="xvf-8T-LuJ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="xvf-8T-LuJ">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xvf-8T-LuJ" id="xdr-Th-nHk">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1126,8 +1035,12 @@
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="8ZY-eH-1EV" secondAttribute="centerY" id="6R9-Rf-Hsu"/>
                                                 <constraint firstAttribute="bottom" secondItem="zgI-UC-8ty" secondAttribute="bottom" constant="7" id="Dqr-4f-HZN"/>
-                                                <constraint firstAttribute="trailing" secondItem="8ZY-eH-1EV" secondAttribute="trailing" constant="15" id="Duy-31-a5c"/>
-                                                <constraint firstItem="AVB-3F-mWf" firstAttribute="leading" secondItem="OlB-6W-X5p" secondAttribute="trailing" constant="8" id="I8O-2v-fqG"/>
+                                                <constraint firstAttribute="trailing" secondItem="8ZY-eH-1EV" secondAttribute="trailing" constant="15" id="Duy-31-a5c">
+                                                    <variation key="widthClass=compact" constant="1"/>
+                                                </constraint>
+                                                <constraint firstItem="AVB-3F-mWf" firstAttribute="leading" secondItem="OlB-6W-X5p" secondAttribute="trailing" constant="8" id="I8O-2v-fqG">
+                                                    <variation key="widthClass=compact" constant="-11"/>
+                                                </constraint>
                                                 <constraint firstItem="OlB-6W-X5p" firstAttribute="leading" secondItem="xdr-Th-nHk" secondAttribute="leading" constant="15" id="V1a-EB-EWf"/>
                                                 <constraint firstAttribute="centerY" secondItem="OlB-6W-X5p" secondAttribute="centerY" id="eef-bY-RSh"/>
                                                 <constraint firstAttribute="trailing" secondItem="zgI-UC-8ty" secondAttribute="trailing" constant="15" id="f1U-Qf-Vkk"/>
@@ -1136,8 +1049,11 @@
                                                 <constraint firstItem="8ZY-eH-1EV" firstAttribute="leading" secondItem="AVB-3F-mWf" secondAttribute="trailing" constant="8" id="wlh-5l-HYv"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="rqC-ou-JE3" kind="show" id="4ON-bt-vGz"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="6bV-nr-pbU">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="6bV-nr-pbU">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6bV-nr-pbU" id="kgy-DL-rdd">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1179,11 +1095,15 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ZVg-Hp-2iL" firstAttribute="leading" secondItem="zwt-DV-gPM" secondAttribute="trailing" constant="8" id="1zb-n4-uM0"/>
+                                                <constraint firstItem="ZVg-Hp-2iL" firstAttribute="leading" secondItem="zwt-DV-gPM" secondAttribute="trailing" constant="8" id="1zb-n4-uM0">
+                                                    <variation key="widthClass=compact" constant="-11"/>
+                                                </constraint>
                                                 <constraint firstAttribute="centerY" secondItem="zwt-DV-gPM" secondAttribute="centerY" id="5vr-8y-V5q"/>
                                                 <constraint firstAttribute="centerY" secondItem="ZVg-Hp-2iL" secondAttribute="centerY" id="Wk3-W6-6K4"/>
                                                 <constraint firstAttribute="bottom" secondItem="yfP-BF-h8N" secondAttribute="bottom" constant="7" id="bV7-Nl-CPB"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ggl-AX-VJd" secondAttribute="trailing" constant="15" id="kdC-jF-Ktn"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ggl-AX-VJd" secondAttribute="trailing" constant="15" id="kdC-jF-Ktn">
+                                                    <variation key="widthClass=compact" constant="1"/>
+                                                </constraint>
                                                 <constraint firstItem="Ggl-AX-VJd" firstAttribute="leading" secondItem="ZVg-Hp-2iL" secondAttribute="trailing" constant="8" id="ki2-5A-bPT"/>
                                                 <constraint firstAttribute="centerY" secondItem="Ggl-AX-VJd" secondAttribute="centerY" id="lmO-Sn-0a3"/>
                                                 <constraint firstItem="yfP-BF-h8N" firstAttribute="leading" secondItem="kgy-DL-rdd" secondAttribute="leading" constant="15" id="t4b-HL-w7R"/>
@@ -1191,6 +1111,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="yfP-BF-h8N" secondAttribute="trailing" constant="15" id="yFS-qm-M8P"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="VwX-9B-CcA" kind="show" id="ahk-ds-S2C"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="BDh-Rw-CWD">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -1242,17 +1165,27 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Pws-0X-adF" firstAttribute="leading" secondItem="GbY-Lm-9Pa" secondAttribute="trailing" constant="8" id="6Tk-Sf-UYW"/>
+                                                <constraint firstItem="Pws-0X-adF" firstAttribute="leading" secondItem="GbY-Lm-9Pa" secondAttribute="trailing" constant="8" id="6Tk-Sf-UYW">
+                                                    <variation key="widthClass=compact" constant="-10"/>
+                                                </constraint>
                                                 <constraint firstAttribute="bottom" secondItem="9C2-A3-TsU" secondAttribute="bottom" constant="7" id="7Kx-8I-fld"/>
-                                                <constraint firstAttribute="trailing" secondItem="9C2-A3-TsU" secondAttribute="trailing" constant="15" id="7Nf-ni-Ovx"/>
+                                                <constraint firstAttribute="trailing" secondItem="9C2-A3-TsU" secondAttribute="trailing" constant="15" id="7Nf-ni-Ovx">
+                                                    <variation key="widthClass=compact" constant="33"/>
+                                                </constraint>
                                                 <constraint firstItem="B5R-cf-CJe" firstAttribute="leading" secondItem="7Mx-Vi-e16" secondAttribute="leading" constant="15" id="HtK-Fz-spj"/>
                                                 <constraint firstItem="NYM-S4-BfY" firstAttribute="leading" secondItem="7Mx-Vi-e16" secondAttribute="leading" constant="15" id="SMx-px-qLl"/>
                                                 <constraint firstItem="GbY-Lm-9Pa" firstAttribute="leading" secondItem="7Mx-Vi-e16" secondAttribute="leading" constant="15" id="T6k-98-xNw"/>
                                                 <constraint firstAttribute="centerY" secondItem="GbY-Lm-9Pa" secondAttribute="centerY" id="Xw4-qd-AhA"/>
-                                                <constraint firstAttribute="trailing" secondItem="NYM-S4-BfY" secondAttribute="trailing" constant="15" id="Z4r-JH-MMK"/>
-                                                <constraint firstAttribute="trailing" secondItem="84Q-72-y3i" secondAttribute="trailing" constant="15" id="aTZ-lo-zhY"/>
+                                                <constraint firstAttribute="trailing" secondItem="NYM-S4-BfY" secondAttribute="trailing" constant="15" id="Z4r-JH-MMK">
+                                                    <variation key="widthClass=compact" constant="33"/>
+                                                </constraint>
+                                                <constraint firstAttribute="trailing" secondItem="84Q-72-y3i" secondAttribute="trailing" constant="15" id="aTZ-lo-zhY">
+                                                    <variation key="widthClass=compact" constant="33"/>
+                                                </constraint>
                                                 <constraint firstAttribute="bottom" secondItem="B5R-cf-CJe" secondAttribute="bottom" constant="7" id="as2-Ei-pSt"/>
-                                                <constraint firstAttribute="trailing" secondItem="B5R-cf-CJe" secondAttribute="trailing" constant="15" id="cWo-ux-SEQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="B5R-cf-CJe" secondAttribute="trailing" constant="15" id="cWo-ux-SEQ">
+                                                    <variation key="widthClass=compact" constant="33"/>
+                                                </constraint>
                                                 <constraint firstItem="84Q-72-y3i" firstAttribute="leading" secondItem="Pws-0X-adF" secondAttribute="trailing" constant="8" id="eYT-lF-u7q"/>
                                                 <constraint firstAttribute="bottom" secondItem="NYM-S4-BfY" secondAttribute="bottom" constant="7" id="m5B-ON-c3I"/>
                                                 <constraint firstItem="9C2-A3-TsU" firstAttribute="leading" secondItem="7Mx-Vi-e16" secondAttribute="leading" constant="15" id="rPu-2X-DMc"/>
@@ -1269,13 +1202,7 @@
                             <outlet property="delegate" destination="oEs-yJ-T8V" id="2TU-L6-tqu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="MindMap" id="xpO-2V-vdN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="hnt-x8-aiN">
-                            <connections>
-                                <action selector="saveAction:" destination="oEs-yJ-T8V" id="80N-dk-Tww"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="MindMap" id="xpO-2V-vdN"/>
                     <connections>
                         <outlet property="completionProgressView" destination="cBf-UH-cRW" id="zn2-cK-F9P"/>
                         <outlet property="futurePercentStatistic" destination="Ggl-AX-VJd" id="44B-5J-003"/>
@@ -1298,16 +1225,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Myu-1j-ZFR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2865" y="1921"/>
+            <point key="canvasLocation" x="939" y="1149"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="IconFutureLight" width="32" height="32"/>
-        <image name="IconPastLight" width="32" height="32"/>
-        <image name="IconRotateLight" width="32" height="32"/>
-    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cGf-xX-KVE"/>
-        <segue reference="uFu-6R-g9D"/>
+        <segue reference="HxO-Gh-2el"/>
+        <segue reference="4ON-bt-vGz"/>
     </inferredMetricsTieBreakers>
 </document>
