@@ -1,11 +1,3 @@
-//
-//  TVC_ListProjects.m
-//  MindMap
-//
-//  Created by Pedro Borges on 05/10/14.
-//  Copyright (c) 2014 PCB. All rights reserved.
-//
-
 #import "TVC_ListProjects.h"
 
 #import "TBC_ManageProject.h"
@@ -14,6 +6,7 @@
 #import "Project+Business.h"
 #import "Settings.h"
 
+#import "Database.h"
 #import "DatabaseManager.h"
 
 #import "LocalizableStrings.h"
@@ -106,6 +99,8 @@
 	} else {
 		[self.fetchedResultsController.managedObjectContext deleteObject:project];
 
+		[Database saveManagedObject:project];
+		
 		[self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 	}
 }

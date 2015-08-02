@@ -17,6 +17,20 @@ Task *_selectedTask;
 
 #pragma mark - UIKit
 
+#pragma mark - Bindings
+
+- (void)bindToView {
+	self.predicate = self.project.presentTasksPredicate;
+	
+	[super bindToView];
+	
+	NSInteger count = [self tableView:self.tableView numberOfRowsInSection:0];
+	
+	self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%li", (long)count];
+	
+	[UIApplication sharedApplication].applicationIconBadgeNumber = count;
+}
+
 #pragma mark - Private
 
 - (void)closeSelectedTask {
@@ -24,7 +38,7 @@ Task *_selectedTask;
 
 	[task close];
 	
-	[self fetchedResultsController];
+	[self performFetch];
 }
 
 - (void)createDependencyToSelectedTask:(NSString *)title {
@@ -33,19 +47,6 @@ Task *_selectedTask;
 	Task *dependency = [Task createFromContext:self.context forProject:self.project withTitle:title];
 
 	[task addDependenciesObject:dependency];
-}
-
-#pragma mark - Bindings
-
-- (void)bindToView {
-	self.predicate = self.project.presentTasksPredicate;
-
-	[super bindToView];
-
-	NSInteger count = [self tableView:self.tableView numberOfRowsInSection:0];
-
-	self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%li", (long)count];
-	[UIApplication sharedApplication].applicationIconBadgeNumber = count;
 }
 
 #pragma mark - UIAlertViewDelegate

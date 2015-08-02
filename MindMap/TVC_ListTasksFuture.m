@@ -1,11 +1,3 @@
-//
-//  TVC_ListTasksFuture.m
-//  MindMap
-//
-//  Created by Pedro Borges on 02/10/14.
-//  Copyright (c) 2014 PCB. All rights reserved.
-//
-
 #import "TVC_ListTasksFuture.h"
 
 #import "LocalizableStrings.h"
@@ -20,12 +12,12 @@
 
 Task *_selectedTask;
 
-#pragma mark - UIKit
+#pragma mark - Bindings
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)bindToView {
     self.predicate = self.project.futureTasksPredicate;
 
-	[super viewWillAppear:animated];
+	[super bindToView];
 }
 
 #pragma mark - Private

@@ -1,11 +1,3 @@
-//
-//  TVC_Dependants.m
-//  MindMap
-//
-//  Created by Pedro Borges on 03/10/14.
-//  Copyright (c) 2014 PCB. All rights reserved.
-//
-
 #import "TVC_ListDependants.h"
 
 #import "LocalizableStrings.h"

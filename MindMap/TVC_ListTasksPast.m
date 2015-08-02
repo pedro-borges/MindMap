@@ -1,11 +1,3 @@
-//
-//  TVC_ListTasksPast.m
-//  MindMap
-//
-//  Created by Pedro Borges on 02/10/14.
-//  Copyright (c) 2014 PCB. All rights reserved.
-//
-
 #import "TVC_ListTasksPast.h"
 
 #import "TimeFrame+Business.h"
@@ -17,12 +9,12 @@
 
 @implementation TVC_ListTasksPast
 
-#pragma mark - UIKit
+#pragma mark - Bindings
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)bindToView {
 	self.predicate = self.project.pastTasksPredicate;
-
-	[super viewWillAppear:animated];
+	
+	[super bindToView];
 }
 
 #pragma mark - Implementations

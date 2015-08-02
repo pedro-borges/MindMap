@@ -1,11 +1,3 @@
-//
-//  TVC_ListTasks.m
-//  MindMap
-//
-//  Created by Pedro Borges on 02/10/14.
-//  Copyright (c) 2014 PCB. All rights reserved.
-//
-
 #import "TVC_ListTasks.h"
 
 #import "LocalizableStrings.h"
@@ -53,7 +45,9 @@ Task *_selectedTask;
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-
+	
+	[self performFetch];
+	
 	self.navigationItem.title = [Settings defaultSettings].selectedProjectName;
 }
 
