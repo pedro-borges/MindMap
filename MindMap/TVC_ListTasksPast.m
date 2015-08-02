@@ -19,10 +19,6 @@
 
 #pragma mark - Implementations
 
-- (NSString *)cellTextFor:(Task *)task {
-	return task.title;
-}
-
 - (NSString *)cellDetailTextFor:(Task *)task {
 	NSString *activeTime = [NSDate describeTimeFrom:[NSDate date] to:task.completion.timestamp];
 

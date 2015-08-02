@@ -46,10 +46,14 @@ static Settings *_defaultSettings;
 
 - (Project *)selectedProject {
 	NSString *projectName = self.selectedProjectName;
-
-	if (projectName == nil) return nil;
 	
 	NSManagedObjectContext *context = [DatabaseManager defaultManager].document.managedObjectContext;
+
+	if (projectName == nil) {
+		projectName = STRING_DEFAULT_PROJECTNAME;
+		
+		[Project createFromContext:context withName:projectName];
+	}
 	
 	return [[Project forName:projectName inContext:context] firstObject];
 }

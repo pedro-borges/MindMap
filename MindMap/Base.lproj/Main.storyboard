@@ -908,6 +908,7 @@
         <!--Navigation Controller-->
         <scene sceneID="vP2-tD-bCB">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HLJ-Zm-FxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="2Jh-Qr-KqV" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p0J-fT-UNi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -917,9 +918,8 @@
                         <segue destination="Xvs-TK-9Ef" kind="relationship" relationship="rootViewController" id="bAv-6J-WzR"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HLJ-Zm-FxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594" y="1921"/>
+            <point key="canvasLocation" x="1594.5" y="1921"/>
         </scene>
         <!--Future-->
         <scene sceneID="1qZ-Dt-JMD">
@@ -1307,7 +1307,7 @@
         <image name="IconRotateLight" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gfk-hq-gw1"/>
-        <segue reference="HxO-Gh-2el"/>
+        <segue reference="cGf-xX-KVE"/>
+        <segue reference="uFu-6R-g9D"/>
     </inferredMetricsTieBreakers>
 </document>

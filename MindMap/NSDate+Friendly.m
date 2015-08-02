@@ -1,11 +1,3 @@
-//
-//  NSDate+Friendly.m
-//  MindMap
-//
-//  Created by Pedro Borges on 11/10/14.
-//  Copyright (c) 2014 PCB. All rights reserved.
-//
-
 #import "NSDate+Friendly.h"
 
 #import "LocalizableStrings.h"
@@ -42,10 +34,10 @@ NSDateFormatter *_dateFormatter;
 }
 
 + (NSString *)describeTimeFrom:(NSDate *)referenceDate to:(NSDate *)relativeDate {
-	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
 	//TODO review why cast is needed to avoid warning, also recheck after xcode upgrades
 	NSCalendarUnit units = (NSCalendarUnit)(NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear);
-	NSDateComponents *components = [gregorian components:units fromDate:referenceDate toDate:relativeDate options:NSWrapCalendarComponents];
+	NSDateComponents *components = [gregorian components:units fromDate:referenceDate toDate:relativeDate options:NSCalendarWrapComponents];
 
 	NSInteger years		= ABS(components.year);
 	NSInteger months	= ABS(components.month);

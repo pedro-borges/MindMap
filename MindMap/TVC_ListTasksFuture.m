@@ -135,10 +135,6 @@ Task *_selectedTask;
 
 #pragma mark - Implementations
 
-- (NSString *)cellTextFor:(Task *)task {
-	return task.title;
-}
-
 - (NSString *)cellDetailTextFor:(Task *)task {
 	return [NSString stringWithFormat:STRING_DEPENDENCIESANDDEPENDANTS, task.dependantsDescription, task.dependenciesDescription];
 }

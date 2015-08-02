@@ -5,6 +5,8 @@
 #import "Task+Business.h"
 #import "Completion+Business.h"
 
+#import "Settings.h"
+
 @interface TVC_ListTasksPresent() <UIAlertViewDelegate>
 
 @end
@@ -16,6 +18,10 @@
 Task *_selectedTask;
 
 #pragma mark - UIKit
+
+- (void)viewDidLoad {
+	[super viewDidLoad];
+}
 
 #pragma mark - Bindings
 
@@ -182,10 +188,6 @@ Task *_selectedTask;
 }
 
 #pragma mark - Abstract Implementations
-
-- (NSString *)cellTextFor:(Task *)task {
-	return task.title;
-}
 
 - (NSString *)cellDetailTextFor:(Task *)task {
 	return task.dependantsDescription;

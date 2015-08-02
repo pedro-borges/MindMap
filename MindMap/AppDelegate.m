@@ -1,11 +1,3 @@
-//
-//  AppDelegate.m
-//  MindMap
-//
-//  Created by Pedro Borges on 02/10/14.
-//  Copyright (c) 2014 PCB. All rights reserved.
-//
-
 #import "AppDelegate.h"
 
 #import "DatabaseManager.h"
@@ -21,7 +13,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-	UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+//	UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
 //	[application registerUserNotificationSettings:notificationSettings];
 
 	return YES;

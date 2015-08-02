@@ -79,7 +79,7 @@ Task *_selectedTask;
 #pragma mark - Abstract
 
 - (NSString *)cellTextFor:(Task *)task {
-	@throw [NSException exceptionWithName:@"Abstraction Violation" reason:@"Direct call to [TVC_ListTasks cellTextFor:]" userInfo:nil];
+	return [NSString stringWithFormat:@"%@ %i", task.title, task.level];
 }
 
 - (NSString *)cellDetailTextFor:(Task *)task {

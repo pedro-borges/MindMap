@@ -1,11 +1,3 @@
-//
-//  TVC_ViewProject.m
-//  MindMap
-//
-//  Created by Pedro Borges on 05/10/14.
-//  Copyright (c) 2014 PCB. All rights reserved.
-//
-
 #import "TVC_ViewProject.h"
 
 #import "LocalizableStrings.h"

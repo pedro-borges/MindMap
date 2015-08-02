@@ -9,7 +9,7 @@
 "%@ and %@" = "%@ and %@";
 "%li tasks" = "%li tasks";
 "Empty" = "no tasks";
-"Completed" = "Is closed";
+"Completed" = "Completed";
 "Goal" = "Is goal";
 "Waiting" = "Is waiting";
 "Active" = "Is active";

@@ -1,11 +1,3 @@
-//
-//  LocalizedStrings.h
-//  MindMap
-//
-//  Created by Pedro Borges on 10/10/14.
-//  Copyright (c) 2014 PCB. All rights reserved.
-//
-
 #ifndef MindMap_LocalizedStrings_h
 
 #define MindMap_LocalizedStrings_h
@@ -78,5 +70,6 @@
 #define STRING_PLEASECONFIRM				NSLocalizedString(@"Please confirm:", nil)
 #define STRING_CONFIRMDELETEPROJECT			NSLocalizedString(@"Are you sure you want to delete project %@? %li tasks will be erased", nil)
 #define STRING_CONFIRMDELETETASK			NSLocalizedString(@"Are you sure you want to delete task '%@'", nil)
+#define STRING_DEFAULT_PROJECTNAME			NSLocalizedString(@"Default", nil)
 
 #endif

@@ -1,16 +1,10 @@
-//
-//  Settings.h
-//  MindMap
-//
-//  Created by Pedro Borges on 08/10/14.
-//  Copyright (c) 2014 PCB. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 #import "Project+Business.h"
 
 #import "TVC_List_CoreData.h"
+
+#import "LocalizableStrings.h"
 
 #define DEFAULT_PROJECT_NAME NSLocalizedString(@"My Idea", nil)
 

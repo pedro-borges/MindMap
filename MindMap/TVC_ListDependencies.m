@@ -1,11 +1,3 @@
-//
-//  TVC_ListTasksDependencies.m
-//  MindMap
-//
-//  Created by Pedro Borges on 03/10/14.
-//  Copyright (c) 2014 PCB. All rights reserved.
-//
-
 #import "TVC_ListDependencies.h"
 
 #import "LocalizableStrings.h"

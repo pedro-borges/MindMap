@@ -1,11 +1,3 @@
-//
-//  Task+Business.m
-//  MindMap
-//
-//  Created by Pedro Borges on 02/10/14.
-//  Copyright (c) 2014 PCB. All rights reserved.
-//
-
 #import "Task+Business.h"
 
 #import "TimeFrame+Business.h"
@@ -25,6 +17,27 @@
 	}
 	
 	return YES;
+}
+
+- (int)level {
+	if (self.completion == nil) {
+		// Present or Future
+		int result = -1;
+		
+		for (Task *dependency in self.dependencies) {
+			if (dependency.completion != nil) result = MAX(dependency.level, result);
+		}
+		
+		return result + 1;
+	} else {
+		int result = 1;
+		
+		for (Task *dependant in self.dependants) {
+			if (dependant.completion == nil) result = MIN(dependant.level, result);
+		}
+		
+		return result;
+	}
 }
 
 - (NSSet *)fullDependencies {
